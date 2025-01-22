@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Servicios profesionales de Moodle">
+    <title>Moodle - Plataforma de formación on-line</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Moodle</h1>
+            <span class="menu-toggle">&#9776;</span>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="servicios.html">Nuestros servicios</a></li>
+                    <li><a href="#clients">Clientes</a></li>
+                    <li><a href="#contact">Contacto</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+<section id="services" class="container">
+    <h2>Nuestros servicios</h2>
+    <p>Abarcamos todos los servicios necesarios para poner en marcha su proyecto de formación on-line.</p>
+    <p>Desde la instalación, y hospedaje, de su plataforma Moodle, hasta las actualizaciones del software y los plugins.</p>
+    <p>Gestionamos el entorno para un funcionamiento óptimo, monitorizamos los recursos y realizamos copias periódicas de los cursos.</p>
+    <p>Desarrollamos plugins, personalizamos Moodle y realizamos integraciones con software usado en su institución.</p>
+    <p>Le guiamos en la organización de la plataforma y la adecuación a sus necesidades.</p>
+</section>
+
+    <footer>
+        <div class="container">
+            <section id="contact" class="container">
+                <h2>Contacta con nosotros</h2>
+                <p>Puedes contactarnos a través del correo: <a href="mailto:contacto@moodle.com.es">contacto@moodle.com.es</a></p>
+            </section>
+            <p>&copy; 2025 Moodle - Todos los derechos reservados</p>
+
+        </div>
+    </footer>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuToggle = document.querySelector('.menu-toggle');
+            const nav = document.querySelector('nav ul');
+
+            menuToggle.addEventListener('click', function() {
+                nav.classList.toggle('showing');
+            });
+        });
+    </script>
+</body>
+</html>
