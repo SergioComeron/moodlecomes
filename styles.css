@@ -1,0 +1,121 @@
+/* Estilos generales */
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    padding-top: 80px; /* Ajuste para evitar solapamiento del header */
+}
+
+/* Contenedor principal con márgenes reducidos */
+.container {
+    width: 95%;  /* Reduce el margen lateral para ocupar más espacio */
+    max-width: 1400px; /* Ajustado para pantallas más grandes */
+    margin: 0 auto;  /* Centrar el contenido */
+    flex: 1;
+    overflow-x: hidden; /* Evita desbordamiento horizontal */
+}
+
+/* Encabezado */
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 20px 0;
+    width: 100%;
+    box-sizing: border-box;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Secciones */
+section {
+    padding: 30px 0;
+}
+
+/* Footer corregido */
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
+    width: 100%;
+    margin-top: auto;
+    position: relative;
+    box-sizing: border-box;
+}
+
+/* Menú hamburguesa */
+.menu-toggle {
+    display: none;
+    font-size: 24px;
+    color: #fff;
+    cursor: pointer;
+}
+
+/* Navegación */
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+nav ul li {
+    margin-left: 15px;  /* Reduce el espaciado entre elementos del menú */
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 700;
+}
+
+nav ul li a:hover {
+    text-decoration: underline;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: block;
+    }
+
+    nav ul {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background: #444;
+        padding: 10px 0;
+        position: absolute;
+        top: 60px;
+        left: 0;
+    }
+
+    nav ul.showing {
+        display: flex;
+    }
+
+    nav ul li {
+        margin: 10px 0;
+        text-align: center;
+    }
+}
+
+/* Ajustes para pantallas pequeñas */
+@media (max-width: 480px) {
+    .container {
+        width: 98%;  /* Más espacio aprovechado en móviles */
+    }
+}
