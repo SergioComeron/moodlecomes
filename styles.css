@@ -166,6 +166,19 @@ nav ul li a:hover {
     text-align: center;
     flex: 1 1 calc(50% - 20px);
     min-height: 200px; /* Altura mínima para asegurar que todos los recuadros tengan el mismo tamaño */
+    transition: background-color 0.3s, border-color 0.3s;
+    text-decoration: none; /* Asegura que el enlace no tenga subrayado */
+    color: inherit; /* Mantiene el color del texto */
+}
+
+.service-box:hover {
+    background-color: #f0f0f0;
+    border-color: #ccc;
+}
+
+.service-box a {
+    text-decoration: none; /* Elimina el subrayado */
+    color: inherit; /* Mantiene el color del texto */
 }
 
 .service-box h3 {
