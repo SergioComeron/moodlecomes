@@ -45,32 +45,13 @@ header h1 {
     font-size: 28px; /* Aumenta el tamaño de la fuente del título */
 }
 
-/* Secciones */
-section {
-    padding: 20px 0;
-}
-
-/* Footer corregido */
-footer {
-    background-color: #333;
-    color: #fff;
-    text-align: center;
-    padding: 10px 0;
-    width: 100%;
-    margin-top: auto;
-    position: relative;
-    box-sizing: border-box;
-}
-
-/* Menú hamburguesa */
 .menu-toggle {
     display: none;
+    cursor: pointer;
     font-size: 24px;
     color: #fff;
-    cursor: pointer;
 }
 
-/* Navegación */
 nav ul {
     list-style: none;
     margin: 0;
@@ -79,7 +60,7 @@ nav ul {
 }
 
 nav ul li {
-    margin-left: 20px;  /* Reduce el espaciado entre elementos del menú */
+    margin-left: 20px;
 }
 
 nav ul li a {
@@ -93,23 +74,20 @@ nav ul li a:hover {
     text-decoration: underline;
 }
 
-/* Logos de clientes centrados horizontalmente */
-.clients-logos {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 20px;
+/* Secciones */
+section {
+    padding: 20px 0;
+}
+
+/* Footer corregido */
+footer {
+    background-color: #333;
+    color: #fff;
     text-align: center;
-    width: 100%;
+    padding: 10px 0;
 }
 
-.clients-logos img {
-    max-width: 150px;
-    height: auto;
-}
-
-/* Responsive Design */
+/* Estilos para hacer el menú responsive */
 @media (max-width: 768px) {
     .menu-toggle {
         display: block;
@@ -119,11 +97,6 @@ nav ul li a:hover {
         display: none;
         flex-direction: column;
         width: 100%;
-        background: #444;
-        padding: 10px 0;
-        position: absolute;
-        top: 60px;
-        left: 0;
     }
 
     nav ul.showing {
@@ -132,7 +105,10 @@ nav ul li a:hover {
 
     nav ul li {
         margin: 10px 0;
-        text-align: center;
+    }
+
+    header .container {
+        justify-content: space-between;
     }
 }
 
@@ -146,19 +122,11 @@ nav ul li a:hover {
 /* Estilos para la cuadrícula de servicios en 2 columnas */
 .services-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr); /* 2 columnas de igual tamaño */
+    grid-template-columns: repeat(2, 1fr);
     gap: 20px;
     margin-top: 20px;
 }
 
-/* Ajustes responsivos para tablets */
-@media (max-width: 768px) {
-    .services-grid {
-        grid-template-columns: repeat(1, 1fr); /* 1 columna en tablets y móviles */
-    }
-}
-
-/* Estilos para los recuadros de servicios */
 .service-box {
     background-color: #fff;
     padding: 20px;
@@ -184,4 +152,28 @@ nav ul li a:hover {
 
 .service-box h3 {
     margin-top: 0;
+}
+
+/* Estilos para centrar los logotipos */
+.clients-logos {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.clients-logos img {
+    max-width: 100px;
+    height: auto;
+}
+
+@media (max-width: 768px) {
+    .services-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .service-box {
+        flex: 1 1 100%;
+    }
 }
