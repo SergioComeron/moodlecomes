@@ -17,9 +17,13 @@
             <span class="menu-toggle">&#9776;</span>
             <nav>
                 <ul>
-                    <li><a href="index.html">Inicio</a></li>
-                    <li><a href="servicios.html">Nuestros servicios</a></li>
-                    <li><a href="sobre-nosotros.html">Sobre nosotros</a></li>
+                    <li><a href="index.html" id="nav-home">Inicio</a></li>
+                    <li><a href="servicios.html" id="nav-services">Nuestros servicios</a></li>
+                    <li><a href="sobre-nosotros.html" id="nav-about">Sobre nosotros</a></li>
+                    <!-- Botón para cambiar idioma -->
+                    <li>
+                        <button class="language-toggle" id="languageBtn">EN</button>
+                    </li>
                 </ul>
             </nav>
         </div>
@@ -72,5 +76,155 @@
             });
         });
     </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // --- Lógica del menú hamburguesa existente ---
+            const menuToggle = document.querySelector('.menu-toggle');
+            const nav = document.querySelector('nav ul');
+            menuToggle.addEventListener('click', function() {
+                nav.classList.toggle('showing');
+            });
+        
+            // --- Referencias para la traducción ---
+            const languageBtn = document.getElementById('languageBtn');
+            const headerTitle = document.querySelector('header h1');
+            const navHome = document.getElementById('nav-home');
+            const navServices = document.getElementById('nav-services');
+            const navAbout = document.getElementById('nav-about');
+        
+            // Sección #consultoria ("Alojamiento...")
+            const consultoriaSection = document.getElementById('consultoria');
+            // Sección #servicios ("Nuestros servicios incluyen...")
+            const serviciosSection = document.getElementById('servicios');
+            // Sección de contacto en el footer
+            const contactSection = document.getElementById('contact');
+        
+            // ----------------------
+            // Textos en Español (ES)
+            // ----------------------
+            const esContent = {
+                languageBtn: "EN",
+                headerTitle: "Soporte, consultoría y desarrollo Moodle",
+                navHome: "Inicio",
+                navServices: "Nuestros servicios",
+                navAbout: "Sobre nosotros",
+        
+                consultoriaHTML: `
+                    <h2>Alojamiento</h2>
+                    <p>Entendemos que la gestión de un entorno virtual de aprendizaje como Moodle puede ser un desafío.</p>
+                    <p>Por eso, ofrecemos un servicio integral de alojamiento especializado en Moodle, diseñado para garantizar un rendimiento óptimo, seguridad avanzada y una experiencia de aprendizaje fluida para estudiantes, profesores y administradores.</p>
+                `,
+        
+                serviciosHTML: `
+                    <h2>Nuestros servicios incluyen:</h2>
+                    <div class="services-grid">
+                        <div class="service-box">
+                            <h3>Infraestructura Optimizada</h3>
+                            <p>Garantizamos conexiones seguras con certificados SSL, realizamos copias de seguridad automáticas diarias para proteger tus datos y ofrecemos una configuración avanzada de firewalls junto con sistemas de detección de intrusos.</p>
+                        </div>
+                        <div class="service-box">
+                            <h3>Seguridad de Nivel Empresarial</h3>
+                            <p>Realizamos personalizaciones del núcleo de Moodle y sus componentes para adaptarlos a los requerimientos de nuestros clientes, siempre respetando las mejores prácticas.</p>
+                        </div>
+                        <div class="service-box">
+                            <h3>Integraciones</h3>
+                            <p>Configuramos sistemas de autenticación como LDAP, SAML y OAuth2 para proporcionar un acceso seguro y simplificado, además de integrar Moodle con sistemas académicos y de gestión administrativa para optimizar los procesos educativos y administrativos..</p>
+                        </div>
+                        <div class="service-box">
+                            <h3>Mantenimiento y Actualizaciones</h3>
+                            <p>Realizamos actualizaciones regulares de Moodle para mantener la compatibilidad con las últimas tecnologías y características. Ademas realizamos la gestión de plugins y temas para asegurarte que todo funcione sin problemas. Supervisamos de forma constante todo sistema para evitar interrupciones.</p>
+                        </div>
+                    </div>
+                `,
+        
+                contactHTML: `
+                    <h2>Contacta con nosotros</h2>
+                    <p>Puedes contactarnos a través del correo: 
+                        <a href="mailto:contacto@moodle.com.es">contacto@moodle.com.es</a>
+                    </p>
+                `
+            };
+        
+            // --------------------
+            // Textos en Inglés (EN)
+            // --------------------
+            const enContent = {
+                languageBtn: "ES",
+                headerTitle: "Moodle Support, Consulting and Development",
+                navHome: "Home",
+                navServices: "Our Services",
+                navAbout: "About Us",
+        
+                consultoriaHTML: `
+                    <h2>Hosting</h2>
+                    <p>We understand that managing a virtual learning environment like Moodle can be challenging.</p>
+                    <p>That's why we offer a comprehensive hosting service specialized in Moodle, designed to ensure optimal performance, advanced security, and a seamless learning experience for students, teachers, and administrators.</p>
+                `,
+        
+                serviciosHTML: `
+                    <h2>Our Services Include:</h2>
+                    <div class="services-grid">
+                        <div class="service-box">
+                            <h3>Optimized Infrastructure</h3>
+                            <p>We guarantee secure connections with SSL certificates, perform daily automatic backups to protect your data, and provide advanced firewall configurations alongside intrusion detection systems.</p>
+                        </div>
+                        <div class="service-box">
+                            <h3>Enterprise-Level Security</h3>
+                            <p>We carry out customizations to Moodle's core and its components to adapt them to our clients' needs, always following best practices.</p>
+                        </div>
+                        <div class="service-box">
+                            <h3>Integrations</h3>
+                            <p>We configure authentication systems such as LDAP, SAML, and OAuth2 for secure and simplified access, and also integrate Moodle with academic and administrative management systems to optimize educational and administrative processes.</p>
+                        </div>
+                        <div class="service-box">
+                            <h3>Maintenance & Updates</h3>
+                            <p>We regularly update Moodle to maintain compatibility with the latest technologies and features. In addition, we manage plugins and themes to ensure everything runs smoothly. We constantly monitor the system to avoid downtime.</p>
+                        </div>
+                    </div>
+                `,
+        
+                contactHTML: `
+                    <h2>Contact Us</h2>
+                    <p>You can reach us by email at: 
+                        <a href="mailto:contacto@moodle.com.es">contacto@moodle.com.es</a>
+                    </p>
+                `
+            };
+        
+            // Estado inicial: español
+            let isSpanish = true;
+        
+            // -- Evento para cambiar de idioma al pulsar el botón --
+            languageBtn.addEventListener('click', function() {
+                if (isSpanish) {
+                    // Cambiar a inglés
+                    languageBtn.textContent = enContent.languageBtn;
+                    headerTitle.textContent = enContent.headerTitle;
+                    navHome.textContent = enContent.navHome;
+                    navServices.textContent = enContent.navServices;
+                    navAbout.textContent = enContent.navAbout;
+        
+                    consultoriaSection.innerHTML = enContent.consultoriaHTML;
+                    serviciosSection.innerHTML = enContent.serviciosHTML;
+                    contactSection.innerHTML = enContent.contactHTML;
+        
+                    isSpanish = false;
+                } else {
+                    // Volver a español
+                    languageBtn.textContent = esContent.languageBtn;
+                    headerTitle.textContent = esContent.headerTitle;
+                    navHome.textContent = esContent.navHome;
+                    navServices.textContent = esContent.navServices;
+                    navAbout.textContent = esContent.navAbout;
+        
+                    consultoriaSection.innerHTML = esContent.consultoriaHTML;
+                    serviciosSection.innerHTML = esContent.serviciosHTML;
+                    contactSection.innerHTML = esContent.contactHTML;
+        
+                    isSpanish = true;
+                }
+            });
+        });
+        </script>
 </body>
 </html>

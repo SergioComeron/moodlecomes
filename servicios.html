@@ -17,9 +17,13 @@
             <span class="menu-toggle">&#9776;</span>
             <nav>
                 <ul>
-                    <li><a href="index.html">Inicio</a></li>
-                    <li><a href="servicios.html">Nuestros servicios</a></li>
-                    <li><a href="sobre-nosotros.html">Sobre nosotros</a></li>
+                    <li><a href="index.html" id="nav-home">Inicio</a></li>
+                    <li><a href="servicios.html" id="nav-services">Nuestros servicios</a></li>
+                    <li><a href="sobre-nosotros.html" id="nav-about">Sobre nosotros</a></li>
+                    <!-- Botón para cambiar idioma -->
+                    <li>
+                        <button class="language-toggle" id="languageBtn">EN</button>
+                    </li>
                 </ul>
             </nav>
         </div>
@@ -77,5 +81,164 @@
         });
     });
 </script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // -- Menú hamburguesa existente --
+        const menuToggle = document.querySelector('.menu-toggle');
+        const nav = document.querySelector('nav ul');
+        menuToggle.addEventListener('click', function() {
+            nav.classList.toggle('showing');
+        });
+    
+        // -- Referencias para la traducción --
+        const languageBtn = document.getElementById('languageBtn');
+        const headerTitle = document.querySelector('header h1');
+        const navHome = document.getElementById('nav-home');
+        const navServices = document.getElementById('nav-services');
+        const navAbout = document.getElementById('nav-about');
+    
+        // Las dos secciones con id="services"
+        // [0] corresponde al primer bloque ("Nuestros servicios...")
+        // [1] corresponde al bloque con la "services-grid"
+        const servicesSections = document.querySelectorAll('#services');
+        const servicesMain = servicesSections[0];
+        const servicesGrid = servicesSections[1];
+    
+        // Sección de contacto
+        const contactSection = document.getElementById('contact');
+    
+        // -- Contenido en español --
+        const esContent = {
+            languageBtn: "EN",
+            headerTitle: "Soporte, consultoría y desarrollo Moodle",
+            navHome: "Inicio",
+            navServices: "Nuestros servicios",
+            navAbout: "Sobre nosotros",
+            // Primer bloque de servicios
+            servicesMainHtml: `
+                <h2>Nuestros servicios</h2>
+                <div class="services-content">
+                    <div class="services-text">
+                        <p>Nuestros servicios</p>
+                        <p>Abarcamos todos los servicios necesarios para poner en marcha su proyecto de formación on-line. Desde la <strong>instalación, y hospedaje</strong>, de su plataforma Moodle, hasta las actualizaciones del software y los plugins.</p>
+                        <p><strong>Gestionamos el entorno</strong> para un funcionamiento óptimo, monitorizamos los recursos y realizamos copias periódicas de los cursos. <strong>Desarrollamos plugins, personalizamos Moodle</strong> y realizamos integraciones con software usado en su institución.</p>
+                        <p>Le guiamos en la <strong>organización de la plataforma</strong> y la adecuación a sus necesidades.</p>
+                    </div>
+                </div>
+            `,
+            // Segundo bloque de servicios (la cuadrícula)
+            servicesGridHtml: `
+                <div class="services-grid">
+                    <a href="consultoria.html" class="service-box">
+                        <h3>Consultoría</h3>
+                        <p>Le guiamos en la organización de la plataforma y la adecuación a sus necesidades.</p>
+                    </a>
+                    <a href="desarrollo.html" class="service-box">
+                        <h3>Desarrollo</h3>
+                        <p>Desarrollamos plugins, personalizamos Moodle y realizamos integraciones con software usado en su institución.</p>
+                    </a>
+                    <a href="admin.html" class="service-box">
+                        <h3>Administración y Mantenimiento</h3>
+                        <p>Gestionamos el entorno para un funcionamiento óptimo, monitorizamos los recursos y realizamos copias periódicas de los cursos.</p>
+                    </a>
+                    <a href="alojamiento.html" class="service-box">
+                        <h3>Alojamiento</h3>
+                        <p>Desde la instalación, y hospedaje, de su plataforma Moodle, hasta las actualizaciones del software y los plugins.</p>
+                    </a>
+                </div>
+            `,
+            // Bloque de contacto
+            contactHtml: `
+                <h2>Contacta con nosotros</h2>
+                <p>Puedes contactarnos a través del correo: 
+                    <a href="mailto:contacto@moodle.com.es">contacto@moodle.com.es</a>
+                </p>
+            `
+        };
+    
+        // -- Contenido en inglés --
+        const enContent = {
+            languageBtn: "ES",
+            headerTitle: "Moodle Support, Consulting and Development",
+            navHome: "Home",
+            navServices: "Our Services",
+            navAbout: "About Us",
+            // Primer bloque de servicios
+            servicesMainHtml: `
+                <h2>Our Services</h2>
+                <div class="services-content">
+                    <div class="services-text">
+                        <p>Our Services</p>
+                        <p>We cover all the services necessary to launch your online training project. From the <strong>installation and hosting</strong> of your Moodle platform to software and plugin updates.</p>
+                        <p><strong>We manage the environment</strong> for optimal performance, monitor resources, and perform periodic course backups. <strong>We develop plugins, customize Moodle</strong>, and integrate with the software used in your institution.</p>
+                        <p>We guide you in the <strong>organization of the platform</strong> and its adaptation to your needs.</p>
+                    </div>
+                </div>
+            `,
+            // Segundo bloque de servicios (la cuadrícula)
+            servicesGridHtml: `
+                <div class="services-grid">
+                    <a href="consultoria.html" class="service-box">
+                        <h3>Consulting</h3>
+                        <p>We guide you in the organization of the platform and its adaptation to your needs.</p>
+                    </a>
+                    <a href="desarrollo.html" class="service-box">
+                        <h3>Development</h3>
+                        <p>We develop plugins, customize Moodle, and integrate it with the software used in your institution.</p>
+                    </a>
+                    <a href="admin.html" class="service-box">
+                        <h3>Administration & Maintenance</h3>
+                        <p>We manage the environment for optimal performance, monitor resources, and perform periodic course backups.</p>
+                    </a>
+                    <a href="alojamiento.html" class="service-box">
+                        <h3>Hosting</h3>
+                        <p>From the installation and hosting of your Moodle platform to software and plugin updates.</p>
+                    </a>
+                </div>
+            `,
+            // Bloque de contacto
+            contactHtml: `
+                <h2>Contact Us</h2>
+                <p>You can reach us by email at:
+                    <a href="mailto:contacto@moodle.com.es">contacto@moodle.com.es</a>
+                </p>
+            `
+        };
+    
+        // Comenzamos asumiendo que está en español
+        let isSpanish = true;
+    
+        // -- Evento para cambiar idioma al pulsar el botón --
+        languageBtn.addEventListener('click', function() {
+            if (isSpanish) {
+                // Cambiar a inglés
+                languageBtn.textContent = enContent.languageBtn;
+                headerTitle.textContent = enContent.headerTitle;
+                navHome.textContent = enContent.navHome;
+                navServices.textContent = enContent.navServices;
+                navAbout.textContent = enContent.navAbout;
+    
+                servicesMain.innerHTML = enContent.servicesMainHtml;
+                servicesGrid.innerHTML = enContent.servicesGridHtml;
+                contactSection.innerHTML = enContent.contactHtml;
+    
+                isSpanish = false;
+            } else {
+                // Volver a español
+                languageBtn.textContent = esContent.languageBtn;
+                headerTitle.textContent = esContent.headerTitle;
+                navHome.textContent = esContent.navHome;
+                navServices.textContent = esContent.navServices;
+                navAbout.textContent = esContent.navAbout;
+    
+                servicesMain.innerHTML = esContent.servicesMainHtml;
+                servicesGrid.innerHTML = esContent.servicesGridHtml;
+                contactSection.innerHTML = esContent.contactHtml;
+    
+                isSpanish = true;
+            }
+        });
+    });
+    </script>
 </body>
 </html>

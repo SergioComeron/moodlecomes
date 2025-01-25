@@ -17,9 +17,13 @@
             <span class="menu-toggle">&#9776;</span>
             <nav>
                 <ul>
-                    <li><a href="index.html">Inicio</a></li>
-                    <li><a href="servicios.html">Nuestros servicios</a></li>
-                    <li><a href="sobre-nosotros.html">Sobre nosotros</a></li>
+                    <li><a href="index.html" id="nav-home">Inicio</a></li>
+                    <li><a href="servicios.html" id="nav-services">Nuestros servicios</a></li>
+                    <li><a href="sobre-nosotros.html" id="nav-about">Sobre nosotros</a></li>
+                    <!-- Botón para cambiar idioma -->
+                    <li>
+                        <button class="language-toggle" id="languageBtn">EN</button>
+                    </li>
                 </ul>
             </nav>
         </div>
@@ -77,5 +81,154 @@
             });
         });
     </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // -- Lógica del menú hamburguesa (tal como ya está en tu código) --
+            const menuToggle = document.querySelector('.menu-toggle');
+            const nav = document.querySelector('nav ul');
+            menuToggle.addEventListener('click', function() {
+                nav.classList.toggle('showing');
+            });
+        
+            // -- Referencias para la traducción --
+            const languageBtn = document.getElementById('languageBtn');
+            const headerTitle = document.querySelector('header h1');
+            const navHome = document.getElementById('nav-home');
+            const navServices = document.getElementById('nav-services');
+            const navAbout = document.getElementById('nav-about');
+            
+            // Sección principal de “Administración y mantenimiento”
+            const consultoriaSection = document.getElementById('consultoria');
+            
+            // Sección de contacto en el footer
+            const contactSection = document.getElementById('contact');
+        
+            // ----------------------------
+            //   Textos en Español (ES)
+            // ----------------------------
+            const esContent = {
+                languageBtn: "EN",
+                headerTitle: "Soporte, consultoría y desarrollo Moodle",
+                navHome: "Inicio",
+                navServices: "Nuestros servicios",
+                navAbout: "Sobre nosotros",
+                consultoriaHTML: `
+                    <h2>Administración y mantenimiento</h2>
+                    <p>Servicios integrales para tu plataforma Moodle</p>
+                    <p>Somos expertos en Moodle y ofrecemos un amplio abanico de servicios diseñados para facilitarte la instalación, administración y gestión de tu plataforma de aprendizaje. Nuestro objetivo es que puedas centrarte en lo que realmente importa: brindar una experiencia educativa de calidad.</p>
+                    <p>Confiar en nosotros significa contar con una plataforma Moodle robusta, segura y adaptada a tus necesidades. Déjanos ayudarte a sacar el máximo partido a tu entorno de aprendizaje.</p>
+                    <div class="services-grid">
+                        <div class="service-box">
+                            <h3>Instalación de Moodle</h3>
+                            <p>Configuramos tu plataforma desde cero, adaptándonos a tus necesidades específicas.</p>
+                        </div>
+                        <div class="service-box">
+                            <h3>Instalación de plugins</h3>
+                            <p>Añadimos funcionalidades a tu Moodle con plugins personalizados y compatibles.</p>
+                        </div>
+                        <div class="service-box">
+                            <h3>Gestión de usuarios</h3>
+                            <p>Organizamos y gestionamos usuarios, roles y permisos para optimizar el acceso y la seguridad.</p>
+                        </div>
+                        <div class="service-box">
+                            <h3>Monitorización</h3>
+                            <p>Medimos en tiempo real todos los parámetros de su instalación para adelantarnos a cualquier problema. Vigilamos los logs en busca de errores y anomalías.</p>
+                        </div>
+                        <div class="service-box">
+                            <h3>Mantenimiento y actualizaciones</h3>
+                            <p>Nos encargamos de mantener tu Moodle siempre actualizado y funcionando de manera óptima.</p>
+                        </div>
+                        <div class="service-box">
+                            <h3>Copias de seguridad</h3>
+                            <p>Tus datos son lo primero, realizamos copias de seguridad periódicas de todo el sitio o de los cursos individualmente.</p>
+                        </div>
+                    </div>
+                `,
+                contactHTML: `
+                    <h2>Contacta con nosotros</h2>
+                    <p>Puedes contactarnos a través del correo: <a href="mailto:contacto@moodle.com.es">contacto@moodle.com.es</a></p>
+                `
+            };
+        
+            // --------------------------
+            //   Textos en Inglés (EN)
+            // --------------------------
+            const enContent = {
+                languageBtn: "ES",
+                headerTitle: "Moodle Support, Consulting and Development",
+                navHome: "Home",
+                navServices: "Our Services",
+                navAbout: "About Us",
+                consultoriaHTML: `
+                    <h2>Administration and Maintenance</h2>
+                    <p>Comprehensive services for your Moodle platform</p>
+                    <p>We are Moodle experts and offer a wide range of services designed to streamline the installation, administration, and management of your learning platform. Our goal is for you to focus on what really matters: delivering a high-quality educational experience.</p>
+                    <p>Relying on us means having a robust, secure Moodle platform tailored to your needs. Let us help you get the most out of your learning environment.</p>
+                    <div class="services-grid">
+                        <div class="service-box">
+                            <h3>Moodle Installation</h3>
+                            <p>We configure your platform from scratch, adapting to your specific needs.</p>
+                        </div>
+                        <div class="service-box">
+                            <h3>Plugin Installation</h3>
+                            <p>We add functionalities to your Moodle with compatible and custom plugins.</p>
+                        </div>
+                        <div class="service-box">
+                            <h3>User Management</h3>
+                            <p>We organize and manage users, roles, and permissions to optimize access and security.</p>
+                        </div>
+                        <div class="service-box">
+                            <h3>Monitoring</h3>
+                            <p>We continuously measure your installation's parameters in real time to detect any issues. We scan logs for errors and anomalies.</p>
+                        </div>
+                        <div class="service-box">
+                            <h3>Maintenance & Updates</h3>
+                            <p>We keep your Moodle up to date and running optimally at all times.</p>
+                        </div>
+                        <div class="service-box">
+                            <h3>Backups</h3>
+                            <p>Your data comes first. We schedule regular backups of the entire site or individual courses.</p>
+                        </div>
+                    </div>
+                `,
+                contactHTML: `
+                    <h2>Contact Us</h2>
+                    <p>You can reach us by email at: <a href="mailto:contacto@moodle.com.es">contacto@moodle.com.es</a></p>
+                `
+            };
+        
+            // Iniciamos la página en español
+            let isSpanish = true;
+        
+            // -- Evento para cambiar de idioma al pulsar el botón --
+            languageBtn.addEventListener('click', function() {
+                if (isSpanish) {
+                    // Cambiar a inglés
+                    languageBtn.textContent = enContent.languageBtn;
+                    headerTitle.textContent = enContent.headerTitle;
+                    navHome.textContent = enContent.navHome;
+                    navServices.textContent = enContent.navServices;
+                    navAbout.textContent = enContent.navAbout;
+        
+                    consultoriaSection.innerHTML = enContent.consultoriaHTML;
+                    contactSection.innerHTML = enContent.contactHTML;
+        
+                    isSpanish = false;
+                } else {
+                    // Volver a español
+                    languageBtn.textContent = esContent.languageBtn;
+                    headerTitle.textContent = esContent.headerTitle;
+                    navHome.textContent = esContent.navHome;
+                    navServices.textContent = esContent.navServices;
+                    navAbout.textContent = esContent.navAbout;
+        
+                    consultoriaSection.innerHTML = esContent.consultoriaHTML;
+                    contactSection.innerHTML = esContent.contactHTML;
+        
+                    isSpanish = true;
+                }
+            });
+        });
+        </script>
 </body>
 </html>

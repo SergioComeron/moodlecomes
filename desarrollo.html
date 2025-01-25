@@ -17,9 +17,13 @@
             <span class="menu-toggle">&#9776;</span>
             <nav>
                 <ul>
-                    <li><a href="index.html">Inicio</a></li>
-                    <li><a href="servicios.html">Nuestros servicios</a></li>
-                    <li><a href="sobre-nosotros.html">Sobre nosotros</a></li>
+                    <li><a href="index.html" id="nav-home">Inicio</a></li>
+                    <li><a href="servicios.html" id="nav-services">Nuestros servicios</a></li>
+                    <li><a href="sobre-nosotros.html" id="nav-about">Sobre nosotros</a></li>
+                    <!-- Botón para cambiar idioma -->
+                    <li>
+                        <button class="language-toggle" id="languageBtn">EN</button>
+                    </li>
                 </ul>
             </nav>
         </div>
@@ -96,5 +100,213 @@
             });
         });
     </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // -- Menú hamburguesa (mantienes tu código existente) --
+            const menuToggle = document.querySelector('.menu-toggle');
+            const nav = document.querySelector('nav ul');
+            const jitsiToggle = document.getElementById('jitsi-toggle');
+            const jitsiContainer = document.getElementById('jitsi-container');
+        
+            menuToggle.addEventListener('click', function() {
+                nav.classList.toggle('showing');
+            });
+        
+            // -- Evento de despliegue para la sección Jitsi (mantienes tu código existente) --
+            jitsiToggle.addEventListener('click', function() {
+                jitsiContainer.classList.toggle('open');
+            });
+        
+            // -- Referencias para la traducción --
+            const languageBtn = document.getElementById('languageBtn');
+        
+            // Encabezado y menú
+            const headerTitle = document.querySelector('header h1');
+            const navHome = document.getElementById('nav-home');
+            const navServices = document.getElementById('nav-services');
+            const navAbout = document.getElementById('nav-about');
+        
+            // Sección consultoría (id="consultoria")
+            const consultoriaSection = document.getElementById('consultoria');
+        
+            // Sección servicios (id="servicios")
+            const serviciosSection = document.getElementById('servicios');
+        
+            // Sección soluciones (id="soluciones")
+            const solucionesSection = document.getElementById('soluciones');
+        
+            // Título y alt para la parte Jitsi
+            // (mantenemos la estructura del contenedor para no perder el evento)
+            // - El <h2> con id="jitsi-toggle"
+            // - La <img> dentro de #jitsi-container
+            const jitsiImg = jitsiContainer.querySelector('img');
+        
+            // Sección contacto
+            const contactSection = document.getElementById('contact');
+        
+            // -----------------------
+            // CONTENIDOS EN ESPAÑOL
+            // -----------------------
+            const esContent = {
+                languageBtn: "EN",
+                headerTitle: "Soporte, consultoría y desarrollo Moodle",
+                navHome: "Inicio",
+                navServices: "Nuestros servicios",
+                navAbout: "Sobre nosotros",
+        
+                consultoriaHTML: `
+                    <h2>Desarrollo</h2>
+                    <p>Transformamos Moodle en una plataforma completamente adaptada a las necesidades de cada cliente. Con más de 10 años de experiencia en el desarrollo y personalización de Moodle, ofrecemos soluciones innovadoras para instituciones educativas y empresas que buscan maximizar el potencial de esta herramienta de e-learning.</p>
+                `,
+        
+                serviciosHTML: `
+                    <h2>Nuestros servicios incluyen:</h2>
+                    <div class="services-grid">
+                        <div class="service-box">
+                            <h3>Desarrollo de Plugins Personalizados</h3>
+                            <p>Diseñamos y desarrollamos funcionalidades específicas para cubrir las necesidades únicas de cada organización, desde herramientas de evaluación hasta módulos avanzados de comunicación.</p>
+                        </div>
+                        <div class="service-box">
+                            <h3>Modificaciones Avanzadas de Moodle</h3>
+                            <p>Realizamos personalizaciones del núcleo de Moodle y sus componentes para adaptarlos a los requerimientos de nuestros clientes, siempre respetando las mejores prácticas.</p>
+                        </div>
+                        <div class="service-box">
+                            <h3>Integración con Plataformas Externas</h3>
+                            <p>Conectamos Moodle con herramientas como Zoom, Jitsi, LimeSurvey, entre otras, para ofrecer una experiencia educativa integral y eficiente.</p>
+                        </div>
+                        <div class="service-box">
+                            <h3>Optimización de la Plataforma</h3>
+                            <p>Mejoramos el rendimiento, la usabilidad y la seguridad de Moodle para garantizar que sea rápido, intuitivo y confiable.</p>
+                        </div>
+                    </div>
+                `,
+        
+                solucionesHTML: `
+                    <h2>Sobre nuestras soluciones</h2>
+                    <p>Estamos orgullosos de ser un referente en el desarrollo de soluciones innovadoras y plugins para Moodle, la plataforma de aprendizaje más utilizada a nivel mundial. Nuestros productos son confiables, flexibles y están diseñados para potenciar la experiencia educativa.</p>
+                    <p>Algunas de nuestras soluciones son utilizadas por miles de sitios Moodle en todo el mundo, desde instituciones educativas y universidades hasta empresas y organizaciones de diversos sectores.</p>
+                    <p>¿Listo para llevar tu Moodle al siguiente nivel? Descubre cómo nuestras soluciones pueden transformar tu entorno de aprendizaje.</p>
+                `,
+        
+                jitsiTitle: `
+                    Somos responsables del plugin de integración del servicio de videoconferencias Jitsi Meet en Moodle.
+                    <br>(Haz clic para ver la imagen)
+                `,
+                jitsiAlt: "Integración de Jitsi Meet en Moodle",
+        
+                contactHTML: `
+                    <h2>Contacta con nosotros</h2>
+                    <p>Puedes contactarnos a través del correo: <a href="mailto:contacto@moodle.com.es">contacto@moodle.com.es</a></p>
+                `
+            };
+        
+            // --------------------
+            // CONTENIDOS EN INGLÉS
+            // --------------------
+            const enContent = {
+                languageBtn: "ES",
+                headerTitle: "Moodle Support, Consulting and Development",
+                navHome: "Home",
+                navServices: "Our Services",
+                navAbout: "About Us",
+        
+                consultoriaHTML: `
+                    <h2>Development</h2>
+                    <p>We transform Moodle into a platform fully tailored to each client's needs. With over 10 years of experience in Moodle development and customization, we offer innovative solutions for educational institutions and businesses looking to maximize the potential of this e-learning tool.</p>
+                `,
+        
+                serviciosHTML: `
+                    <h2>Our services include:</h2>
+                    <div class="services-grid">
+                        <div class="service-box">
+                            <h3>Custom Plugin Development</h3>
+                            <p>We design and develop specific features to address the unique needs of each organization, from assessment tools to advanced communication modules.</p>
+                        </div>
+                        <div class="service-box">
+                            <h3>Advanced Moodle Modifications</h3>
+                            <p>We customize Moodle core and its components to meet our clients' requirements, always following best practices.</p>
+                        </div>
+                        <div class="service-box">
+                            <h3>Integration with External Platforms</h3>
+                            <p>We connect Moodle with tools such as Zoom, Jitsi, LimeSurvey, and more, delivering a comprehensive and efficient educational experience.</p>
+                        </div>
+                        <div class="service-box">
+                            <h3>Platform Optimization</h3>
+                            <p>We improve Moodle's performance, usability, and security to ensure it is fast, intuitive, and reliable.</p>
+                        </div>
+                    </div>
+                `,
+        
+                solucionesHTML: `
+                    <h2>About Our Solutions</h2>
+                    <p>We are proud to be a benchmark in developing innovative solutions and plugins for Moodle, the world's most widely used learning platform. Our products are reliable, flexible, and designed to enhance the educational experience.</p>
+                    <p>Some of our solutions are used by thousands of Moodle sites worldwide, ranging from educational institutions and universities to businesses and organizations across various sectors.</p>
+                    <p>Ready to take your Moodle to the next level? Discover how our solutions can transform your learning environment.</p>
+                `,
+        
+                jitsiTitle: `
+                    We are responsible for the Jitsi Meet video conferencing service integration plugin in Moodle.
+                    <br>(Click to see the image)
+                `,
+                jitsiAlt: "Jitsi Meet Integration in Moodle",
+        
+                contactHTML: `
+                    <h2>Contact Us</h2>
+                    <p>You can reach us by email at: <a href="mailto:contacto@moodle.com.es">contacto@moodle.com.es</a></p>
+                `
+            };
+        
+            // Bandera para saber si estamos en español
+            let isSpanish = true;
+        
+            // -- Lógica de traducción al pulsar el botón --
+            languageBtn.addEventListener('click', function() {
+                if (isSpanish) {
+                    // Cambiamos a inglés
+                    languageBtn.textContent = enContent.languageBtn;
+                    headerTitle.textContent = enContent.headerTitle;
+                    navHome.textContent = enContent.navHome;
+                    navServices.textContent = enContent.navServices;
+                    navAbout.textContent = enContent.navAbout;
+        
+                    consultoriaSection.innerHTML = enContent.consultoriaHTML;
+                    serviciosSection.innerHTML = enContent.serviciosHTML;
+                    solucionesSection.innerHTML = enContent.solucionesHTML;
+        
+                    jitsiToggle.innerHTML = enContent.jitsiTitle;
+                    jitsiImg.alt = enContent.jitsiAlt;
+        
+                    contactSection.innerHTML = enContent.contactHTML;
+        
+                    isSpanish = false;
+                } else {
+                    // Volvemos al español
+                    languageBtn.textContent = esContent.languageBtn;
+                    headerTitle.textContent = esContent.headerTitle;
+                    navHome.textContent = esContent.navHome;
+                    navServices.textContent = esContent.navServices;
+                    navAbout.textContent = esContent.navAbout;
+        
+                    consultoriaSection.innerHTML = esContent.consultoriaHTML;
+                    serviciosSection.innerHTML = esContent.serviciosHTML;
+                    solucionesSection.innerHTML = esContent.solucionesHTML;
+        
+                    jitsiToggle.innerHTML = esContent.jitsiTitle;
+                    jitsiImg.alt = esContent.jitsiAlt;
+        
+                    contactSection.innerHTML = esContent.contactHTML;
+        
+                    isSpanish = true;
+                }
+        
+                // ATENCIÓN: Si reponemos secciones enteras con innerHTML,
+                // podríamos perder eventos en esos elementos. En este caso,
+                // la SECCIÓN Jitsi se mantiene (sólo cambiamos .innerHTML del título y alt).
+                // Si quisieras reponer todo #plugin-jitsi con .innerHTML,
+                // tendrías que re-atachear el evento para abrir/cerrar con jitsiToggle.addEventListener(...)
+                // tras traducir.
+            });
+        });
+        </script>
 </body>
 </html>

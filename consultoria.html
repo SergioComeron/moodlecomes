@@ -17,9 +17,13 @@
             <span class="menu-toggle">&#9776;</span>
             <nav>
                 <ul>
-                    <li><a href="index.html">Inicio</a></li>
-                    <li><a href="servicios.html">Nuestros servicios</a></li>
-                    <li><a href="sobre-nosotros.html">Sobre nosotros</a></li>
+                    <li><a href="index.html" id="nav-home">Inicio</a></li>
+                    <li><a href="servicios.html" id="nav-services">Nuestros servicios</a></li>
+                    <li><a href="sobre-nosotros.html" id="nav-about">Sobre nosotros</a></li>
+                    <!-- Botón para cambiar idioma -->
+                    <li>
+                        <button class="language-toggle" id="languageBtn">EN</button>
+                    </li>
                 </ul>
             </nav>
         </div>
@@ -58,5 +62,109 @@
             });
         });
     </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // ----- Menú hamburguesa -----
+            const menuToggle = document.querySelector('.menu-toggle');
+            const nav = document.querySelector('nav ul');
+            menuToggle.addEventListener('click', function() {
+                nav.classList.toggle('showing');
+            });
+        
+            // ------ Referencias para traducir ------
+            const languageBtn = document.getElementById('languageBtn');
+            const headerTitle = document.querySelector('header h1');
+            const navHome = document.getElementById('nav-home');
+            const navServices = document.getElementById('nav-services');
+            const navAbout = document.getElementById('nav-about');
+            
+            // Secciones principales
+            const consultoriaSection = document.getElementById('consultoria');
+            const adaptacionSection = document.getElementById('adaptacion');
+            const contactSection = document.getElementById('contact');
+        
+            // ------ Textos en español ------
+            const esContent = {
+                languageBtn: "EN",
+                headerTitle: "Soporte, consultoría y desarrollo Moodle",
+                navHome: "Inicio",
+                navServices: "Nuestros servicios",
+                navAbout: "Sobre nosotros",
+                consultoriaHtml: `
+                    <h2>Consultoría</h2>
+                    <p>Nuestra experiencia está a su servicio para poner en marcha, o gestionar, su plataforma de formación Moodle.</p>
+                    <p>Como estructurar sus cursos para que sean: sencillos cara al alumno y al profesorado, y coherentes para su máxima reutilización en sucesivas convocatorias.</p>
+                    <p>Como organizar grandes cantidades de alumnado y profesorado de acuerdo a los criterios de su organización.</p>
+                    <p>Automatización de tareas para facilitar la gestión del entorno y evitar errores comunes.</p>
+                    <p>Guiado en la configuración de cuestionarios, establecimiento de métodos de evaluación, técnicas de corrección de tareas, etc.</p>
+                `,
+                adaptacionHtml: `
+                    <h2><strong>Nos adaptamos</strong></h2>
+                    <p>El servicio de consultoría siempre tendrá su organización en el centro. Podemos trabajar realizando un seguimiento continuo de su plataforma, establecer unos controles periódicos o responder a sus cuestiones cuando así lo requieran.</p>
+                `,
+                contactHtml: `
+                    <h2>Contacta con nosotros</h2>
+                    <p>Puedes contactarnos a través del correo: <a href="mailto:contacto@moodle.com.es">contacto@moodle.com.es</a></p>
+                `
+            };
+        
+            // ------ Textos en inglés ------
+            const enContent = {
+                languageBtn: "ES",
+                headerTitle: "Moodle Support, Consulting and Development",
+                navHome: "Home",
+                navServices: "Our Services",
+                navAbout: "About Us",
+                consultoriaHtml: `
+                    <h2>Consulting</h2>
+                    <p>We put our expertise at your service to launch or manage your Moodle training platform.</p>
+                    <p>How to structure your courses so that they are simple for both students and teachers, and consistent for maximum reuse in subsequent sessions.</p>
+                    <p>How to organize large numbers of students and teachers according to your organization’s criteria.</p>
+                    <p>Automation of tasks to facilitate environment management and avoid common errors.</p>
+                    <p>Guidance in configuring quizzes, setting up evaluation methods, grading techniques, etc.</p>
+                `,
+                adaptacionHtml: `
+                    <h2><strong>We Adapt</strong></h2>
+                    <p>Our consulting service always keeps your organization at the center. We can work by continuously monitoring your platform, establishing periodic checks, or answering your questions whenever you need.</p>
+                `,
+                contactHtml: `
+                    <h2>Contact Us</h2>
+                    <p>You can reach us via email at: <a href="mailto:contacto@moodle.com.es">contacto@moodle.com.es</a></p>
+                `
+            };
+        
+            // Iniciamos en español
+            let isSpanish = true;
+        
+            // ------ Evento para cambiar idioma al pulsar el botón ------
+            languageBtn.addEventListener('click', function() {
+                if (isSpanish) {
+                    // Pasar a inglés
+                    languageBtn.textContent = enContent.languageBtn;
+                    headerTitle.textContent = enContent.headerTitle;
+                    navHome.textContent = enContent.navHome;
+                    navServices.textContent = enContent.navServices;
+                    navAbout.textContent = enContent.navAbout;
+                    consultoriaSection.innerHTML = enContent.consultoriaHtml;
+                    adaptacionSection.innerHTML = enContent.adaptacionHtml;
+                    contactSection.innerHTML = enContent.contactHtml;
+        
+                    isSpanish = false;
+                } else {
+                    // Volver a español
+                    languageBtn.textContent = esContent.languageBtn;
+                    headerTitle.textContent = esContent.headerTitle;
+                    navHome.textContent = esContent.navHome;
+                    navServices.textContent = esContent.navServices;
+                    navAbout.textContent = esContent.navAbout;
+                    consultoriaSection.innerHTML = esContent.consultoriaHtml;
+                    adaptacionSection.innerHTML = esContent.adaptacionHtml;
+                    contactSection.innerHTML = esContent.contactHtml;
+        
+                    isSpanish = true;
+                }
+            });
+        });
+        </script>
 </body>
 </html>

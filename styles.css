@@ -14,9 +14,9 @@ body {
 
 /* Contenedor principal con márgenes reducidos */
 .container {
-    width: 80%;  /* Reduce el margen lateral para ocupar más espacio */
+    width: 90%;  /* Reduce el margen lateral para ocupar más espacio */
     max-width: 1400px; /* Ajustado para pantallas más grandes */
-    margin: 0 auto;  /* Centrar el contenido */
+    margin: 0 auto;  /* Centra el contenido */
     flex: 1;
     overflow-x: hidden; /* Evita desbordamiento horizontal */
 }
@@ -63,6 +63,21 @@ nav ul li {
     margin-left: 20px;
 }
 
+/* Ajusta el botón dentro del menú para que visualmente luzca acorde */
+.language-toggle {
+    background-color: #fff;
+    color: #333;
+    border: 1px solid #ddd;
+    padding: 2px 5px;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 8px;
+}
+
+.language-toggle:hover {
+    background-color: #ddd;
+}
+
 nav ul li a {
     color: #fff;
     text-decoration: none;
@@ -89,7 +104,7 @@ nav ul li a:hover {
     margin-left: 5px;
 }
 
-language-switch button:hover {
+.language-switch button:hover {
     background-color: #ddd;
 }
 
@@ -142,14 +157,27 @@ footer {
         display: block;
     }
 
+    /* Ocultamos el ul con max-height y overflow para desplegar verticalmente */
     nav ul {
-        display: none;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease;
+
+        /* Para que aparezca debajo del header fijo */
+        position: absolute;
+        top: 60px; /* Ajusta según la altura del header */
+        left: 0;
+        right: 0;
+
+        background-color: #333;
         flex-direction: column;
+        align-items: center;
         width: 100%;
     }
 
+    /* Cuando tenga la clase 'showing', aumentamos la altura */
     nav ul.showing {
-        display: flex;
+        max-height: 300px; /* Ajusta según la altura de tu menú */
     }
 
     nav ul li {
@@ -203,7 +231,7 @@ footer {
     border-radius: 5px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     text-align: center;
-    min-height: 200px; /* Altura mínima para asegurar que todos los recuadros tengan el mismo tamaño */
+    min-height: 200px; /* Altura mínima */
     transition: background-color 0.3s, border-color 0.3s;
     text-decoration: none; /* Asegura que el enlace no tenga subrayado */
     color: inherit; /* Mantiene el color del texto */

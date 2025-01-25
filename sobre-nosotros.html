@@ -17,9 +17,13 @@
             <span class="menu-toggle">&#9776;</span>
             <nav>
                 <ul>
-                    <li><a href="index.html">Inicio</a></li>
-                    <li><a href="servicios.html">Nuestros servicios</a></li>
-                    <li><a href="sobre-nosotros.html">Sobre nosotros</a></li>
+                    <li><a href="index.html" id="nav-home">Inicio</a></li>
+                    <li><a href="servicios.html" id="nav-services">Nuestros servicios</a></li>
+                    <li><a href="sobre-nosotros.html" id="nav-about">Sobre nosotros</a></li>
+                    <!-- Botón para cambiar idioma -->
+                    <li>
+                        <button class="language-toggle" id="languageBtn">EN</button>
+                    </li>
                 </ul>
             </nav>
         </div>
@@ -59,5 +63,102 @@
             });
         });
     </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // ------ Menú hamburguesa (ya lo tienes en tu código) ------
+            const menuToggle = document.querySelector('.menu-toggle');
+            const nav = document.querySelector('nav ul');
+            menuToggle.addEventListener('click', function() {
+                nav.classList.toggle('showing');
+            });
+        
+            // ------ Referencias a los elementos que van a cambiar de idioma ------
+            const languageBtn = document.getElementById('languageBtn');
+            const headerTitle = document.querySelector('header h1');
+            const navHome = document.getElementById('nav-home');
+            const navServices = document.getElementById('nav-services');
+            const navAbout = document.getElementById('nav-about');
+            const aboutSection = document.getElementById('about-us');
+            const contactSection = document.getElementById('contact');
+        
+            // ------ Textos en español ------
+            const esContent = {
+                languageBtn: "EN",
+                headerTitle: "Soporte, consultoría y desarrollo Moodle",
+                navHome: "Inicio",
+                navServices: "Nuestros servicios",
+                navAbout: "Sobre nosotros",
+                aboutHTML: `
+                    <h2>Sobre nosotros</h2>
+                    <p>Somos especialistas en la administración y optimización de plataformas Moodle. Con más de 15 años de experiencia en el sector de la educación online, ayudamos a instituciones educativas y empresas a gestionar su entorno de aprendizaje de manera eficiente, segura y escalable.</p>
+                    <p>Nuestro equipo está formado por expertos en Moodle, desarrollo web y administración de sistemas, lo que nos permite ofrecer soluciones personalizadas para cada cliente. Nos encargamos de la instalación, configuración, mantenimiento y soporte técnico de Moodle, garantizando un rendimiento óptimo y una experiencia de usuario sin interrupciones.</p>
+                    <p>Nos diferenciamos por nuestro enfoque en la calidad del servicio, la atención personalizada y la búsqueda constante de soluciones innovadoras para mejorar el aprendizaje en línea. Ya sea que necesites migrar tu plataforma, integrar herramientas externas o mejorar la experiencia de tus usuarios, estamos aquí para ayudarte en cada paso del camino.</p>
+                    <h3>Nuestra misión</h3>
+                    <p>Facilitar la gestión de Moodle a través de soluciones eficientes, seguras y adaptadas a las necesidades de cada organización, impulsando el éxito del aprendizaje online.</p>
+                    <h3>Nuestra visión</h3>
+                    <p>Ser el socio estratégico de referencia en la administración de Moodle, brindando servicios de excelencia y fomentando el crecimiento de nuestros clientes en el ámbito de la educación digital.</p>
+                    <p>Confía en nosotros para potenciar tu plataforma Moodle y llevar tu experiencia de aprendizaje en línea al siguiente nivel.</p>
+                `,
+                contactHTML: `
+                    <h2>Contacta con nosotros</h2>
+                    <p>Puedes contactarnos a través del correo: <a href="mailto:contacto@moodle.com.es">contacto@moodle.com.es</a></p>
+                `
+            };
+        
+            // ------ Textos en inglés ------
+            const enContent = {
+                languageBtn: "ES",
+                headerTitle: "Support, consulting, and Moodle development",
+                navHome: "Home",
+                navServices: "Our Services",
+                navAbout: "About Us",
+                aboutHTML: `
+                    <h2>About us</h2>
+                    <p>We are specialists in the administration and optimization of Moodle platforms. With over 15 years of experience in the online education sector, we help educational institutions and companies manage their learning environments efficiently, securely, and in a scalable way.</p>
+                    <p>Our team is made up of experts in Moodle, web development, and systems administration, which allows us to offer personalized solutions for each client. We handle the installation, configuration, maintenance, and technical support of Moodle, ensuring optimal performance and a seamless user experience.</p>
+                    <p>We stand out for our focus on service quality, personalized attention, and the constant search for innovative solutions to enhance online learning. Whether you need to migrate your platform, integrate external tools, or improve your users' experience, we're here to help you every step of the way.</p>
+                    <h3>Our Mission</h3>
+                    <p>To facilitate Moodle management through efficient, secure solutions adapted to each organization's needs, driving the success of online learning.</p>
+                    <h3>Our Vision</h3>
+                    <p>To be the strategic partner of reference in Moodle administration, providing excellent services and fostering the growth of our clients in the digital education field.</p>
+                    <p>Trust us to enhance your Moodle platform and take your online learning experience to the next level.</p>
+                `,
+                contactHTML: `
+                    <h2>Contact us</h2>
+                    <p>You can reach us via email at: <a href="mailto:contact@moodle.com.es">contact@moodle.com.es</a></p>
+                `
+            };
+        
+            // Empezamos asumiendo que la página está en español
+            let isSpanish = true;
+        
+            // ------ Evento para cambiar el idioma al pulsar el botón ------
+            languageBtn.addEventListener('click', function() {
+                if (isSpanish) {
+                    // Cambiar a inglés
+                    languageBtn.textContent = enContent.languageBtn;
+                    headerTitle.textContent = enContent.headerTitle;
+                    navHome.textContent = enContent.navHome;
+                    navServices.textContent = enContent.navServices;
+                    navAbout.textContent = enContent.navAbout;
+                    aboutSection.innerHTML = enContent.aboutHTML;
+                    contactSection.innerHTML = enContent.contactHTML;
+        
+                    isSpanish = false;
+                } else {
+                    // Cambiar a español
+                    languageBtn.textContent = esContent.languageBtn;
+                    headerTitle.textContent = esContent.headerTitle;
+                    navHome.textContent = esContent.navHome;
+                    navServices.textContent = esContent.navServices;
+                    navAbout.textContent = esContent.navAbout;
+                    aboutSection.innerHTML = esContent.aboutHTML;
+                    contactSection.innerHTML = esContent.contactHTML;
+        
+                    isSpanish = true;
+                }
+            });
+        });
+        </script>
 </body>
 </html>
