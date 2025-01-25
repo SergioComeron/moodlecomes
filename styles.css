@@ -177,3 +177,21 @@ footer {
         flex: 1 1 100%;
     }
 }
+
+/* Estilos para el contenedor de Jitsi */
+#jitsi-container {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease;
+}
+
+#jitsi-container img {
+    width: 100%;
+    display: block;
+    margin-top: 20px;
+}
+
+/* Al hacer clic se añade la clase 'open' para desplegar */
+#jitsi-container.open {
+    max-height: 500px; /* Ajusta la altura según necesites */
+}
