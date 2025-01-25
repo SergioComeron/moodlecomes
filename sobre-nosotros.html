@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Sobre nosotros - Moodle">
+    <title>Sobre nosotros - Moodle</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Moodle</h1>
+            <span class="menu-toggle">&#9776;</span>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="servicios.html">Nuestros servicios</a></li>
+                    <li><a href="sobre-nosotros.html">Sobre nosotros</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section id="about-us" class="container">
+        <h2>Sobre nosotros</h2>
+        <p>Somos especialistas en la administración y optimización de plataformas Moodle. Con más de 15 años de experiencia en el sector de la educación online, ayudamos a instituciones educativas y empresas a gestionar su entorno de aprendizaje de manera eficiente, segura y escalable.</p>
+        <p>Nuestro equipo está formado por expertos en Moodle, desarrollo web y administración de sistemas, lo que nos permite ofrecer soluciones personalizadas para cada cliente. Nos encargamos de la instalación, configuración, mantenimiento y soporte técnico de Moodle, garantizando un rendimiento óptimo y una experiencia de usuario sin interrupciones.</p>
+        <p>Nos diferenciamos por nuestro enfoque en la calidad del servicio, la atención personalizada y la búsqueda constante de soluciones innovadoras para mejorar el aprendizaje en línea. Ya sea que necesites migrar tu plataforma, integrar herramientas externas o mejorar la experiencia de tus usuarios, estamos aquí para ayudarte en cada paso del camino.</p>
+        
+        <h3>Nuestra misión</h3>
+        <p>Facilitar la gestión de Moodle a través de soluciones eficientes, seguras y adaptadas a las necesidades de cada organización, impulsando el éxito del aprendizaje online.</p>
+        
+        <h3>Nuestra visión</h3>
+        <p>Ser el socio estratégico de referencia en la administración de Moodle, brindando servicios de excelencia y fomentando el crecimiento de nuestros clientes en el ámbito de la educación digital.</p>
+        
+        <p>Confía en nosotros para potenciar tu plataforma Moodle y llevar tu experiencia de aprendizaje en línea al siguiente nivel.</p>
+    </section>
+
+    <footer>
+        <div class="container">
+            <section id="contact" class="container">
+                <h2>Contacta con nosotros</h2>
+                <p>Puedes contactarnos a través del correo: <a href="mailto:contacto@moodle.com.es">contacto@moodle.com.es</a></p>
+            </section>
+            <p>&copy; 2025 Moodle - Todos los derechos reservados</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuToggle = document.querySelector('.menu-toggle');
+            const nav = document.querySelector('nav ul');
+
+            menuToggle.addEventListener('click', function() {
+                nav.classList.toggle('showing');
+            });
+        });
+    </script>
+</body>
+</html>
