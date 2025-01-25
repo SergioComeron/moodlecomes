@@ -72,6 +72,34 @@
                 nav.classList.toggle('showing');
             });
         
+            // ------ Funciones para manejar Cookies ------
+            function setCookie(name, value, days) {
+                const d = new Date();
+                // 'days' es el número de días que la cookie será válida.
+                d.setTime(d.getTime() + (days * 24 * 60 * 60 * 1000));
+                const expires = "expires=" + d.toUTCString();
+                // path=/ hace que la cookie sea válida para todo tu sitio
+                document.cookie = name + "=" + value + ";" + expires + ";path=/";
+            }
+        
+            function getCookie(name) {
+                const cname = name + "=";
+                const decodedCookie = decodeURIComponent(document.cookie);
+                const carray = decodedCookie.split(';');
+                for (let c of carray) {
+                    // Elimina espacios en blanco iniciales
+                    while (c.charAt(0) === ' ') {
+                        c = c.substring(1);
+                    }
+                    // Si la cookie actual empieza con 'name='
+                    if (c.indexOf(cname) === 0) {
+                        // Retorna el valor (lo que hay tras 'name=')
+                        return c.substring(cname.length, c.length);
+                    }
+                }
+                return "";
+            }
+        
             // ------ Referencias a los elementos que van a cambiar de idioma ------
             const languageBtn = document.getElementById('languageBtn');
             const headerTitle = document.querySelector('header h1');
@@ -129,33 +157,55 @@
                 `
             };
         
-            // Empezamos asumiendo que la página está en español
+            // Estado inicial (por defecto) en español
             let isSpanish = true;
         
-            // ------ Evento para cambiar el idioma al pulsar el botón ------
+            // Funciones para aplicar traducción
+            function setSpanish() {
+                languageBtn.textContent = esContent.languageBtn;
+                headerTitle.textContent = esContent.headerTitle;
+                navHome.textContent = esContent.navHome;
+                navServices.textContent = esContent.navServices;
+                navAbout.textContent = esContent.navAbout;
+                aboutSection.innerHTML = esContent.aboutHTML;
+                contactSection.innerHTML = esContent.contactHTML;
+                
+                // Guardamos la preferencia en una cookie de 30 días (ejemplo)
+                setCookie('lang', 'es', 30);
+                
+                isSpanish = true;
+            }
+        
+            function setEnglish() {
+                languageBtn.textContent = enContent.languageBtn;
+                headerTitle.textContent = enContent.headerTitle;
+                navHome.textContent = enContent.navHome;
+                navServices.textContent = enContent.navServices;
+                navAbout.textContent = enContent.navAbout;
+                aboutSection.innerHTML = enContent.aboutHTML;
+                contactSection.innerHTML = enContent.contactHTML;
+                
+                // Guardamos la preferencia en una cookie de 30 días (ejemplo)
+                setCookie('lang', 'en', 30);
+                
+                isSpanish = false;
+            }
+        
+            // Al cargar la página, leemos la cookie para ver si estaba en 'es' o 'en'
+            const currentLang = getCookie('lang');
+            if (currentLang === 'en') {
+                setEnglish();
+            } else {
+                // Por defecto, español
+                setSpanish();
+            }
+        
+            // Botón de cambio de idioma
             languageBtn.addEventListener('click', function() {
                 if (isSpanish) {
-                    // Cambiar a inglés
-                    languageBtn.textContent = enContent.languageBtn;
-                    headerTitle.textContent = enContent.headerTitle;
-                    navHome.textContent = enContent.navHome;
-                    navServices.textContent = enContent.navServices;
-                    navAbout.textContent = enContent.navAbout;
-                    aboutSection.innerHTML = enContent.aboutHTML;
-                    contactSection.innerHTML = enContent.contactHTML;
-        
-                    isSpanish = false;
+                    setEnglish();
                 } else {
-                    // Cambiar a español
-                    languageBtn.textContent = esContent.languageBtn;
-                    headerTitle.textContent = esContent.headerTitle;
-                    navHome.textContent = esContent.navHome;
-                    navServices.textContent = esContent.navServices;
-                    navAbout.textContent = esContent.navAbout;
-                    aboutSection.innerHTML = esContent.aboutHTML;
-                    contactSection.innerHTML = esContent.contactHTML;
-        
-                    isSpanish = true;
+                    setSpanish();
                 }
             });
         });

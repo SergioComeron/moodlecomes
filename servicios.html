@@ -72,25 +72,40 @@
 </footer>
 
 <script>
+    /* ---- Funciones para manejo de cookies ---- */
+    function setCookie(name, value, days) {
+        const d = new Date();
+        d.setTime(d.getTime() + (days * 24 * 60 * 60 * 1000)); // 'days' días en milisegundos
+        const expires = "expires=" + d.toUTCString();
+        // path=/ => cookie válida en todo tu dominio
+        document.cookie = name + "=" + value + ";" + expires + ";path=/";
+    }
+    
+    function getCookie(name) {
+        const cname = name + "=";
+        const decodedCookie = decodeURIComponent(document.cookie);
+        const carray = decodedCookie.split(';');
+        for (let c of carray) {
+            while (c.charAt(0) === ' ') {
+                c = c.substring(1);
+            }
+            if (c.indexOf(cname) === 0) {
+                return c.substring(cname.length, c.length);
+            }
+        }
+        return "";
+    }
+    
     document.addEventListener('DOMContentLoaded', function() {
-        const menuToggle = document.querySelector('.menu-toggle');
-        const nav = document.querySelector('nav ul');
-
-        menuToggle.addEventListener('click', function() {
-            nav.classList.toggle('showing');
-        });
-    });
-</script>
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        // -- Menú hamburguesa existente --
+        /* ===== MENÚ HAMBURGUESA ===== */
         const menuToggle = document.querySelector('.menu-toggle');
         const nav = document.querySelector('nav ul');
         menuToggle.addEventListener('click', function() {
             nav.classList.toggle('showing');
         });
     
-        // -- Referencias para la traducción --
+        /* ===== TRADUCCIÓN IDIOMA ===== */
+        // Referencias
         const languageBtn = document.getElementById('languageBtn');
         const headerTitle = document.querySelector('header h1');
         const navHome = document.getElementById('nav-home');
@@ -107,7 +122,7 @@
         // Sección de contacto
         const contactSection = document.getElementById('contact');
     
-        // -- Contenido en español --
+        // ------ Contenido en español ------
         const esContent = {
             languageBtn: "EN",
             headerTitle: "Soporte, consultoría y desarrollo Moodle",
@@ -156,7 +171,7 @@
             `
         };
     
-        // -- Contenido en inglés --
+        // ------ Contenido en inglés ------
         const enContent = {
             languageBtn: "ES",
             headerTitle: "Moodle Support, Consulting and Development",
@@ -205,37 +220,55 @@
             `
         };
     
-        // Comenzamos asumiendo que está en español
+        // Bandera idioma (por defecto)  
         let isSpanish = true;
     
-        // -- Evento para cambiar idioma al pulsar el botón --
+        // Funciones para cambiar idioma
+        function setSpanish() {
+            languageBtn.textContent = esContent.languageBtn;
+            headerTitle.textContent = esContent.headerTitle;
+            navHome.textContent = esContent.navHome;
+            navServices.textContent = esContent.navServices;
+            navAbout.textContent = esContent.navAbout;
+            servicesMain.innerHTML = esContent.servicesMainHtml;
+            servicesGrid.innerHTML = esContent.servicesGridHtml;
+            contactSection.innerHTML = esContent.contactHtml;
+    
+            // Guardamos cookie
+            setCookie('lang', 'es', 30);
+            isSpanish = true;
+        }
+    
+        function setEnglish() {
+            languageBtn.textContent = enContent.languageBtn;
+            headerTitle.textContent = enContent.headerTitle;
+            navHome.textContent = enContent.navHome;
+            navServices.textContent = enContent.navServices;
+            navAbout.textContent = enContent.navAbout;
+            servicesMain.innerHTML = enContent.servicesMainHtml;
+            servicesGrid.innerHTML = enContent.servicesGridHtml;
+            contactSection.innerHTML = enContent.contactHtml;
+    
+            // Guardamos cookie
+            setCookie('lang', 'en', 30);
+            isSpanish = false;
+        }
+    
+        // Al cargar la página, leemos la cookie 'lang'
+        const storedLang = getCookie('lang');
+        if (storedLang === 'en') {
+            setEnglish();
+        } else {
+            // Por defecto español
+            setSpanish();
+        }
+    
+        // Al hacer clic en el botón de idioma
         languageBtn.addEventListener('click', function() {
             if (isSpanish) {
-                // Cambiar a inglés
-                languageBtn.textContent = enContent.languageBtn;
-                headerTitle.textContent = enContent.headerTitle;
-                navHome.textContent = enContent.navHome;
-                navServices.textContent = enContent.navServices;
-                navAbout.textContent = enContent.navAbout;
-    
-                servicesMain.innerHTML = enContent.servicesMainHtml;
-                servicesGrid.innerHTML = enContent.servicesGridHtml;
-                contactSection.innerHTML = enContent.contactHtml;
-    
-                isSpanish = false;
+                setEnglish();
             } else {
-                // Volver a español
-                languageBtn.textContent = esContent.languageBtn;
-                headerTitle.textContent = esContent.headerTitle;
-                navHome.textContent = esContent.navHome;
-                navServices.textContent = esContent.navServices;
-                navAbout.textContent = esContent.navAbout;
-    
-                servicesMain.innerHTML = esContent.servicesMainHtml;
-                servicesGrid.innerHTML = esContent.servicesGridHtml;
-                contactSection.innerHTML = esContent.contactHtml;
-    
-                isSpanish = true;
+                setSpanish();
             }
         });
     });

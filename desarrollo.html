@@ -83,41 +83,47 @@
     </footer>
     
     <script>
+        /* ---- Funciones para manejar cookies ---- */
+        function setCookie(name, value, days) {
+            const d = new Date();
+            d.setTime(d.getTime() + (days * 24 * 60 * 60 * 1000)); // 'days' días en milisegundos
+            const expires = "expires=" + d.toUTCString();
+            // path=/ => cookie válida en todo el sitio
+            document.cookie = name + "=" + value + ";" + expires + ";path=/";
+        }
+        
+        function getCookie(name) {
+            const cname = name + "=";
+            const decodedCookie = decodeURIComponent(document.cookie);
+            const carray = decodedCookie.split(';');
+            for (let c of carray) {
+                while (c.charAt(0) === ' ') {
+                    c = c.substring(1);
+                }
+                if (c.indexOf(cname) === 0) {
+                    return c.substring(cname.length, c.length);
+                }
+            }
+            return "";
+        }
+        
         document.addEventListener('DOMContentLoaded', function() {
+            /* ===== MENÚ HAMBURGUESA ===== */
             const menuToggle = document.querySelector('.menu-toggle');
             const nav = document.querySelector('nav ul');
-            const jitsiToggle = document.getElementById('jitsi-toggle');
-            const jitsiContainer = document.getElementById('jitsi-container');
-
-            // Menú hamburguesa
             menuToggle.addEventListener('click', function() {
                 nav.classList.toggle('showing');
             });
-
-            // Efecto de desplegar con transición
-            jitsiToggle.addEventListener('click', function() {
-                jitsiContainer.classList.toggle('open');
-            });
-        });
-    </script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // -- Menú hamburguesa (mantienes tu código existente) --
-            const menuToggle = document.querySelector('.menu-toggle');
-            const nav = document.querySelector('nav ul');
+        
+            /* ===== Efecto de desplegar con transición en Jitsi ===== */
             const jitsiToggle = document.getElementById('jitsi-toggle');
             const jitsiContainer = document.getElementById('jitsi-container');
-        
-            menuToggle.addEventListener('click', function() {
-                nav.classList.toggle('showing');
-            });
-        
-            // -- Evento de despliegue para la sección Jitsi (mantienes tu código existente) --
             jitsiToggle.addEventListener('click', function() {
                 jitsiContainer.classList.toggle('open');
             });
         
-            // -- Referencias para la traducción --
+            /* ===== TRADUCCIÓN IDIOMA ===== */
+            // Referencias
             const languageBtn = document.getElementById('languageBtn');
         
             // Encabezado y menú
@@ -126,22 +132,15 @@
             const navServices = document.getElementById('nav-services');
             const navAbout = document.getElementById('nav-about');
         
-            // Sección consultoría (id="consultoria")
+            // Secciones de la página
             const consultoriaSection = document.getElementById('consultoria');
-        
-            // Sección servicios (id="servicios")
             const serviciosSection = document.getElementById('servicios');
-        
-            // Sección soluciones (id="soluciones")
             const solucionesSection = document.getElementById('soluciones');
         
-            // Título y alt para la parte Jitsi
-            // (mantenemos la estructura del contenedor para no perder el evento)
-            // - El <h2> con id="jitsi-toggle"
-            // - La <img> dentro de #jitsi-container
+            // Jitsi: solo cambiamos el texto del <h2> y el alt de la imagen
             const jitsiImg = jitsiContainer.querySelector('img');
         
-            // Sección contacto
+            // Sección de contacto
             const contactSection = document.getElementById('contact');
         
             // -----------------------
@@ -158,7 +157,6 @@
                     <h2>Desarrollo</h2>
                     <p>Transformamos Moodle en una plataforma completamente adaptada a las necesidades de cada cliente. Con más de 10 años de experiencia en el desarrollo y personalización de Moodle, ofrecemos soluciones innovadoras para instituciones educativas y empresas que buscan maximizar el potencial de esta herramienta de e-learning.</p>
                 `,
-        
                 serviciosHTML: `
                     <h2>Nuestros servicios incluyen:</h2>
                     <div class="services-grid">
@@ -180,14 +178,12 @@
                         </div>
                     </div>
                 `,
-        
                 solucionesHTML: `
                     <h2>Sobre nuestras soluciones</h2>
                     <p>Estamos orgullosos de ser un referente en el desarrollo de soluciones innovadoras y plugins para Moodle, la plataforma de aprendizaje más utilizada a nivel mundial. Nuestros productos son confiables, flexibles y están diseñados para potenciar la experiencia educativa.</p>
                     <p>Algunas de nuestras soluciones son utilizadas por miles de sitios Moodle en todo el mundo, desde instituciones educativas y universidades hasta empresas y organizaciones de diversos sectores.</p>
                     <p>¿Listo para llevar tu Moodle al siguiente nivel? Descubre cómo nuestras soluciones pueden transformar tu entorno de aprendizaje.</p>
                 `,
-        
                 jitsiTitle: `
                     Somos responsables del plugin de integración del servicio de videoconferencias Jitsi Meet en Moodle.
                     <br>(Haz clic para ver la imagen)
@@ -214,7 +210,6 @@
                     <h2>Development</h2>
                     <p>We transform Moodle into a platform fully tailored to each client's needs. With over 10 years of experience in Moodle development and customization, we offer innovative solutions for educational institutions and businesses looking to maximize the potential of this e-learning tool.</p>
                 `,
-        
                 serviciosHTML: `
                     <h2>Our services include:</h2>
                     <div class="services-grid">
@@ -236,14 +231,12 @@
                         </div>
                     </div>
                 `,
-        
                 solucionesHTML: `
                     <h2>About Our Solutions</h2>
                     <p>We are proud to be a benchmark in developing innovative solutions and plugins for Moodle, the world's most widely used learning platform. Our products are reliable, flexible, and designed to enhance the educational experience.</p>
                     <p>Some of our solutions are used by thousands of Moodle sites worldwide, ranging from educational institutions and universities to businesses and organizations across various sectors.</p>
                     <p>Ready to take your Moodle to the next level? Discover how our solutions can transform your learning environment.</p>
                 `,
-        
                 jitsiTitle: `
                     We are responsible for the Jitsi Meet video conferencing service integration plugin in Moodle.
                     <br>(Click to see the image)
@@ -259,52 +252,92 @@
             // Bandera para saber si estamos en español
             let isSpanish = true;
         
-            // -- Lógica de traducción al pulsar el botón --
+            /* ===== Funciones para cookies ===== */
+            function setCookie(name, value, days) {
+                const d = new Date();
+                d.setTime(d.getTime() + (days * 24 * 60 * 60 * 1000));
+                const expires = "expires=" + d.toUTCString();
+                document.cookie = name + "=" + value + ";" + expires + ";path=/";
+            }
+            function getCookie(name) {
+                const cname = name + "=";
+                const decodedCookie = decodeURIComponent(document.cookie);
+                const carray = decodedCookie.split(';');
+                for (let c of carray) {
+                    while (c.charAt(0) === ' ') c = c.substring(1);
+                    if (c.indexOf(cname) === 0) {
+                        return c.substring(cname.length, c.length);
+                    }
+                }
+                return "";
+            }
+        
+            // Funciones para traducir
+            function setSpanish() {
+                // Botón e items de menú
+                languageBtn.textContent = esContent.languageBtn;
+                headerTitle.textContent = esContent.headerTitle;
+                navHome.textContent = esContent.navHome;
+                navServices.textContent = esContent.navServices;
+                navAbout.textContent = esContent.navAbout;
+        
+                // Secciones
+                consultoriaSection.innerHTML = esContent.consultoriaHTML;
+                serviciosSection.innerHTML = esContent.serviciosHTML;
+                solucionesSection.innerHTML = esContent.solucionesHTML;
+        
+                // Jitsi
+                jitsiToggle.innerHTML = esContent.jitsiTitle;
+                jitsiImg.alt = esContent.jitsiAlt;
+        
+                // Contacto
+                contactSection.innerHTML = esContent.contactHTML;
+        
+                // Guardamos en cookie
+                setCookie('lang', 'es', 30);
+                isSpanish = true;
+            }
+        
+            function setEnglish() {
+                // Botón e items de menú
+                languageBtn.textContent = enContent.languageBtn;
+                headerTitle.textContent = enContent.headerTitle;
+                navHome.textContent = enContent.navHome;
+                navServices.textContent = enContent.navServices;
+                navAbout.textContent = enContent.navAbout;
+        
+                // Secciones
+                consultoriaSection.innerHTML = enContent.consultoriaHTML;
+                serviciosSection.innerHTML = enContent.serviciosHTML;
+                solucionesSection.innerHTML = enContent.solucionesHTML;
+        
+                // Jitsi
+                jitsiToggle.innerHTML = enContent.jitsiTitle;
+                jitsiImg.alt = enContent.jitsiAlt;
+        
+                // Contacto
+                contactSection.innerHTML = enContent.contactHTML;
+        
+                // Guardamos en cookie
+                setCookie('lang', 'en', 30);
+                isSpanish = false;
+            }
+        
+            // Al cargar, leemos la cookie 'lang'
+            const currentLang = getCookie('lang');
+            if (currentLang === 'en') {
+                setEnglish();
+            } else {
+                setSpanish(); // por defecto en español
+            }
+        
+            // Evento para el botón de idioma
             languageBtn.addEventListener('click', function() {
                 if (isSpanish) {
-                    // Cambiamos a inglés
-                    languageBtn.textContent = enContent.languageBtn;
-                    headerTitle.textContent = enContent.headerTitle;
-                    navHome.textContent = enContent.navHome;
-                    navServices.textContent = enContent.navServices;
-                    navAbout.textContent = enContent.navAbout;
-        
-                    consultoriaSection.innerHTML = enContent.consultoriaHTML;
-                    serviciosSection.innerHTML = enContent.serviciosHTML;
-                    solucionesSection.innerHTML = enContent.solucionesHTML;
-        
-                    jitsiToggle.innerHTML = enContent.jitsiTitle;
-                    jitsiImg.alt = enContent.jitsiAlt;
-        
-                    contactSection.innerHTML = enContent.contactHTML;
-        
-                    isSpanish = false;
+                    setEnglish();
                 } else {
-                    // Volvemos al español
-                    languageBtn.textContent = esContent.languageBtn;
-                    headerTitle.textContent = esContent.headerTitle;
-                    navHome.textContent = esContent.navHome;
-                    navServices.textContent = esContent.navServices;
-                    navAbout.textContent = esContent.navAbout;
-        
-                    consultoriaSection.innerHTML = esContent.consultoriaHTML;
-                    serviciosSection.innerHTML = esContent.serviciosHTML;
-                    solucionesSection.innerHTML = esContent.solucionesHTML;
-        
-                    jitsiToggle.innerHTML = esContent.jitsiTitle;
-                    jitsiImg.alt = esContent.jitsiAlt;
-        
-                    contactSection.innerHTML = esContent.contactHTML;
-        
-                    isSpanish = true;
+                    setSpanish();
                 }
-        
-                // ATENCIÓN: Si reponemos secciones enteras con innerHTML,
-                // podríamos perder eventos en esos elementos. En este caso,
-                // la SECCIÓN Jitsi se mantiene (sólo cambiamos .innerHTML del título y alt).
-                // Si quisieras reponer todo #plugin-jitsi con .innerHTML,
-                // tendrías que re-atachear el evento para abrir/cerrar con jitsiToggle.addEventListener(...)
-                // tras traducir.
             });
         });
         </script>

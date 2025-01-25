@@ -53,25 +53,40 @@
     </footer>
     
     <script>
+        /* ---- Funciones para manejo de cookies ---- */
+        function setCookie(name, value, days) {
+            const d = new Date();
+            d.setTime(d.getTime() + (days * 24 * 60 * 60 * 1000)); // 'days' días en milisegundos
+            const expires = "expires=" + d.toUTCString();
+            // path=/ => cookie válida en todo tu dominio
+            document.cookie = name + "=" + value + ";" + expires + ";path=/";
+        }
+        
+        function getCookie(name) {
+            const cname = name + "=";
+            const decodedCookie = decodeURIComponent(document.cookie);
+            const carray = decodedCookie.split(';');
+            for (let c of carray) {
+                while (c.charAt(0) === ' ') {
+                    c = c.substring(1);
+                }
+                if (c.indexOf(cname) === 0) {
+                    return c.substring(cname.length, c.length);
+                }
+            }
+            return "";
+        }
+        
+        /* ---- Script principal ---- */
         document.addEventListener('DOMContentLoaded', function() {
-            const menuToggle = document.querySelector('.menu-toggle');
-            const nav = document.querySelector('nav ul');
-
-            menuToggle.addEventListener('click', function() {
-                nav.classList.toggle('showing');
-            });
-        });
-    </script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // ----- Menú hamburguesa -----
+            // 1) MENÚ HAMBURGUESA
             const menuToggle = document.querySelector('.menu-toggle');
             const nav = document.querySelector('nav ul');
             menuToggle.addEventListener('click', function() {
                 nav.classList.toggle('showing');
             });
         
-            // ------ Referencias para traducir ------
+            // 2) REFERENCIAS PARA TRADUCCIÓN
             const languageBtn = document.getElementById('languageBtn');
             const headerTitle = document.querySelector('header h1');
             const navHome = document.getElementById('nav-home');
@@ -133,35 +148,60 @@
                 `
             };
         
-            // Iniciamos en español
+            // Bandera para saber si está en español (por defecto)
             let isSpanish = true;
         
-            // ------ Evento para cambiar idioma al pulsar el botón ------
+            // 2.1) Funciones para cambiar a español o inglés
+            function setSpanish() {
+                // Reemplazamos contenido
+                languageBtn.textContent = esContent.languageBtn;
+                headerTitle.textContent = esContent.headerTitle;
+                navHome.textContent = esContent.navHome;
+                navServices.textContent = esContent.navServices;
+                navAbout.textContent = esContent.navAbout;
+                consultoriaSection.innerHTML = esContent.consultoriaHtml;
+                adaptacionSection.innerHTML = esContent.adaptacionHtml;
+                contactSection.innerHTML = esContent.contactHtml;
+        
+                // Guardamos preferencia en la cookie (p.ej. 30 días)
+                setCookie('lang', 'es', 30);
+        
+                isSpanish = true;
+            }
+        
+            function setEnglish() {
+                // Reemplazamos contenido
+                languageBtn.textContent = enContent.languageBtn;
+                headerTitle.textContent = enContent.headerTitle;
+                navHome.textContent = enContent.navHome;
+                navServices.textContent = enContent.navServices;
+                navAbout.textContent = enContent.navAbout;
+                consultoriaSection.innerHTML = enContent.consultoriaHtml;
+                adaptacionSection.innerHTML = enContent.adaptacionHtml;
+                contactSection.innerHTML = enContent.contactHtml;
+        
+                // Guardamos preferencia en la cookie (p.ej. 30 días)
+                setCookie('lang', 'en', 30);
+        
+                isSpanish = false;
+            }
+        
+            // 2.2) Leemos la cookie 'lang' para ver si estaba en 'es' o 'en'
+            const currentLang = getCookie('lang');
+            if (currentLang === 'en') {
+                // Si estaba en inglés, cargamos inglés
+                setEnglish();
+            } else {
+                // Por defecto, español
+                setSpanish();
+            }
+        
+            // 2.3) Evento del botón para cambiar idioma
             languageBtn.addEventListener('click', function() {
                 if (isSpanish) {
-                    // Pasar a inglés
-                    languageBtn.textContent = enContent.languageBtn;
-                    headerTitle.textContent = enContent.headerTitle;
-                    navHome.textContent = enContent.navHome;
-                    navServices.textContent = enContent.navServices;
-                    navAbout.textContent = enContent.navAbout;
-                    consultoriaSection.innerHTML = enContent.consultoriaHtml;
-                    adaptacionSection.innerHTML = enContent.adaptacionHtml;
-                    contactSection.innerHTML = enContent.contactHtml;
-        
-                    isSpanish = false;
+                    setEnglish();
                 } else {
-                    // Volver a español
-                    languageBtn.textContent = esContent.languageBtn;
-                    headerTitle.textContent = esContent.headerTitle;
-                    navHome.textContent = esContent.navHome;
-                    navServices.textContent = esContent.navServices;
-                    navAbout.textContent = esContent.navAbout;
-                    consultoriaSection.innerHTML = esContent.consultoriaHtml;
-                    adaptacionSection.innerHTML = esContent.adaptacionHtml;
-                    contactSection.innerHTML = esContent.contactHtml;
-        
-                    isSpanish = true;
+                    setSpanish();
                 }
             });
         });

@@ -67,41 +67,51 @@
     </footer>
     
     <script>
+        /* ==== Funciones para manejar cookies ==== */
+        function setCookie(name, value, days) {
+            const d = new Date();
+            d.setTime(d.getTime() + (days * 24 * 60 * 60 * 1000));
+            const expires = "expires=" + d.toUTCString();
+            document.cookie = name + "=" + value + ";" + expires + ";path=/";
+        }
+        
+        function getCookie(name) {
+            const cname = name + "=";
+            const decodedCookie = decodeURIComponent(document.cookie);
+            const carray = decodedCookie.split(';');
+            for (let c of carray) {
+                while (c.charAt(0) === ' ') {
+                    c = c.substring(1);
+                }
+                if (c.indexOf(cname) === 0) {
+                    return c.substring(cname.length, c.length);
+                }
+            }
+            return "";
+        }
+        
         document.addEventListener('DOMContentLoaded', function() {
-            const menuToggle = document.querySelector('.menu-toggle');
-            const nav = document.querySelector('nav ul');
-
-            menuToggle.addEventListener('click', function() {
-                nav.classList.toggle('showing');
-            });
-        });
-    </script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // --- Lógica del menú hamburguesa existente ---
+            /* ===== MENÚ HAMBURGUESA ===== */
             const menuToggle = document.querySelector('.menu-toggle');
             const nav = document.querySelector('nav ul');
             menuToggle.addEventListener('click', function() {
                 nav.classList.toggle('showing');
             });
         
-            // --- Referencias para la traducción ---
+            /* ===== TRADUCCIÓN ===== */
+            // Referencias para la traducción
             const languageBtn = document.getElementById('languageBtn');
             const headerTitle = document.querySelector('header h1');
             const navHome = document.getElementById('nav-home');
             const navServices = document.getElementById('nav-services');
             const navAbout = document.getElementById('nav-about');
         
-            // Sección #consultoria ("Alojamiento...")
+            // Secciones principales
             const consultoriaSection = document.getElementById('consultoria');
-            // Sección #servicios ("Nuestros servicios incluyen...")
             const serviciosSection = document.getElementById('servicios');
-            // Sección de contacto en el footer
             const contactSection = document.getElementById('contact');
         
-            // ----------------------
-            // Textos en Español (ES)
-            // ----------------------
+            // Textos en español
             const esContent = {
                 languageBtn: "EN",
                 headerTitle: "Soporte, consultoría y desarrollo Moodle",
@@ -114,7 +124,6 @@
                     <p>Entendemos que la gestión de un entorno virtual de aprendizaje como Moodle puede ser un desafío.</p>
                     <p>Por eso, ofrecemos un servicio integral de alojamiento especializado en Moodle, diseñado para garantizar un rendimiento óptimo, seguridad avanzada y una experiencia de aprendizaje fluida para estudiantes, profesores y administradores.</p>
                 `,
-        
                 serviciosHTML: `
                     <h2>Nuestros servicios incluyen:</h2>
                     <div class="services-grid">
@@ -136,7 +145,6 @@
                         </div>
                     </div>
                 `,
-        
                 contactHTML: `
                     <h2>Contacta con nosotros</h2>
                     <p>Puedes contactarnos a través del correo: 
@@ -145,9 +153,7 @@
                 `
             };
         
-            // --------------------
-            // Textos en Inglés (EN)
-            // --------------------
+            // Textos en inglés
             const enContent = {
                 languageBtn: "ES",
                 headerTitle: "Moodle Support, Consulting and Development",
@@ -160,7 +166,6 @@
                     <p>We understand that managing a virtual learning environment like Moodle can be challenging.</p>
                     <p>That's why we offer a comprehensive hosting service specialized in Moodle, designed to ensure optimal performance, advanced security, and a seamless learning experience for students, teachers, and administrators.</p>
                 `,
-        
                 serviciosHTML: `
                     <h2>Our Services Include:</h2>
                     <div class="services-grid">
@@ -182,7 +187,6 @@
                         </div>
                     </div>
                 `,
-        
                 contactHTML: `
                     <h2>Contact Us</h2>
                     <p>You can reach us by email at: 
@@ -191,37 +195,54 @@
                 `
             };
         
-            // Estado inicial: español
+            // Bandera estado actual. Iniciamos en español, pero lo sobreescribimos leyendo cookies.
             let isSpanish = true;
         
-            // -- Evento para cambiar de idioma al pulsar el botón --
+            // Funciones para traducir
+            function setSpanish() {
+                languageBtn.textContent = esContent.languageBtn;
+                headerTitle.textContent = esContent.headerTitle;
+                navHome.textContent = esContent.navHome;
+                navServices.textContent = esContent.navServices;
+                navAbout.textContent = esContent.navAbout;
+        
+                consultoriaSection.innerHTML = esContent.consultoriaHTML;
+                serviciosSection.innerHTML = esContent.serviciosHTML;
+                contactSection.innerHTML = esContent.contactHTML;
+        
+                setCookie('lang', 'es', 30);
+                isSpanish = true;
+            }
+        
+            function setEnglish() {
+                languageBtn.textContent = enContent.languageBtn;
+                headerTitle.textContent = enContent.headerTitle;
+                navHome.textContent = enContent.navHome;
+                navServices.textContent = enContent.navServices;
+                navAbout.textContent = enContent.navAbout;
+        
+                consultoriaSection.innerHTML = enContent.consultoriaHTML;
+                serviciosSection.innerHTML = enContent.serviciosHTML;
+                contactSection.innerHTML = enContent.contactHTML;
+        
+                setCookie('lang', 'en', 30);
+                isSpanish = false;
+            }
+        
+            // Leer cookie al cargar
+            const currentLang = getCookie('lang');
+            if (currentLang === 'en') {
+                setEnglish();
+            } else {
+                setSpanish();
+            }
+        
+            // Evento para cambiar de idioma al pulsar el botón
             languageBtn.addEventListener('click', function() {
                 if (isSpanish) {
-                    // Cambiar a inglés
-                    languageBtn.textContent = enContent.languageBtn;
-                    headerTitle.textContent = enContent.headerTitle;
-                    navHome.textContent = enContent.navHome;
-                    navServices.textContent = enContent.navServices;
-                    navAbout.textContent = enContent.navAbout;
-        
-                    consultoriaSection.innerHTML = enContent.consultoriaHTML;
-                    serviciosSection.innerHTML = enContent.serviciosHTML;
-                    contactSection.innerHTML = enContent.contactHTML;
-        
-                    isSpanish = false;
+                    setEnglish();
                 } else {
-                    // Volver a español
-                    languageBtn.textContent = esContent.languageBtn;
-                    headerTitle.textContent = esContent.headerTitle;
-                    navHome.textContent = esContent.navHome;
-                    navServices.textContent = esContent.navServices;
-                    navAbout.textContent = esContent.navAbout;
-        
-                    consultoriaSection.innerHTML = esContent.consultoriaHTML;
-                    serviciosSection.innerHTML = esContent.serviciosHTML;
-                    contactSection.innerHTML = esContent.contactHTML;
-        
-                    isSpanish = true;
+                    setSpanish();
                 }
             });
         });

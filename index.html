@@ -137,8 +137,8 @@
             // Contenido en inglés
             const enContent = {
                 navHome: "Home",
-                navServices: "Services",
-                navAbout: "About us",
+                navServices: "Our Services",
+                navAbout: "About Us",
                 highlight: "TAKE THE ONLINE LEARNING EXPERIENCE TO THE NEXT LEVEL",
                 aboutTitle: "Online Learning Platform",
                 aboutHtml: `
@@ -159,52 +159,74 @@
                 languageBtn: "ES"
             };
 
-            // Empezamos en español
-            let isSpanish = true;
+            // Variable para el estado actual. Luego la sobreescribimos leyendo localStorage.
+    let isSpanish = true;
 
-            // Mostrar/ocultar el menú con el botón hamburguesa (solo móvil)
-            menuToggle.addEventListener('click', function() {
-                nav.classList.toggle('showing');
-            });
+    // Función para aplicar contenidos en INGLÉS
+    function setEnglish() {
+        navHome.textContent = enContent.navHome;
+        navServices.textContent = enContent.navServices;
+        navAbout.textContent = enContent.navAbout;
+        highlightText.textContent = enContent.highlight;
+        aboutTitle.textContent = enContent.aboutTitle;
+        aboutTextContainer.innerHTML = enContent.aboutHtml;
+        servicesTitle.textContent = enContent.servicesTitle;
+        servicesTextContainer.innerHTML = enContent.servicesHtml;
+        clientsTitle.textContent = enContent.clientsTitle;
+        contactTitle.textContent = enContent.contactTitle;
+        contactText.innerHTML = enContent.contactText +
+            `<a href="mailto:${enContent.contactLink}" id="contact-link">${enContent.contactLink}</a>`;
+        languageBtn.textContent = enContent.languageBtn;
 
-            // Cambiar idioma al pulsar el botón
-            languageBtn.addEventListener('click', function() {
-                if (isSpanish) {
-                    // Cambiamos a inglés
-                    navHome.textContent = enContent.navHome;
-                    navServices.textContent = enContent.navServices;
-                    navAbout.textContent = enContent.navAbout;
-                    highlightText.textContent = enContent.highlight;
-                    aboutTitle.textContent = enContent.aboutTitle;
-                    aboutTextContainer.innerHTML = enContent.aboutHtml;
-                    servicesTitle.textContent = enContent.servicesTitle;
-                    servicesTextContainer.innerHTML = enContent.servicesHtml;
-                    clientsTitle.textContent = enContent.clientsTitle;
-                    contactTitle.textContent = enContent.contactTitle;
-                    contactText.innerHTML = enContent.contactText +
-                        `<a href="mailto:${enContent.contactLink}" id="contact-link">${enContent.contactLink}</a>`;
-                    languageBtn.textContent = enContent.languageBtn;
+        // Guardamos en localStorage
+        localStorage.setItem('lang', 'en');
+        isSpanish = false;
+    }
 
-                    isSpanish = false;
-                } else {
-                    // Volvemos al español
-                    navHome.textContent = esContent.navHome;
-                    navServices.textContent = esContent.navServices;
-                    navAbout.textContent = esContent.navAbout;
-                    highlightText.textContent = esContent.highlight;
-                    aboutTitle.textContent = esContent.aboutTitle;
-                    aboutTextContainer.innerHTML = esContent.aboutHtml;
-                    servicesTitle.textContent = esContent.servicesTitle;
-                    servicesTextContainer.innerHTML = esContent.servicesHtml;
-                    clientsTitle.textContent = esContent.clientsTitle;
-                    contactTitle.textContent = esContent.contactTitle;
-                    contactText.innerHTML = esContent.contactText +
-                        `<a href="mailto:${esContent.contactLink}" id="contact-link">${esContent.contactLink}</a>`;
-                    languageBtn.textContent = esContent.languageBtn;
+    // Función para aplicar contenidos en ESPAÑOL
+    function setSpanish() {
+        navHome.textContent = esContent.navHome;
+        navServices.textContent = esContent.navServices;
+        navAbout.textContent = esContent.navAbout;
+        highlightText.textContent = esContent.highlight;
+        aboutTitle.textContent = esContent.aboutTitle;
+        aboutTextContainer.innerHTML = esContent.aboutHtml;
+        servicesTitle.textContent = esContent.servicesTitle;
+        servicesTextContainer.innerHTML = esContent.servicesHtml;
+        clientsTitle.textContent = esContent.clientsTitle;
+        contactTitle.textContent = esContent.contactTitle;
+        contactText.innerHTML = esContent.contactText +
+            `<a href="mailto:${esContent.contactLink}" id="contact-link">${esContent.contactLink}</a>`;
+        languageBtn.textContent = esContent.languageBtn;
 
-                    isSpanish = true;
-                }
-            });
+        // Guardamos en localStorage
+        localStorage.setItem('lang', 'es');
+        isSpanish = true;
+    }
+
+    // 1) Al cargar la página, leemos la preferencia de idioma en localStorage (si existe).
+    const storedLang = localStorage.getItem('lang'); 
+    if (storedLang === 'en') {
+        // Si la preferencia es 'en', cargamos la versión en inglés.
+        setEnglish();
+    } else {
+        // Por defecto, español (o si storedLang === 'es' o no existe).
+        setSpanish();
+    }
+
+    // 2) Menú hamburguesa (solo móvil)
+    menuToggle.addEventListener('click', function() {
+        nav.classList.toggle('showing');
+    });
+
+    // 3) Al pulsar el botón de idioma, alternamos.
+    languageBtn.addEventListener('click', function() {
+        if (isSpanish) {
+            setEnglish();
+        } else {
+            setSpanish();
+        }
+    });
         });
     </script>
 </body>
