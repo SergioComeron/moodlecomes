@@ -25,24 +25,32 @@
         </div>
     </header>
 
+    <!-- Franja destacada -->
+    <section class="highlight">
+        <p>LLEVA LA EXPERIENCIA DEL APRENDIZAJE EN LINEA AL SIGUIENTE NIVEL</p>
+    </section>
+
     <section id="about" class="container">
         <h2>Plataforma de formación on-line</h2>
         <div class="about-content">
             <img src="pix/logo2.png" alt="Logo" class="about-logo">
             <div class="about-text">
                 <p>Moodle es una plataforma de gestión de aprendizaje (LMS) de código abierto utilizada por instituciones educativas para gestionar cursos y facilitar el aprendizaje en línea. Su interfaz es intuitiva y personalizable, permitiendo a los administradores ajustar el diseño y contenido según sus necesidades.</p>
-                <p>La plataforma permite a los docentes organizar cursos con materiales como archivos, videos, cuestionarios, foros y tareas. Los cursos se estructuran en módulos o unidades y pueden incluir secuencias de actividades. Además, ofrece herramientas de evaluación y retroalimentación, como exámenes, tareas y encuestas, y un sistema flexible de calificaciones.</p>
-                <p>Fomenta la interacción y colaboración entre estudiantes y docentes mediante foros, chats y actividades grupales. También permite integrar videoconferencias y otras herramientas externas de soporte al aprendizaje. Moodle facilita el seguimiento del progreso de los estudiantes mediante informes detallados sobre su desempeño.</p>
-                <p>Es accesible desde diversos dispositivos y soporta múltiples idiomas. Además, garantiza la seguridad y privacidad de los usuarios con control de acceso y cifrado de datos.</p>
+                <p>La plataforma permite a los docentes organizar cursos con materiales como archivos, videos, cuestionarios, foros y tareas. Los cursos se estructuran en módulos o unidades y pueden incluir secuencias de actividades. Además, ofrece herramientas de <strong>evaluación y retroalimentación</strong>, como exámenes, tareas y encuestas, y un sistema flexible de calificaciones.</p>
+                <p>Fomenta la <strong>interacción y colaboración</strong> entre estudiantes y docentes mediante foros, chats y actividades grupales. También permite integrar videoconferencias y otras herramientas externas de soporte al aprendizaje. Moodle facilita el <strong>seguimiento del progreso</strong> de los estudiantes mediante informes detallados sobre su desempeño.</p>
+                <p>Es accesible desde diversos dispositivos y soporta múltiples idiomas. Además, garantiza la <strong>seguridad y privacidad</strong> de los usuarios con control de acceso y cifrado de datos.</p>
             </div>
         </div>
     </section>
 
     <section id="services" class="container">
         <h2>Nuestros servicios</h2>
-        <p>Somos un equipo de profesionales con más de 15 años de experiencia en Moodle y otras herramientas usadas para la formación on-line y teleformación. Ofrecemos todos los servicios requeridos para disponer tu plataforma de formación propia.</p>
-        <p>Desde una solución llave en mano, hasta consultoría en las áreas en las que lo puedas necesitar (integración de productos, gestión y organización en grandes instalaciones, …).</p>
-        <a href="servicios.html" class="btn">Más sobre nuestros servicios</a>
+        <div class="services-content">
+            <div class="services-text">
+                <p>Somos un equipo de profesionales con más de 15 años de experiencia en Moodle y otras herramientas usadas para la formación on-line y teleformación. Ofrecemos todos los servicios requeridos para disponer tu plataforma de formación propia.</p>
+                <p>Desde una solución llave en mano, hasta consultoría en las áreas en las que lo puedas necesitar (integración de productos, gestión y organización en grandes instalaciones, …).</p>
+            </div>
+        </div>
     </section>
 
     <section id="clients" class="container">
@@ -69,85 +77,10 @@
         document.addEventListener('DOMContentLoaded', function() {
             const menuToggle = document.querySelector('.menu-toggle');
             const nav = document.querySelector('nav ul');
-            const langEsBtn = document.getElementById('lang-es');
-            const langEnBtn = document.getElementById('lang-en');
 
             menuToggle.addEventListener('click', function() {
                 nav.classList.toggle('showing');
             });
-
-            const translations = {
-                es: {
-                    pageTitle: "Soporte, consultoría y desarrollo Moodle",
-                    menuHome: "Inicio",
-                    menuServices: "Nuestros servicios",
-                    menuAbout: "Sobre nosotros",
-                    aboutTitle: "Plataforma de formación on-line",
-                    aboutPar1: "Moodle es una plataforma de gestión de aprendizaje (LMS) ...",
-                    aboutPar2: "La plataforma permite a los docentes organizar cursos con materiales como archivos, videos, ...",
-                    aboutPar3: "Fomenta la interacción y colaboración entre estudiantes y docentes...",
-                    aboutPar4: "Es accesible desde diversos dispositivos y soporta múltiples idiomas...",
-                    servicesTitle: "Nuestros servicios",
-                    servicesPar1: "Somos un equipo de profesionales con más de 15 años de experiencia...",
-                    servicesPar2: "Desde una solución llave en mano, hasta consultoría en las áreas en las que lo puedas necesitar...",
-                    servicesBtn: "Más sobre nuestros servicios",
-                    clientsTitle: "Algunos de nuestros clientes",
-                    contactTitle: "Contacta con nosotros",
-                    contactPar: "Puedes contactarnos a través del correo:",
-                },
-                en: {
-                    pageTitle: "Moodle Support, Consulting, and Development",
-                    menuHome: "Home",
-                    menuServices: "Our Services",
-                    menuAbout: "About Us",
-                    aboutTitle: "Online Learning Platform",
-                    aboutPar1: "Moodle is a learning management system (LMS)...",
-                    aboutPar2: "The platform allows teachers to organize courses with materials like files, videos, ...",
-                    aboutPar3: "It encourages interaction and collaboration among students and teachers...",
-                    aboutPar4: "It can be accessed from multiple devices and supports multiple languages...",
-                    servicesTitle: "Our Services",
-                    servicesPar1: "We are a team of professionals with over 15 years of experience...",
-                    servicesPar2: "From a turnkey solution to consulting in the areas you may need...",
-                    servicesBtn: "More about our services",
-                    clientsTitle: "Some of our clients",
-                    contactTitle: "Contact Us",
-                    contactPar: "You can contact us via:",
-                }
-            };
-
-            function setLang(lang) {
-                document.getElementById('page-title').textContent = translations[lang].pageTitle;
-                document.getElementById('menu-home').textContent = translations[lang].menuHome;
-                document.getElementById('menu-services').textContent = translations[lang].menuServices;
-                document.getElementById('menu-about').textContent = translations[lang].menuAbout;
-                document.getElementById('about-title').textContent = translations[lang].aboutTitle;
-                document.getElementById('about-par1').textContent = translations[lang].aboutPar1;
-                document.getElementById('about-par2').textContent = translations[lang].aboutPar2;
-                document.getElementById('about-par3').textContent = translations[lang].aboutPar3;
-                document.getElementById('about-par4').textContent = translations[lang].aboutPar4;
-                document.getElementById('services-title').textContent = translations[lang].servicesTitle;
-                document.getElementById('services-par1').textContent = translations[lang].servicesPar1;
-                document.getElementById('services-par2').textContent = translations[lang].servicesPar2;
-                document.getElementById('services-btn').textContent = translations[lang].servicesBtn;
-                document.getElementById('clients-title').textContent = translations[lang].clientsTitle;
-                document.getElementById('contact-title').textContent = translations[lang].contactTitle;
-                document.getElementById('contact-par').childNodes[0].textContent = translations[lang].contactPar + " ";
-
-                // Ocultar el botón del idioma actual
-                if (lang === 'es') {
-                    langEsBtn.style.display = 'none';
-                    langEnBtn.style.display = 'inline-block';
-                } else {
-                    langEsBtn.style.display = 'inline-block';
-                    langEnBtn.style.display = 'none';
-                }
-            }
-
-            // Inicializar con el idioma español
-            setLang('es');
-
-            langEsBtn.addEventListener('click', () => setLang('es'));
-            langEnBtn.addEventListener('click', () => setLang('en'));
         });
     </script>
 </body>
