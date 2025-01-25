@@ -9,7 +9,7 @@ body {
     flex-direction: column;
     box-sizing: border-box;
     padding-top: 100px; /* Ajuste para evitar solapamiento del header */
-    font-size: 18px; /* Aumenta el tamaño de la fuente */
+    font-size: 16px; /* Disminuye el tamaño de la fuente */
 }
 
 /* Contenedor principal con márgenes reducidos */
@@ -67,16 +67,53 @@ nav ul li a {
     color: #fff;
     text-decoration: none;
     font-weight: 700;
-    font-size: 18px; /* Aumenta el tamaño de la fuente de los enlaces */
+    font-size: 16px; /* Disminuye el tamaño de la fuente de los enlaces */
 }
 
 nav ul li a:hover {
     text-decoration: underline;
 }
 
+/* Botones de cambio de idioma */
+.language-switch {
+    margin-left: auto; /* Mueve el menú de idioma a la derecha */
+}
+
+.language-switch button {
+    background-color: #fff;
+    color: #333;
+    border: 1px solid #ddd;
+    padding: 5px 10px;
+    cursor: pointer;
+    font-weight: 700;
+    margin-left: 5px;
+}
+
+language-switch button:hover {
+    background-color: #ddd;
+}
+
 /* Secciones */
 section {
     padding: 20px 0;
+}
+
+/* Estilos para la sección about */
+.about-content {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+}
+
+.about-logo {
+    max-width: 50%; /* Ocupa aproximadamente la mitad de la página en horizontal */
+    height: auto;
+    align-self: flex-start; /* Alinea la imagen con la primera línea de texto */
+}
+
+.about-text {
+    flex: 1;
+    font-size: 1.5vw; /* Tamaño de fuente relativo al ancho de la ventana */
 }
 
 /* Footer corregido */
@@ -109,6 +146,20 @@ footer {
 
     header .container {
         justify-content: space-between;
+    }
+
+    .about-content {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .about-logo {
+        max-width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .about-text {
+        font-size: 3vw; /* Ajusta el tamaño de la fuente para pantallas más pequeñas */
     }
 }
 
