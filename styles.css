@@ -138,9 +138,6 @@ section {
     align-self: flex-start; /* Alinea la imagen con la primera línea de texto */
 }
 
-/* Eliminamos la regla antigua 
-   .about-text, .services-text { font-size: 1.5vw; } */
-
 /* Footer corregido */
 footer {
     background-color: #333;
@@ -375,4 +372,90 @@ footer a:hover {
 /* Al hacer clic se añade la clase 'open' para desplegar */
 #jitsi-container.open {
     max-height: 500px; /* Ajusta la altura según necesites */
+}
+
+/* Reduce el espacio vertical en la sección de "Nuestros servicios" */
+#services {
+    /* Si quieres, baja de 20px a 10px */
+    padding: 10px 0; 
+}
+
+/* Ajusta el margen inferior del título H2 en la sección de servicios */
+#services h2 {
+    margin-bottom: 1px; /* Menos espacio tras el título */
+}
+
+/* Ajusta la caja de texto .services-text */
+.services-text {
+    padding: 10px; /* En lugar de 20px */
+    /* font-size, etc. se mantiene igual */
+}
+
+@media (min-width: 769px) {
+    nav ul {
+        max-height: none !important; /* O para restablecerlo */
+        overflow: visible !important;
+    }
+}
+
+.service-box-ori {
+    position: relative; /* Necesario para posicionar el pseudo-elemento en relación al contenedor */
+    overflow: hidden;   /* Opcional, si no quieres que sobresalga algo del recuadro */
+  }
+  
+  /* Pseudo-elemento que mostrará el símbolo "+" */
+  .service-box-ori::after {
+    content: "+";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0); /* Inicia oculto (scale(0)) */
+    opacity: 0;                                /* Transparente al inicio */
+    
+    width: 50px;  
+    height: 50px;
+    line-height: 50px;       /* Centra verticalmente el símbolo dentro del círculo */
+    text-align: center;      /* Centra horizontalmente el símbolo dentro del círculo */
+    border-radius: 50%;      /* Da forma circular al fondo */
+    background: rgba(0, 0, 0, 0.7); /* Fondo semitransparente */
+    color: #fff;             /* Color del signo "+" */
+    font-size: 24px;         /* Tamaño de la fuente del signo "+" */
+    font-weight: bold;       /* Hace el símbolo más grueso */
+    
+    /* Transiciones suaves para mostrar/ocultar */
+    transition: transform 0.3s ease, opacity 0.3s ease; 
+    pointer-events: none;  /* Evita interferir con el clic del enlace */
+  }
+  
+  /* Al hacer hover en .service-box, mostramos el "+" */
+  .service-box-ori:hover::after {
+    transform: translate(-50%, -50%) scale(1); /* Aumentamos escala */
+    opacity: 1;                                /* Hacemos visible */
+  }
+
+  .service-box-ori {
+    background-color: #fff;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    min-height: 200px; /* Altura mínima */
+    transition: background-color 0.3s, border-color 0.3s;
+    text-decoration: none; /* Asegura que el enlace no tenga subrayado */
+    color: inherit; /* Mantiene el color del texto */
+}
+
+.service-box-ori:hover {
+    background-color: #f0f0f0;
+    border-color: #ccc;
+}
+
+.service-box-ori a {
+    text-decoration: none; /* Elimina el subrayado */
+    color: inherit; /* Mantiene el color del texto */
+}
+
+.service-box-ori h3 {
+    margin-top: 0;
 }
