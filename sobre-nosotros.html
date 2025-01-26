@@ -30,18 +30,32 @@
     </header>
 
     <section id="about-us" class="container">
-        <h2>Sobre nosotros</h2>
-        <p>Somos especialistas en la administración y optimización de plataformas Moodle. Con más de 15 años de experiencia en el sector de la educación online, ayudamos a instituciones educativas y empresas a gestionar su entorno de aprendizaje de manera eficiente, segura y escalable.</p>
-        <p>Nuestro equipo está formado por expertos en Moodle, desarrollo web y administración de sistemas, lo que nos permite ofrecer soluciones personalizadas para cada cliente. Nos encargamos de la instalación, configuración, mantenimiento y soporte técnico de Moodle, garantizando un rendimiento óptimo y una experiencia de usuario sin interrupciones.</p>
-        <p>Nos diferenciamos por nuestro enfoque en la calidad del servicio, la atención personalizada y la búsqueda constante de soluciones innovadoras para mejorar el aprendizaje en línea. Ya sea que necesites migrar tu plataforma, integrar herramientas externas o mejorar la experiencia de tus usuarios, estamos aquí para ayudarte en cada paso del camino.</p>
+        <div class="about-section">
+            <div class="about-text">
+                <h2>Sobre nosotros</h2>
+                <p>Somos especialistas en la administración y optimización de plataformas Moodle. Con más de 15 años de experiencia en el sector de la educación online, ayudamos a instituciones educativas y empresas a gestionar su entorno de aprendizaje de manera eficiente, segura y escalable.</p>
+                <p>Nuestro equipo está formado por expertos en Moodle, desarrollo web y administración de sistemas, lo que nos permite ofrecer soluciones personalizadas para cada cliente. Nos encargamos de la instalación, configuración, mantenimiento y soporte técnico de Moodle, garantizando un rendimiento óptimo y una experiencia de usuario sin interrupciones.</p>
+                <p>Nos diferenciamos por nuestro enfoque en la calidad del servicio, la atención personalizada y la búsqueda constante de soluciones innovadoras para mejorar el aprendizaje en línea. Ya sea que necesites migrar tu plataforma, integrar herramientas externas o mejorar la experiencia de tus usuarios, estamos aquí para ayudarte en cada paso del camino.</p>
+            </div>
+            <div class="about-image">
+                <img src="pix/about.png" alt="Sobre nosotros">
+            </div>
+        </div>
         
-        <h3>Nuestra misión</h3>
-        <p>Facilitar la gestión de Moodle a través de soluciones eficientes, seguras y adaptadas a las necesidades de cada organización, impulsando el éxito del aprendizaje online.</p>
-        
-        <h3>Nuestra visión</h3>
-        <p>Ser el socio estratégico de referencia en la administración de Moodle, brindando servicios de excelencia y fomentando el crecimiento de nuestros clientes en el ámbito de la educación digital.</p>
-        
-        <p>Confía en nosotros para potenciar tu plataforma Moodle y llevar tu experiencia de aprendizaje en línea al siguiente nivel.</p>
+        <div class="mission-section">
+            <div class="mission-image">
+                <img src="pix/ourmission.png" alt="Nuestra misión">
+            </div>
+            <div class="mission-text">
+                <h3>Nuestra misión</h3>
+                <p>Facilitar la gestión de Moodle a través de soluciones eficientes, seguras y adaptadas a las necesidades de cada organización, impulsando el éxito del aprendizaje online.</p>
+                
+                <h3>Nuestra visión</h3>
+                <p>Ser el socio estratégico de referencia en la administración de Moodle, brindando servicios de excelencia y fomentando el crecimiento de nuestros clientes en el ámbito de la educación digital.</p>
+                
+                <p>Confía en nosotros para potenciar tu plataforma Moodle y llevar tu experiencia de aprendizaje en línea al siguiente nivel.</p>
+            </div>
+        </div>
     </section>
 
     <footer>
@@ -55,17 +69,7 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            const menuToggle = document.querySelector('.menu-toggle');
-            const nav = document.querySelector('nav ul');
-
-            menuToggle.addEventListener('click', function() {
-                nav.classList.toggle('showing');
-            });
-        });
-    </script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // ------ Menú hamburguesa (ya lo tienes en tu código) ------
+            // ------ Menú hamburguesa ------
             const menuToggle = document.querySelector('.menu-toggle');
             const nav = document.querySelector('nav ul');
             menuToggle.addEventListener('click', function() {
@@ -75,10 +79,8 @@
             // ------ Funciones para manejar Cookies ------
             function setCookie(name, value, days) {
                 const d = new Date();
-                // 'days' es el número de días que la cookie será válida.
                 d.setTime(d.getTime() + (days * 24 * 60 * 60 * 1000));
                 const expires = "expires=" + d.toUTCString();
-                // path=/ hace que la cookie sea válida para todo tu sitio
                 document.cookie = name + "=" + value + ";" + expires + ";path=/";
             }
         
@@ -87,13 +89,10 @@
                 const decodedCookie = decodeURIComponent(document.cookie);
                 const carray = decodedCookie.split(';');
                 for (let c of carray) {
-                    // Elimina espacios en blanco iniciales
                     while (c.charAt(0) === ' ') {
                         c = c.substring(1);
                     }
-                    // Si la cookie actual empieza con 'name='
                     if (c.indexOf(cname) === 0) {
-                        // Retorna el valor (lo que hay tras 'name=')
                         return c.substring(cname.length, c.length);
                     }
                 }
@@ -109,23 +108,41 @@
             const aboutSection = document.getElementById('about-us');
             const contactSection = document.getElementById('contact');
         
-            // ------ Textos en español ------
+            // ------ Contenido en español ------
             const esContent = {
                 languageBtn: "EN",
                 headerTitle: "Soporte, consultoría y desarrollo Moodle",
                 navHome: "Inicio",
                 navServices: "Nuestros servicios",
                 navAbout: "Sobre nosotros",
+                // Estructura completa del #about-us
                 aboutHTML: `
-                    <h2>Sobre nosotros</h2>
-                    <p>Somos especialistas en la administración y optimización de plataformas Moodle. Con más de 15 años de experiencia en el sector de la educación online, ayudamos a instituciones educativas y empresas a gestionar su entorno de aprendizaje de manera eficiente, segura y escalable.</p>
-                    <p>Nuestro equipo está formado por expertos en Moodle, desarrollo web y administración de sistemas, lo que nos permite ofrecer soluciones personalizadas para cada cliente. Nos encargamos de la instalación, configuración, mantenimiento y soporte técnico de Moodle, garantizando un rendimiento óptimo y una experiencia de usuario sin interrupciones.</p>
-                    <p>Nos diferenciamos por nuestro enfoque en la calidad del servicio, la atención personalizada y la búsqueda constante de soluciones innovadoras para mejorar el aprendizaje en línea. Ya sea que necesites migrar tu plataforma, integrar herramientas externas o mejorar la experiencia de tus usuarios, estamos aquí para ayudarte en cada paso del camino.</p>
-                    <h3>Nuestra misión</h3>
-                    <p>Facilitar la gestión de Moodle a través de soluciones eficientes, seguras y adaptadas a las necesidades de cada organización, impulsando el éxito del aprendizaje online.</p>
-                    <h3>Nuestra visión</h3>
-                    <p>Ser el socio estratégico de referencia en la administración de Moodle, brindando servicios de excelencia y fomentando el crecimiento de nuestros clientes en el ámbito de la educación digital.</p>
-                    <p>Confía en nosotros para potenciar tu plataforma Moodle y llevar tu experiencia de aprendizaje en línea al siguiente nivel.</p>
+                    <div class="about-section">
+                        <div class="about-text">
+                            <h2>Sobre nosotros</h2>
+                            <p>Somos especialistas en la administración y optimización de plataformas Moodle. Con más de 15 años de experiencia en el sector de la educación online, ayudamos a instituciones educativas y empresas a gestionar su entorno de aprendizaje de manera eficiente, segura y escalable.</p>
+                            <p>Nuestro equipo está formado por expertos en Moodle, desarrollo web y administración de sistemas, lo que nos permite ofrecer soluciones personalizadas para cada cliente. Nos encargamos de la instalación, configuración, mantenimiento y soporte técnico de Moodle, garantizando un rendimiento óptimo y una experiencia de usuario sin interrupciones.</p>
+                            <p>Nos diferenciamos por nuestro enfoque en la calidad del servicio, la atención personalizada y la búsqueda constante de soluciones innovadoras para mejorar el aprendizaje en línea. Ya sea que necesites migrar tu plataforma, integrar herramientas externas o mejorar la experiencia de tus usuarios, estamos aquí para ayudarte en cada paso del camino.</p>
+                        </div>
+                        <div class="about-image">
+                            <img src="pix/about.png" alt="Sobre nosotros">
+                        </div>
+                    </div>
+        
+                    <div class="mission-section">
+                        <div class="mission-image">
+                            <img src="pix/ourmission.png" alt="Nuestra misión">
+                        </div>
+                        <div class="mission-text">
+                            <h3>Nuestra misión</h3>
+                            <p>Facilitar la gestión de Moodle a través de soluciones eficientes, seguras y adaptadas a las necesidades de cada organización, impulsando el éxito del aprendizaje online.</p>
+                            
+                            <h3>Nuestra visión</h3>
+                            <p>Ser el socio estratégico de referencia en la administración de Moodle, brindando servicios de excelencia y fomentando el crecimiento de nuestros clientes en el ámbito de la educación digital.</p>
+                            
+                            <p>Confía en nosotros para potenciar tu plataforma Moodle y llevar tu experiencia de aprendizaje en línea al siguiente nivel.</p>
+                        </div>
+                    </div>
                 `,
                 contactHTML: `
                     <h2>Contacta con nosotros</h2>
@@ -133,23 +150,41 @@
                 `
             };
         
-            // ------ Textos en inglés ------
+            // ------ Contenido en inglés ------
             const enContent = {
                 languageBtn: "ES",
                 headerTitle: "Support, consulting, and Moodle development",
                 navHome: "Home",
                 navServices: "Our Services",
                 navAbout: "About Us",
+                // Estructura completa del #about-us
                 aboutHTML: `
-                    <h2>About us</h2>
-                    <p>We are specialists in the administration and optimization of Moodle platforms. With over 15 years of experience in the online education sector, we help educational institutions and companies manage their learning environments efficiently, securely, and in a scalable way.</p>
-                    <p>Our team is made up of experts in Moodle, web development, and systems administration, which allows us to offer personalized solutions for each client. We handle the installation, configuration, maintenance, and technical support of Moodle, ensuring optimal performance and a seamless user experience.</p>
-                    <p>We stand out for our focus on service quality, personalized attention, and the constant search for innovative solutions to enhance online learning. Whether you need to migrate your platform, integrate external tools, or improve your users' experience, we're here to help you every step of the way.</p>
-                    <h3>Our Mission</h3>
-                    <p>To facilitate Moodle management through efficient, secure solutions adapted to each organization's needs, driving the success of online learning.</p>
-                    <h3>Our Vision</h3>
-                    <p>To be the strategic partner of reference in Moodle administration, providing excellent services and fostering the growth of our clients in the digital education field.</p>
-                    <p>Trust us to enhance your Moodle platform and take your online learning experience to the next level.</p>
+                    <div class="about-section">
+                        <div class="about-text">
+                            <h2>About us</h2>
+                            <p>We are specialists in the administration and optimization of Moodle platforms. With over 15 years of experience in the online education sector, we help educational institutions and companies manage their learning environments efficiently, securely, and in a scalable way.</p>
+                            <p>Our team is made up of experts in Moodle, web development, and systems administration, which allows us to offer personalized solutions for each client. We handle the installation, configuration, maintenance, and technical support of Moodle, ensuring optimal performance and a seamless user experience.</p>
+                            <p>We stand out for our focus on service quality, personalized attention, and the constant search for innovative solutions to enhance online learning. Whether you need to migrate your platform, integrate external tools, or improve your users' experience, we're here to help you every step of the way.</p>
+                        </div>
+                        <div class="about-image">
+                            <img src="pix/about.png" alt="About Us">
+                        </div>
+                    </div>
+        
+                    <div class="mission-section">
+                        <div class="mission-image">
+                            <img src="pix/ourmission.png" alt="Our Mission">
+                        </div>
+                        <div class="mission-text">
+                            <h3>Our Mission</h3>
+                            <p>To facilitate Moodle management through efficient, secure solutions adapted to each organization's needs, driving the success of online learning.</p>
+                            
+                            <h3>Our Vision</h3>
+                            <p>To be the strategic partner of reference in Moodle administration, providing excellent services and fostering the growth of our clients in the digital education field.</p>
+                            
+                            <p>Trust us to enhance your Moodle platform and take your online learning experience to the next level.</p>
+                        </div>
+                    </div>
                 `,
                 contactHTML: `
                     <h2>Contact us</h2>
@@ -157,7 +192,7 @@
                 `
             };
         
-            // Estado inicial (por defecto) en español
+            // Estado inicial en español
             let isSpanish = true;
         
             // Funciones para aplicar traducción
@@ -169,10 +204,8 @@
                 navAbout.textContent = esContent.navAbout;
                 aboutSection.innerHTML = esContent.aboutHTML;
                 contactSection.innerHTML = esContent.contactHTML;
-                
-                // Guardamos la preferencia en una cookie de 30 días (ejemplo)
+        
                 setCookie('lang', 'es', 30);
-                
                 isSpanish = true;
             }
         
@@ -184,14 +217,12 @@
                 navAbout.textContent = enContent.navAbout;
                 aboutSection.innerHTML = enContent.aboutHTML;
                 contactSection.innerHTML = enContent.contactHTML;
-                
-                // Guardamos la preferencia en una cookie de 30 días (ejemplo)
+        
                 setCookie('lang', 'en', 30);
-                
                 isSpanish = false;
             }
         
-            // Al cargar la página, leemos la cookie para ver si estaba en 'es' o 'en'
+            // Al cargar, revisamos si la cookie indica 'es' o 'en'
             const currentLang = getCookie('lang');
             if (currentLang === 'en') {
                 setEnglish();

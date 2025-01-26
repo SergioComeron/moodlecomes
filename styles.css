@@ -113,7 +113,7 @@ nav ul li a:hover {
     background-color: #ffcc00; /* Color de fondo de la franja */
     color: #ffffff; /* Color del texto */
     text-align: center;
-    padding: 60px 0; /* Reduce el espacio de la franja */
+    padding: 20px 0; /* Reduce el espacio de la franja */
     font-size: 50px; /* Tamaño de la fuente */
     font-weight: bold;
     text-transform: uppercase; /* Convierte el texto a mayúsculas */
@@ -125,7 +125,7 @@ section {
     padding: 20px 0;
 }
 
-/* Estilos para la sección about */
+/* Estilos para la sección about y services */
 .about-content, .services-content {
     display: flex;
     align-items: flex-start;
@@ -138,10 +138,8 @@ section {
     align-self: flex-start; /* Alinea la imagen con la primera línea de texto */
 }
 
-.about-text, .services-text {
-    flex: 1;
-    font-size: 1.5vw; /* Tamaño de fuente relativo al ancho de la ventana */
-}
+/* Eliminamos la regla antigua 
+   .about-text, .services-text { font-size: 1.5vw; } */
 
 /* Footer corregido */
 footer {
@@ -149,6 +147,37 @@ footer {
     color: #fff;
     text-align: center;
     padding: 10px 0;
+}
+
+/* Secciones about & mission (por si las usas también en otras páginas) */
+.about-section,
+.mission-section {
+    display: flex;
+    align-items: center;
+    margin-bottom: 40px;
+}
+
+/* Unificamos font-size para about, mission y services */
+.about-text,
+.mission-text,
+.services-text {
+    flex: 1;
+    padding: 20px;
+    /* Tamaño de fuente responsivo usando vw o clamp */
+    font-size: 1.5vw; 
+    /* Ajusta según prefieras: 1.2vw, 1.5vw, etc. */
+}
+
+.about-image,
+.mission-image {
+    flex: 1;
+    padding: 20px;
+}
+
+.about-image img,
+.mission-image img {
+    max-width: 100%;
+    height: auto;
 }
 
 /* Estilos para hacer el menú responsive */
@@ -162,13 +191,10 @@ footer {
         max-height: 0;
         overflow: hidden;
         transition: max-height 0.3s ease;
-
-        /* Para que aparezca debajo del header fijo */
         position: absolute;
         top: 60px; /* Ajusta según la altura del header */
         left: 0;
         right: 0;
-
         background-color: #333;
         flex-direction: column;
         align-items: center;
@@ -194,22 +220,35 @@ footer {
         padding: 30px 0; /* Ajusta el padding para pantallas pequeñas */
     }
 
-    .about-content, .services-content {
+    .about-content,
+    .services-content {
         flex-direction: column;
         align-items: center;
     }
 
-    .about-logo, .services-logo {
+    .about-logo,
+    .services-logo {
         max-width: 100%;
         margin-bottom: 20px;
     }
 
-    .about-text, .services-text {
+    /* Aquí igualamos .about-text, .services-text y .mission-text */
+    .about-text,
+    .services-text,
+    .mission-text {
         font-size: 3vw; /* Ajusta el tamaño de la fuente para pantallas más pequeñas */
+    }
+
+    .about-section,
+    .mission-section {
+        /* Apilamos en columna, pero invertimos el orden 
+           para que la imagen (segundo elemento) aparezca arriba */
+        flex-direction: column-reverse;
+        text-align: center; /* Opcional, para centrar el texto en móviles */
     }
 }
 
-/* Ajustes para pantallas pequeñas */
+/* Ajustes para pantallas muy pequeñas */
 @media (max-width: 480px) {
     .container {
         width: 98%;  /* Más espacio aprovechado en móviles */

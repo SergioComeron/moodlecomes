@@ -90,25 +90,51 @@
             const menuToggle = document.querySelector('.menu-toggle');
             const nav = document.querySelector('nav ul');
             const languageBtn = document.getElementById('languageBtn');
-
+        
             const navHome = document.getElementById('nav-home');
             const navServices = document.getElementById('nav-services');
             const navAbout = document.getElementById('nav-about');
-
+        
             const highlightText = document.getElementById('highlight-text').querySelector('p');
-
+        
             const aboutTitle = document.getElementById('about-title');
             const aboutTextContainer = document.getElementById('about-text');
-
+        
             const servicesTitle = document.getElementById('services-title');
             const servicesTextContainer = document.getElementById('services-text');
-
+        
             const clientsTitle = document.getElementById('clients-title');
-
+        
             const contactTitle = document.getElementById('contact-title');
             const contactText = document.getElementById('contact-text');
             const contactLink = document.getElementById('contact-link');
-
+        
+            // ------ Funciones para manejar Cookies ------
+            function setCookie(name, value, days) {
+                const d = new Date();
+                d.setTime(d.getTime() + (days * 24 * 60 * 60 * 1000));
+                const expires = "expires=" + d.toUTCString();
+                document.cookie = name + "=" + value + ";" + expires + ";path=/";
+            }
+        
+            function getCookie(name) {
+                const cname = name + "=";
+                const decodedCookie = decodeURIComponent(document.cookie);
+                const carray = decodedCookie.split(';');
+                for (let c of carray) {
+                    // Elimina espacios en blanco al inicio
+                    while (c.charAt(0) === ' ') {
+                        c = c.substring(1);
+                    }
+                    // Si la cookie actual empieza con 'name='
+                    if (c.indexOf(cname) === 0) {
+                        // Retorna el valor
+                        return c.substring(cname.length, c.length);
+                    }
+                }
+                return "";
+            }
+        
             // Contenido en español
             const esContent = {
                 navHome: "Inicio",
@@ -133,7 +159,7 @@
                 contactLink: "contacto@moodle.com.es",
                 languageBtn: "EN"
             };
-
+        
             // Contenido en inglés
             const enContent = {
                 navHome: "Home",
@@ -158,76 +184,75 @@
                 contactLink: "contact@moodle.com.es",
                 languageBtn: "ES"
             };
-
-            // Variable para el estado actual. Luego la sobreescribimos leyendo localStorage.
-    let isSpanish = true;
-
-    // Función para aplicar contenidos en INGLÉS
-    function setEnglish() {
-        navHome.textContent = enContent.navHome;
-        navServices.textContent = enContent.navServices;
-        navAbout.textContent = enContent.navAbout;
-        highlightText.textContent = enContent.highlight;
-        aboutTitle.textContent = enContent.aboutTitle;
-        aboutTextContainer.innerHTML = enContent.aboutHtml;
-        servicesTitle.textContent = enContent.servicesTitle;
-        servicesTextContainer.innerHTML = enContent.servicesHtml;
-        clientsTitle.textContent = enContent.clientsTitle;
-        contactTitle.textContent = enContent.contactTitle;
-        contactText.innerHTML = enContent.contactText +
-            `<a href="mailto:${enContent.contactLink}" id="contact-link">${enContent.contactLink}</a>`;
-        languageBtn.textContent = enContent.languageBtn;
-
-        // Guardamos en localStorage
-        localStorage.setItem('lang', 'en');
-        isSpanish = false;
-    }
-
-    // Función para aplicar contenidos en ESPAÑOL
-    function setSpanish() {
-        navHome.textContent = esContent.navHome;
-        navServices.textContent = esContent.navServices;
-        navAbout.textContent = esContent.navAbout;
-        highlightText.textContent = esContent.highlight;
-        aboutTitle.textContent = esContent.aboutTitle;
-        aboutTextContainer.innerHTML = esContent.aboutHtml;
-        servicesTitle.textContent = esContent.servicesTitle;
-        servicesTextContainer.innerHTML = esContent.servicesHtml;
-        clientsTitle.textContent = esContent.clientsTitle;
-        contactTitle.textContent = esContent.contactTitle;
-        contactText.innerHTML = esContent.contactText +
-            `<a href="mailto:${esContent.contactLink}" id="contact-link">${esContent.contactLink}</a>`;
-        languageBtn.textContent = esContent.languageBtn;
-
-        // Guardamos en localStorage
-        localStorage.setItem('lang', 'es');
-        isSpanish = true;
-    }
-
-    // 1) Al cargar la página, leemos la preferencia de idioma en localStorage (si existe).
-    const storedLang = localStorage.getItem('lang'); 
-    if (storedLang === 'en') {
-        // Si la preferencia es 'en', cargamos la versión en inglés.
-        setEnglish();
-    } else {
-        // Por defecto, español (o si storedLang === 'es' o no existe).
-        setSpanish();
-    }
-
-    // 2) Menú hamburguesa (solo móvil)
-    menuToggle.addEventListener('click', function() {
-        nav.classList.toggle('showing');
-    });
-
-    // 3) Al pulsar el botón de idioma, alternamos.
-    languageBtn.addEventListener('click', function() {
-        if (isSpanish) {
-            setEnglish();
-        } else {
-            setSpanish();
-        }
-    });
+        
+            // Variable para el estado actual. Por defecto, suponemos español
+            let isSpanish = true;
+        
+            // Función para aplicar contenidos en INGLÉS
+            function setEnglish() {
+                navHome.textContent = enContent.navHome;
+                navServices.textContent = enContent.navServices;
+                navAbout.textContent = enContent.navAbout;
+                highlightText.textContent = enContent.highlight;
+                aboutTitle.textContent = enContent.aboutTitle;
+                aboutTextContainer.innerHTML = enContent.aboutHtml;
+                servicesTitle.textContent = enContent.servicesTitle;
+                servicesTextContainer.innerHTML = enContent.servicesHtml;
+                clientsTitle.textContent = enContent.clientsTitle;
+                contactTitle.textContent = enContent.contactTitle;
+                contactText.innerHTML = enContent.contactText +
+                    `<a href="mailto:${enContent.contactLink}" id="contact-link">${enContent.contactLink}</a>`;
+                languageBtn.textContent = enContent.languageBtn;
+        
+                // Guardamos en cookie
+                setCookie('lang', 'en', 30);
+                isSpanish = false;
+            }
+        
+            // Función para aplicar contenidos en ESPAÑOL
+            function setSpanish() {
+                navHome.textContent = esContent.navHome;
+                navServices.textContent = esContent.navServices;
+                navAbout.textContent = esContent.navAbout;
+                highlightText.textContent = esContent.highlight;
+                aboutTitle.textContent = esContent.aboutTitle;
+                aboutTextContainer.innerHTML = esContent.aboutHtml;
+                servicesTitle.textContent = esContent.servicesTitle;
+                servicesTextContainer.innerHTML = esContent.servicesHtml;
+                clientsTitle.textContent = esContent.clientsTitle;
+                contactTitle.textContent = esContent.contactTitle;
+                contactText.innerHTML = esContent.contactText +
+                    `<a href="mailto:${esContent.contactLink}" id="contact-link">${esContent.contactLink}</a>`;
+                languageBtn.textContent = esContent.languageBtn;
+        
+                // Guardamos en cookie
+                setCookie('lang', 'es', 30);
+                isSpanish = true;
+            }
+        
+            // Al cargar, revisamos si en la cookie 'lang' está 'en' o 'es'
+            const currentLang = getCookie('lang');
+            if (currentLang === 'en') {
+                setEnglish();
+            } else {
+                // Por defecto, cargamos español
+                setSpanish();
+            }
+        
+            // Menú hamburguesa (solo para pantallas pequeñas)
+            menuToggle.addEventListener('click', function() {
+                nav.classList.toggle('showing');
+            });
+        
+            // Botón de cambio de idioma
+            languageBtn.addEventListener('click', function() {
+                if (isSpanish) {
+                    setEnglish();
+                } else {
+                    setSpanish();
+                }
+            });
         });
-    </script>
+        </script>
 </body>
 </html>
