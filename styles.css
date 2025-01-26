@@ -149,6 +149,17 @@ footer {
     padding: 10px 0;
 }
 
+/* Estilo para enlaces en el footer */
+footer a {
+    color: #fff; /* Cambia el color del texto a blanco */
+    text-decoration: none; /* Elimina el subrayado */
+    font-weight: bold; /* Opcional: hace el texto más visible */
+}
+
+footer a:hover {
+    text-decoration: underline; /* Agrega subrayado al pasar el ratón */
+}
+
 /* Secciones about & mission (por si las usas también en otras páginas) */
 .about-section,
 .mission-section {
@@ -178,6 +189,40 @@ footer {
 .mission-image img {
     max-width: 100%;
     height: auto;
+}
+
+.cookie-banner {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    color: #fff;
+    text-align: center;
+    padding: 15px;
+    font-size: 14px;
+    display: none;
+    z-index: 1000;
+}
+
+.cookie-banner button {
+    background-color: #ffcc00;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-weight: bold;
+    margin-left: 20px;
+}
+
+/* Estilo para enlaces en el banner de cookies */
+.cookie-banner a {
+    color: #fff; /* Cambia el color del texto a blanco */
+    text-decoration: none; /* Elimina el subrayado */
+    font-weight: bold; /* Opcional: hace el texto más visible */
+}
+
+.cookie-banner a:hover {
+    text-decoration: underline; /* Agrega subrayado al pasar el ratón */
 }
 
 /* Estilos para hacer el menú responsive */

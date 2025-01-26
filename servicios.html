@@ -70,16 +70,27 @@
         </section>
     </div>
 </footer>
+<!-- Aviso de cookies -->
+<div id="cookie-banner" class="cookie-banner">
+    <p>Este sitio utiliza cookies para mejorar su experiencia. <a href="politica-de-cookies.html">Más información</a></p>
+    <button id="accept-cookies">Aceptar</button>
+</div>
 
 <script>
-    /* ---- Funciones para manejo de cookies ---- */
-    function setCookie(name, value, days) {
-        const d = new Date();
-        d.setTime(d.getTime() + (days * 24 * 60 * 60 * 1000)); // 'days' días en milisegundos
-        const expires = "expires=" + d.toUTCString();
-        // path=/ => cookie válida en todo tu dominio
-        document.cookie = name + "=" + value + ";" + expires + ";path=/";
-    }
+    // ------ Banner de cookies ------
+    const cookieBanner = document.getElementById('cookie-banner');
+            const acceptCookiesBtn = document.getElementById('accept-cookies');
+        
+            // ------ Funciones de cookies ------
+            function setCookie(name, value, days) {
+                // Solo guardamos la cookie de idioma si el usuario aceptó
+                if (getCookie('cookies_accepted')) {
+                    const d = new Date();
+                    d.setTime(d.getTime() + (days * 24 * 60 * 60 * 1000));
+                    const expires = "expires=" + d.toUTCString();
+                    document.cookie = name + "=" + value + ";" + expires + ";path=/";
+                }
+            }
     
     function getCookie(name) {
         const cname = name + "=";
@@ -95,6 +106,19 @@
         }
         return "";
     }
+
+    // --- Mostrar banner si NO existe 'cookies_accepted' ---
+    if (!getCookie('cookies_accepted')) {
+                cookieBanner.style.display = 'block';
+            }
+        
+            // --- Evento al hacer clic en "Aceptar" ---
+            acceptCookiesBtn.addEventListener('click', function() {
+                // Guardamos la cookie de aceptación
+                document.cookie = "cookies_accepted=true; path=/; max-age=" + (60 * 60 * 24 * 30);
+                // Ocultamos el banner
+                cookieBanner.style.display = 'none';
+            });
     
     document.addEventListener('DOMContentLoaded', function() {
         /* ===== MENÚ HAMBURGUESA ===== */

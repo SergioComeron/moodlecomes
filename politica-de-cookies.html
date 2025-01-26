@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Política de Cookies</title>
+  <!-- Hoja de estilos principal -->
+  <link rel="stylesheet" href="styles.css">
+  <!-- Fuentes -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap"
+    rel="stylesheet">
+</head>
+<body>
+  <header>
+    <div class="container">
+      <h1>Soporte, consultoría y desarrollo Moodle</h1>
+      <span class="menu-toggle">&#9776;</span>
+      <nav>
+        <ul>
+          <li><a href="index.html" id="nav-home">Inicio</a></li>
+          <li><a href="servicios.html" id="nav-services">Nuestros servicios</a></li>
+          <li><a href="sobre-nosotros.html" id="nav-about">Sobre nosotros</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <section class="container" style="margin-top: 40px;">
+    <h2>Política de Cookies</h2>
+    <p>
+      En nuestro sitio web utilizamos cookies con el fin de mejorar la experiencia de navegación 
+      de nuestros usuarios y recordar sus preferencias, como el idioma seleccionado. A continuación, 
+      te informamos sobre qué son las cookies, cuáles utilizamos y cómo puedes gestionarlas.
+    </p>
+
+    <h3>¿Qué son las cookies?</h3>
+    <p>
+      Las cookies son pequeños archivos de texto que se almacenan en tu dispositivo cuando visitas 
+      determinadas páginas web. Son ampliamente utilizadas para que los sitios web funcionen de 
+      manera más eficiente y para proporcionar información a los propietarios de los mismos.
+    </p>
+
+    <h3>¿Qué tipos de cookies utilizamos?</h3>
+    <ul>
+      <li>
+        <strong>Cookie de consentimiento:</strong> 
+        <code>cookies_accepted</code><br>
+        Sirve para recordar que el usuario ha aceptado nuestra política de cookies, evitando 
+        que aparezca repetidamente el aviso legal. Expira en 30 días.
+      </li>
+      <li>
+        <strong>Cookie de idioma:</strong> 
+        <code>lang</code><br>
+        Almacena la preferencia de idioma seleccionada (por ejemplo, “es” o “en”). Expira 
+        en 30 días. Esta cookie mejora la experiencia de usuario, mostrando la web en el 
+        idioma preferido de forma automática.
+      </li>
+    </ul>
+
+    <h3>¿Cómo se pueden gestionar las cookies?</h3>
+    <p>
+      Puedes permitir, bloquear o eliminar las cookies instaladas en tu equipo mediante la 
+      configuración de las opciones de tu navegador de Internet. Sin embargo, si bloqueas o 
+      rechazas cookies, es posible que ciertas funciones de nuestro sitio no estén disponibles 
+      o no funcionen correctamente.
+    </p>
+
+    <p>
+      Cada navegador tiene su propia configuración de cookies. Aquí encontrarás enlaces 
+      con las instrucciones para configurar o deshabilitar cookies en los navegadores más 
+      comunes:
+    </p>
+    <ul>
+      <li>
+        <a href="https://support.google.com/chrome/answer/95647" target="_blank" rel="noopener">
+          Google Chrome
+        </a>
+      </li>
+      <li>
+        <a href="https://support.mozilla.org/es/kb/habilitar-y-deshabilitar-cookies-que-los-sitios-we" target="_blank" rel="noopener">
+          Mozilla Firefox
+        </a>
+      </li>
+      <li>
+        <a href="https://support.microsoft.com/es-es/help/17442/windows-internet-explorer-delete-manage-cookies" target="_blank" rel="noopener">
+          Microsoft Edge
+        </a>
+      </li>
+      <li>
+        <a href="http://support.apple.com/kb/ph5042" target="_blank" rel="noopener">
+          Safari
+        </a>
+      </li>
+      <li>
+        <a href="https://help.opera.com/en/latest/web-preferences/#cookies" target="_blank" rel="noopener">
+          Opera
+        </a>
+      </li>
+    </ul>
+
+    <h3>Consentimiento</h3>
+    <p>
+      Al utilizar nuestro sitio web por primera vez, se te mostrará un aviso de cookies. 
+      Si haces clic en el botón “Aceptar”, confirmas que has leído y aceptas esta política 
+      de cookies.
+    </p>
+
+    <h3>Más información</h3>
+    <p>
+      Si deseas más información acerca del uso de cookies en nuestro sitio, puedes ponerte 
+      en contacto con nosotros en: 
+      <a href="mailto:contacto@moodle.com.es">contacto@moodle.com.es</a>
+    </p>
+  </section>
+
+  <footer>
+    <div class="container">
+        <section id="contact" class="container">
+            <h2 id="contact-title">Contacta con nosotros</h2>
+            <p id="contact-text">
+                Puedes contactarnos a través del correo:
+                <a href="mailto:contacto@moodle.com.es" id="contact-link">contacto@moodle.com.es</a>
+            </p>
+        </section>
+    </div>
+</footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Menú hamburguesa
+      const menuToggle = document.querySelector('.menu-toggle');
+      const nav = document.querySelector('nav ul');
+
+      menuToggle.addEventListener('click', function() {
+          nav.classList.toggle('showing');
+      });
+    });
+  </script>
+</body>
+</html>

@@ -83,10 +83,15 @@
             </section>
         </div>
     </footer>
+    <!-- Aviso de cookies -->
+    <div id="cookie-banner" class="cookie-banner">
+        <p>Este sitio utiliza cookies para mejorar su experiencia. <a href="politica-de-cookies.html">Más información</a></p>
+        <button id="accept-cookies">Aceptar</button>
+    </div>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Referencias a elementos del DOM
+            // ------ Elementos del DOM ------
             const menuToggle = document.querySelector('.menu-toggle');
             const nav = document.querySelector('nav ul');
             const languageBtn = document.getElementById('languageBtn');
@@ -109,12 +114,19 @@
             const contactText = document.getElementById('contact-text');
             const contactLink = document.getElementById('contact-link');
         
-            // ------ Funciones para manejar Cookies ------
+            // ------ Banner de cookies ------
+            const cookieBanner = document.getElementById('cookie-banner');
+            const acceptCookiesBtn = document.getElementById('accept-cookies');
+        
+            // ------ Funciones de cookies ------
             function setCookie(name, value, days) {
-                const d = new Date();
-                d.setTime(d.getTime() + (days * 24 * 60 * 60 * 1000));
-                const expires = "expires=" + d.toUTCString();
-                document.cookie = name + "=" + value + ";" + expires + ";path=/";
+                // Solo guardamos la cookie de idioma si el usuario aceptó
+                if (getCookie('cookies_accepted')) {
+                    const d = new Date();
+                    d.setTime(d.getTime() + (days * 24 * 60 * 60 * 1000));
+                    const expires = "expires=" + d.toUTCString();
+                    document.cookie = name + "=" + value + ";" + expires + ";path=/";
+                }
             }
         
             function getCookie(name) {
@@ -122,73 +134,83 @@
                 const decodedCookie = decodeURIComponent(document.cookie);
                 const carray = decodedCookie.split(';');
                 for (let c of carray) {
-                    // Elimina espacios en blanco al inicio
                     while (c.charAt(0) === ' ') {
                         c = c.substring(1);
                     }
-                    // Si la cookie actual empieza con 'name='
                     if (c.indexOf(cname) === 0) {
-                        // Retorna el valor
                         return c.substring(cname.length, c.length);
                     }
                 }
                 return "";
             }
         
+            // --- Mostrar banner si NO existe 'cookies_accepted' ---
+            if (!getCookie('cookies_accepted')) {
+                cookieBanner.style.display = 'block';
+            }
+        
+            // --- Evento al hacer clic en "Aceptar" ---
+            acceptCookiesBtn.addEventListener('click', function() {
+                // Guardamos la cookie de aceptación
+                document.cookie = "cookies_accepted=true; path=/; max-age=" + (60 * 60 * 24 * 30);
+                // Ocultamos el banner
+                cookieBanner.style.display = 'none';
+            });
+        
             // Contenido en español
-            const esContent = {
-                navHome: "Inicio",
-                navServices: "Nuestros servicios",
-                navAbout: "Sobre nosotros",
-                highlight: "LLEVA LA EXPERIENCIA DEL APRENDIZAJE EN LÍNEA AL SIGUIENTE NIVEL",
-                aboutTitle: "Plataforma de formación on-line",
-                aboutHtml: `
-                    <p>Moodle es una plataforma de gestión de aprendizaje (LMS) de código abierto utilizada por instituciones educativas para gestionar cursos y facilitar el aprendizaje en línea. Su interfaz es intuitiva y personalizable, permitiendo a los administradores ajustar el diseño y contenido según sus necesidades.</p>
-                    <p>La plataforma permite a los docentes organizar cursos con materiales como archivos, videos, cuestionarios, foros y tareas. Los cursos se estructuran en módulos o unidades y pueden incluir secuencias de actividades. Además, ofrece herramientas de <strong>evaluación y retroalimentación</strong>, como exámenes, tareas y encuestas, y un sistema flexible de calificaciones.</p>
-                    <p>Fomenta la <strong>interacción y colaboración</strong> entre estudiantes y docentes mediante foros, chats y actividades grupales. También permite integrar videoconferencias y otras herramientas externas de soporte al aprendizaje. Moodle facilita el <strong>seguimiento del progreso</strong> de los estudiantes mediante informes detallados sobre su desempeño.</p>
-                    <p>Es accesible desde diversos dispositivos y soporta múltiples idiomas. Además, garantiza la <strong>seguridad y privacidad</strong> de los usuarios con control de acceso y cifrado de datos.</p>
-                `,
-                servicesTitle: "Nuestros servicios",
-                servicesHtml: `
-                    <p>Somos un equipo de profesionales con más de 15 años de experiencia en Moodle y otras herramientas usadas para la formación on-line y teleformación. Ofrecemos todos los servicios requeridos para disponer tu plataforma de formación propia.</p>
-                    <p>Desde una solución llave en mano, hasta consultoría en las áreas en las que lo puedas necesitar (integración de productos, gestión y organización en grandes instalaciones, …).</p>
-                `,
-                clientsTitle: "Algunos de nuestros clientes",
-                contactTitle: "Contacta con nosotros",
-                contactText: "Puedes contactarnos a través del correo: ",
-                contactLink: "contacto@moodle.com.es",
-                languageBtn: "EN"
-            };
+        const esContent = {
+            navHome: "Inicio",
+            navServices: "Nuestros servicios",
+            navAbout: "Sobre nosotros",
+            highlight: "LLEVA LA EXPERIENCIA DEL APRENDIZAJE EN LÍNEA AL SIGUIENTE NIVEL",
+            aboutTitle: "Plataforma de formación on-line",
+            aboutHtml: `
+                <p>Moodle es una plataforma de gestión de aprendizaje (LMS) de código abierto utilizada por instituciones educativas para gestionar cursos y facilitar el aprendizaje en línea. Su interfaz es intuitiva y personalizable, permitiendo a los administradores ajustar el diseño y contenido según sus necesidades.</p>
+                <p>La plataforma permite a los docentes organizar cursos con materiales como archivos, videos, cuestionarios, foros y tareas. Los cursos se estructuran en módulos o unidades y pueden incluir secuencias de actividades. Además, ofrece herramientas de <strong>evaluación y retroalimentación</strong>, como exámenes, tareas y encuestas, y un sistema flexible de calificaciones.</p>
+                <p>Fomenta la <strong>interacción y colaboración</strong> entre estudiantes y docentes mediante foros, chats y actividades grupales. También permite integrar videoconferencias y otras herramientas externas de soporte al aprendizaje. Moodle facilita el <strong>seguimiento del progreso</strong> de los estudiantes mediante informes detallados sobre su desempeño.</p>
+                <p>Es accesible desde diversos dispositivos y soporta múltiples idiomas. Además, garantiza la <strong>seguridad y privacidad</strong> de los usuarios con control de acceso y cifrado de datos.</p>
+            `,
+            servicesTitle: "Nuestros servicios",
+            servicesHtml: `
+                <p>Somos un equipo de profesionales con más de 15 años de experiencia en Moodle y otras herramientas usadas para la formación on-line y teleformación. Ofrecemos todos los servicios requeridos para disponer tu plataforma de formación propia.</p>
+                <p>Desde una solución llave en mano, hasta consultoría en las áreas en las que lo puedas necesitar (integración de productos, gestión y organización en grandes instalaciones, …).</p>
+            `,
+            clientsTitle: "Algunos de nuestros clientes",
+            contactTitle: "Contacta con nosotros",
+            contactText: "Puedes contactarnos a través del correo: ",
+            contactLink: "contacto@moodle.com.es",
+            languageBtn: "EN"
+        };
         
-            // Contenido en inglés
-            const enContent = {
-                navHome: "Home",
-                navServices: "Our Services",
-                navAbout: "About Us",
-                highlight: "TAKE THE ONLINE LEARNING EXPERIENCE TO THE NEXT LEVEL",
-                aboutTitle: "Online Learning Platform",
-                aboutHtml: `
-                    <p>Moodle is an open-source Learning Management System (LMS) used by educational institutions to manage courses and facilitate online learning. Its interface is intuitive and customizable, allowing administrators to adjust the design and content to their needs.</p>
-                    <p>The platform enables teachers to organize courses with materials such as files, videos, quizzes, forums, and assignments. Courses are structured into modules or units and may include sequences of activities. It also offers <strong>assessment and feedback</strong> tools, including exams, assignments, and surveys, along with a flexible grading system.</p>
-                    <p>It fosters <strong>interaction and collaboration</strong> between students and teachers through forums, chats, and group activities. It also enables the integration of videoconferencing and other external learning support tools. Moodle facilitates <strong>student progress tracking</strong> with detailed reports on their performance.</p>
-                    <p>It's accessible from multiple devices and supports multiple languages. Additionally, it ensures <strong>user security and privacy</strong> through access control and data encryption.</p>
-                `,
-                servicesTitle: "Our Services",
-                servicesHtml: `
-                    <p>We are a team of professionals with over 15 years of experience in Moodle and other tools used for online training. We offer all the services you need to have your own training platform.</p>
-                    <p>From a turnkey solution to consultancy in the areas you may need (product integration, management and organization in large installations, ...).</p>
-                `,
-                clientsTitle: "Some of our clients",
-                contactTitle: "Contact us",
-                contactText: "You can reach us by email at: ",
-                contactLink: "contact@moodle.com.es",
-                languageBtn: "ES"
-            };
+        // Contenido en inglés
+        const enContent = {
+            navHome: "Home",
+            navServices: "Our Services",
+            navAbout: "About Us",
+            highlight: "TAKE THE ONLINE LEARNING EXPERIENCE TO THE NEXT LEVEL",
+            aboutTitle: "Online Learning Platform",
+            aboutHtml: `
+                <p>Moodle is an open-source Learning Management System (LMS) used by educational institutions to manage courses and facilitate online learning. Its interface is intuitive and customizable, allowing administrators to adjust the design and content to their needs.</p>
+                <p>The platform enables teachers to organize courses with materials such as files, videos, quizzes, forums, and assignments. Courses are structured into modules or units and may include sequences of activities. It also offers <strong>assessment and feedback</strong> tools, including exams, assignments, and surveys, along with a flexible grading system.</p>
+                <p>It fosters <strong>interaction and collaboration</strong> between students and teachers through forums, chats, and group activities. It also enables the integration of videoconferencing and other external learning support tools. Moodle facilitates <strong>student progress tracking</strong> with detailed reports on their performance.</p>
+                <p>It's accessible from multiple devices and supports multiple languages. Additionally, it ensures <strong>user security and privacy</strong> through access control and data encryption.</p>
+            `,
+            servicesTitle: "Our Services",
+            servicesHtml: `
+            <p>We are a team of professionals with over 15 years of experience in Moodle and other tools used for online training. We offer all the services you need to have your own training platform.</p>
+            <p>From a turnkey solution to consultancy in the areas you may need (product integration, management and organization in large installations, ...).</p>
+            `,
+            clientsTitle: "Some of our clients",
+            contactTitle: "Contact us",
+            contactText: "You can reach us by email at: ",
+            contactLink: "contact@moodle.com.es",
+            languageBtn: "ES"
+        };
         
-            // Variable para el estado actual. Por defecto, suponemos español
+            // Variable para el estado actual. Por defecto, español
             let isSpanish = true;
         
-            // Función para aplicar contenidos en INGLÉS
+            // Función para setear contenido en inglés
             function setEnglish() {
                 navHome.textContent = enContent.navHome;
                 navServices.textContent = enContent.navServices;
@@ -203,13 +225,13 @@
                 contactText.innerHTML = enContent.contactText +
                     `<a href="mailto:${enContent.contactLink}" id="contact-link">${enContent.contactLink}</a>`;
                 languageBtn.textContent = enContent.languageBtn;
-        
-                // Guardamos en cookie
+    
+                // Intentamos guardar cookie de idioma (solo si aceptó cookies)
                 setCookie('lang', 'en', 30);
                 isSpanish = false;
             }
         
-            // Función para aplicar contenidos en ESPAÑOL
+            // Función para setear contenido en español
             function setSpanish() {
                 navHome.textContent = esContent.navHome;
                 navServices.textContent = esContent.navServices;
@@ -225,7 +247,7 @@
                     `<a href="mailto:${esContent.contactLink}" id="contact-link">${esContent.contactLink}</a>`;
                 languageBtn.textContent = esContent.languageBtn;
         
-                // Guardamos en cookie
+                // Intentamos guardar cookie de idioma (solo si aceptó cookies)
                 setCookie('lang', 'es', 30);
                 isSpanish = true;
             }
@@ -235,17 +257,17 @@
             if (currentLang === 'en') {
                 setEnglish();
             } else {
-                // Por defecto, cargamos español
+                // Por defecto, español
                 setSpanish();
             }
         
-            // Menú hamburguesa (solo para pantallas pequeñas)
+            // Menú hamburguesa
             menuToggle.addEventListener('click', function() {
                 nav.classList.toggle('showing');
             });
         
             // Botón de cambio de idioma
-            languageBtn.addEventListener('click', function() {
+                languageBtn.addEventListener('click', function() {
                 if (isSpanish) {
                     setEnglish();
                 } else {
