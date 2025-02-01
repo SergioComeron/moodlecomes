@@ -1,343 +1,340 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Servicios profesionales de Moodle">
-    <title>Soporte, consultoría y desarrollo Moodle</title>
-    <!-- Tu hoja de estilos -->
-    <link rel="stylesheet" href="styles.css">
-    <!-- Fuentes -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap"
-      rel="stylesheet">
-    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Servicios profesionales de Moodle">
+  <title>Soporte, consultoría y desarrollo Moodle</title>
+  <!-- Tu hoja de estilos -->
+  <link rel="stylesheet" href="styles.css">
+  <!-- Fuentes -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
 </head>
 <body>
-    <header>
-        <div class="container">
-            <h1>Soporte, consultoría y desarrollo Moodle</h1>
-            <span class="menu-toggle">&#9776;</span>
-            <nav>
-                <ul>
-                    <li><a href="index.html" id="nav-home">Inicio</a></li>
-                    <li><a href="servicios.html" id="nav-services">Nuestros servicios</a></li>
-                    <li><a href="sobre-nosotros.html" id="nav-about">Sobre nosotros</a></li>
-                    <!-- Botón para cambiar idioma -->
-                    <li>
-                        <button class="language-toggle" id="languageBtn">EN</button>
-                    </li>
-                </ul>
-            </nav>
-        </div>
-    </header>
-
-    <!-- Franja destacada -->
-    <section class="highlight" id="highlight-text">
-        <p>LLEVA LA EXPERIENCIA DEL APRENDIZAJE EN LINEA AL SIGUIENTE NIVEL</p>
-    </section>
-
-    <section id="about" class="container">
-        <h2 id="about-title">Plataforma de formación on-line</h2>
-        <div class="about-content">
-            <img src="pix/logo2.png" alt="Logo" class="about-logo">
-            <div class="about-text" id="about-text">
-                <p>Moodle es una plataforma de gestión de aprendizaje (LMS) de código abierto utilizada por instituciones educativas para gestionar cursos y facilitar el aprendizaje en línea. Su interfaz es intuitiva y personalizable, permitiendo a los administradores ajustar el diseño y contenido según sus necesidades.</p>
-                <p>La plataforma permite a los docentes organizar cursos con materiales como archivos, videos, cuestionarios, foros y tareas. Los cursos se estructuran en módulos o unidades y pueden incluir secuencias de actividades. Además, ofrece herramientas de <strong>evaluación y retroalimentación</strong>, como exámenes, tareas y encuestas, y un sistema flexible de calificaciones.</p>
-                <p>Fomenta la <strong>interacción y colaboración</strong> entre estudiantes y docentes mediante foros, chats y actividades grupales. También permite integrar videoconferencias y otras herramientas externas de soporte al aprendizaje. Moodle facilita el <strong>seguimiento del progreso</strong> de los estudiantes mediante informes detallados sobre su desempeño.</p>
-                <p>Es accesible desde diversos dispositivos y soporta múltiples idiomas. Además, garantiza la <strong>seguridad y privacidad</strong> de los usuarios con control de acceso y cifrado de datos.</p>
-            </div>
-        </div>
-    </section>
-
-    <section id="services" class="container">
-        <h2 id="services-title">Nuestros servicios</h2>
-        <div class="services-content">
-            <div class="services-text" id="services-text">
-                <p>Somos un equipo de profesionales con más de 15 años de experiencia en Moodle y otras herramientas usadas para la formación on-line y teleformación. Ofrecemos todos los servicios requeridos para disponer tu plataforma de formación propia.</p>
-                <p>Desde una solución llave en mano, hasta consultoría en las áreas en las que lo puedas necesitar (integración de productos, gestión y organización en grandes instalaciones, …).</p>
-            </div>
-        </div>
-    </section>
-
-    <section id="clients" class="container">
-        <h2 id="clients-title">Algunos de nuestros clientes</h2>
-        <!-- Contenedor del carrusel -->
-        <div class="swiper clients-carousel">
-            <div class="swiper-wrapper">
-                <!-- Slide 1 -->
-                <div class="swiper-slide">
-                    <img src="pix/udima_compact_logo_404.png" alt="Udima">
-                </div>
-                <!-- Slide 2 -->
-                <div class="swiper-slide">
-                    <img src="pix/uned.png" alt="UNED">
-                </div>
-                <!-- Slide 3 -->
-                <div class="swiper-slide">
-                    <img src="pix/cef.png" alt="CEF">
-                </div>
-                <!-- Slide 4 -->
-                <div class="swiper-slide">
-                    <img src="pix/usj.png" alt="USJ">
-                </div>
-                <!-- Slide 5 -->
-                <div class="swiper-slide">
-                    <img src="pix/utn2.png" alt="UTN">
-                </div>
-            </div>
-            <!-- Opcional: paginación y flechas de navegación -->
-            <!-- <div class="swiper-pagination"></div> -->
-            <div class="swiper-button-next"></div>
-            <div class="swiper-button-prev"></div>
-        </div>
-    </section>
-
-    <footer>
-        <div class="container">
-            <section id="contact" class="container">
-                <h2 id="contact-title">Contacta con nosotros</h2>
-                <p id="contact-text">
-                    Puedes contactarnos a través del correo:
-                    <a href="mailto:contacto@moodle.com.es" id="contact-link">contacto@moodle.com.es</a>
-                </p>
-            </section>
-            <!-- Enlace a la política de cookies en pequeño -->
-            <p class="cookie-policy">
-                <a href="politica-de-cookies.html">Política de cookies</a>
-            </p>
-        </div>
-    </footer>
-    <!-- Aviso de cookies -->
-    <div id="cookie-banner" class="cookie-banner">
-        <p>Este sitio utiliza cookies para mejorar su experiencia. <a href="politica-de-cookies.html">Más información</a></p>
-        <button id="accept-cookies">Aceptar</button>
+  <header>
+    <div class="container">
+      <h1>Soporte, consultoría y desarrollo Moodle</h1>
+      <span class="menu-toggle">&#9776;</span>
+      <nav>
+        <ul>
+          <li><a href="index.html" id="nav-home">Inicio</a></li>
+          <li><a href="servicios.html" id="nav-services">Nuestros servicios</a></li>
+          <li><a href="sobre-nosotros.html" id="nav-about">Sobre nosotros</a></li>
+          <!-- Botón para cambiar idioma -->
+          <li>
+            <button class="language-toggle" id="languageBtn">EN</button>
+          </li>
+        </ul>
+      </nav>
     </div>
+  </header>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // ------ Elementos del DOM ------
-            const menuToggle = document.querySelector('.menu-toggle');
-            const nav = document.querySelector('nav ul');
-            const languageBtn = document.getElementById('languageBtn');
-        
-            const navHome = document.getElementById('nav-home');
-            const navServices = document.getElementById('nav-services');
-            const navAbout = document.getElementById('nav-about');
-        
-            const highlightText = document.getElementById('highlight-text').querySelector('p');
-        
-            const aboutTitle = document.getElementById('about-title');
-            const aboutTextContainer = document.getElementById('about-text');
-        
-            const servicesTitle = document.getElementById('services-title');
-            const servicesTextContainer = document.getElementById('services-text');
-        
-            const clientsTitle = document.getElementById('clients-title');
-        
-            const contactTitle = document.getElementById('contact-title');
-            const contactText = document.getElementById('contact-text');
-            const contactLink = document.getElementById('contact-link');
-        
-            // ------ Banner de cookies ------
-            const cookieBanner = document.getElementById('cookie-banner');
-            const acceptCookiesBtn = document.getElementById('accept-cookies');
-        
-            // ------ Funciones de cookies ------
-            function setCookie(name, value, days) {
-                // Solo guardamos la cookie de idioma si el usuario aceptó
-                if (getCookie('cookies_accepted')) {
-                    const d = new Date();
-                    d.setTime(d.getTime() + (days * 24 * 60 * 60 * 1000));
-                    const expires = "expires=" + d.toUTCString();
-                    document.cookie = name + "=" + value + ";" + expires + ";path=/";
-                }
-            }
-        
-            function getCookie(name) {
-                const cname = name + "=";
-                const decodedCookie = decodeURIComponent(document.cookie);
-                const carray = decodedCookie.split(';');
-                for (let c of carray) {
-                    while (c.charAt(0) === ' ') {
-                        c = c.substring(1);
-                    }
-                    if (c.indexOf(cname) === 0) {
-                        return c.substring(cname.length, c.length);
-                    }
-                }
-                return "";
-            }
-        
-            // --- Mostrar banner si NO existe 'cookies_accepted' ---
-            if (!getCookie('cookies_accepted')) {
-                cookieBanner.style.display = 'block';
-            }
-        
-            // --- Evento al hacer clic en "Aceptar" ---
-            acceptCookiesBtn.addEventListener('click', function() {
-                // Guardamos la cookie de aceptación
-                document.cookie = "cookies_accepted=true; path=/; max-age=" + (60 * 60 * 24 * 30);
-                // Ocultamos el banner
-                cookieBanner.style.display = 'none';
-            });
-        
-            // Contenido en español
-        const esContent = {
-            navHome: "Inicio",
-            navServices: "Nuestros servicios",
-            navAbout: "Sobre nosotros",
-            highlight: "LLEVA LA EXPERIENCIA DEL APRENDIZAJE EN LÍNEA AL SIGUIENTE NIVEL",
-            aboutTitle: "Plataforma de formación on-line",
-            aboutHtml: `
-                <p>Moodle es una plataforma de gestión de aprendizaje (LMS) de código abierto utilizada por instituciones educativas para gestionar cursos y facilitar el aprendizaje en línea. Su interfaz es intuitiva y personalizable, permitiendo a los administradores ajustar el diseño y contenido según sus necesidades.</p>
-                <p>La plataforma permite a los docentes organizar cursos con materiales como archivos, videos, cuestionarios, foros y tareas. Los cursos se estructuran en módulos o unidades y pueden incluir secuencias de actividades. Además, ofrece herramientas de <strong>evaluación y retroalimentación</strong>, como exámenes, tareas y encuestas, y un sistema flexible de calificaciones.</p>
-                <p>Fomenta la <strong>interacción y colaboración</strong> entre estudiantes y docentes mediante foros, chats y actividades grupales. También permite integrar videoconferencias y otras herramientas externas de soporte al aprendizaje. Moodle facilita el <strong>seguimiento del progreso</strong> de los estudiantes mediante informes detallados sobre su desempeño.</p>
-                <p>Es accesible desde diversos dispositivos y soporta múltiples idiomas. Además, garantiza la <strong>seguridad y privacidad</strong> de los usuarios con control de acceso y cifrado de datos.</p>
-            `,
-            servicesTitle: "Nuestros servicios",
-            servicesHtml: `
-                <p>Somos un equipo de profesionales con más de 15 años de experiencia en Moodle y otras herramientas usadas para la formación on-line y teleformación. Ofrecemos todos los servicios requeridos para disponer tu plataforma de formación propia.</p>
-                <p>Desde una solución llave en mano, hasta consultoría en las áreas en las que lo puedas necesitar (integración de productos, gestión y organización en grandes instalaciones, …).</p>
-            `,
-            clientsTitle: "Algunos de nuestros clientes",
-            contactTitle: "Contacta con nosotros",
-            contactText: "Puedes contactarnos a través del correo: ",
-            contactLink: "contacto@moodle.com.es",
-            languageBtn: "EN"
-        };
-        
-        // Contenido en inglés
-        const enContent = {
-            navHome: "Home",
-            navServices: "Our Services",
-            navAbout: "About Us",
-            highlight: "TAKE THE ONLINE LEARNING EXPERIENCE TO THE NEXT LEVEL",
-            aboutTitle: "Online Learning Platform",
-            aboutHtml: `
-                <p>Moodle is an open-source Learning Management System (LMS) used by educational institutions to manage courses and facilitate online learning. Its interface is intuitive and customizable, allowing administrators to adjust the design and content to their needs.</p>
-                <p>The platform enables teachers to organize courses with materials such as files, videos, quizzes, forums, and assignments. Courses are structured into modules or units and may include sequences of activities. It also offers <strong>assessment and feedback</strong> tools, including exams, assignments, and surveys, along with a flexible grading system.</p>
-                <p>It fosters <strong>interaction and collaboration</strong> between students and teachers through forums, chats, and group activities. It also enables the integration of videoconferencing and other external learning support tools. Moodle facilitates <strong>student progress tracking</strong> with detailed reports on their performance.</p>
-                <p>It's accessible from multiple devices and supports multiple languages. Additionally, it ensures <strong>user security and privacy</strong> through access control and data encryption.</p>
-            `,
-            servicesTitle: "Our Services",
-            servicesHtml: `
-            <p>We are a team of professionals with over 15 years of experience in Moodle and other tools used for online training. We offer all the services you need to have your own training platform.</p>
-            <p>From a turnkey solution to consultancy in the areas you may need (product integration, management and organization in large installations, ...).</p>
-            `,
-            clientsTitle: "Some of our clients",
-            contactTitle: "Contact us",
-            contactText: "You can reach us by email at: ",
-            contactLink: "contact@moodle.com.es",
-            languageBtn: "ES"
-        };
-        
-            // Variable para el estado actual. Por defecto, español
-            let isSpanish = true;
-        
-            // Función para setear contenido en inglés
-            function setEnglish() {
-                navHome.textContent = enContent.navHome;
-                navServices.textContent = enContent.navServices;
-                navAbout.textContent = enContent.navAbout;
-                highlightText.textContent = enContent.highlight;
-                aboutTitle.textContent = enContent.aboutTitle;
-                aboutTextContainer.innerHTML = enContent.aboutHtml;
-                servicesTitle.textContent = enContent.servicesTitle;
-                servicesTextContainer.innerHTML = enContent.servicesHtml;
-                clientsTitle.textContent = enContent.clientsTitle;
-                contactTitle.textContent = enContent.contactTitle;
-                contactText.innerHTML = enContent.contactText +
-                    `<a href="mailto:${enContent.contactLink}" id="contact-link">${enContent.contactLink}</a>`;
-                languageBtn.textContent = enContent.languageBtn;
-    
-                // Intentamos guardar cookie de idioma (solo si aceptó cookies)
-                setCookie('lang', 'en', 30);
-                isSpanish = false;
-            }
-        
-            // Función para setear contenido en español
-            function setSpanish() {
-                navHome.textContent = esContent.navHome;
-                navServices.textContent = esContent.navServices;
-                navAbout.textContent = esContent.navAbout;
-                highlightText.textContent = esContent.highlight;
-                aboutTitle.textContent = esContent.aboutTitle;
-                aboutTextContainer.innerHTML = esContent.aboutHtml;
-                servicesTitle.textContent = esContent.servicesTitle;
-                servicesTextContainer.innerHTML = esContent.servicesHtml;
-                clientsTitle.textContent = esContent.clientsTitle;
-                contactTitle.textContent = esContent.contactTitle;
-                contactText.innerHTML = esContent.contactText +
-                    `<a href="mailto:${esContent.contactLink}" id="contact-link">${esContent.contactLink}</a>`;
-                languageBtn.textContent = esContent.languageBtn;
-        
-                // Intentamos guardar cookie de idioma (solo si aceptó cookies)
-                setCookie('lang', 'es', 30);
-                isSpanish = true;
-            }
-        
-            // Al cargar, revisamos si en la cookie 'lang' está 'en' o 'es'
-            const currentLang = getCookie('lang');
-            if (currentLang === 'en') {
-                setEnglish();
-            } else {
-                // Por defecto, español
-                setSpanish();
-            }
-        
-            // Menú hamburguesa
-            menuToggle.addEventListener('click', function() {
-                nav.classList.toggle('showing');
-            });
+  <!-- Franja destacada -->
+  <section class="highlight" id="highlight-text">
+    <p>LLEVA LA EXPERIENCIA DEL APRENDIZAJE EN LÍNEA AL SIGUIENTE NIVEL</p>
+  </section>
 
-            window.addEventListener('resize', function() {
-            if (window.innerWidth > 768) {
-                nav.classList.remove('showing');
-            }
-            });
-        
-            // Botón de cambio de idioma
-                languageBtn.addEventListener('click', function() {
-                if (isSpanish) {
-                    setEnglish();
-                } else {
-                    setSpanish();
-                }
-            });
-        });
-        </script>
-        <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-        <script>
-            var swiper = new Swiper('.clients-carousel', {
-              slidesPerView: 3,
-              spaceBetween: 30,
-              loop: true,  // Permite un bucle continuo de slides
-              autoplay: {
-                delay: 3000, // Tiempo de espera entre cambios (en milisegundos)
-                disableOnInteraction: false, // El autoplay no se detiene al interactuar
-              },
-            //   pagination: {
-            //     el: '.swiper-pagination',
-            //     clickable: true,
-            //   },
-              navigation: {
-                nextEl: '.swiper-button-next',
-                prevEl: '.swiper-button-prev',
-              },
-              breakpoints: {
-                768: {
-                  slidesPerView: 3,
-                  spaceBetween: 20,
-                },
-                480: {
-                  slidesPerView: 1,
-                  spaceBetween: 10,
-                }
+  <section id="about" class="container">
+    <h2 id="about-title">Plataforma de formación on-line</h2>
+    <div class="about-content">
+      <img src="pix/logo2.png" alt="Logo" class="about-logo">
+      <div class="about-text" id="about-text">
+        <p>Moodle es una plataforma de gestión de aprendizaje (LMS) de código abierto utilizada por instituciones educativas para gestionar cursos y facilitar el aprendizaje en línea. Su interfaz es intuitiva y personalizable, permitiendo a los administradores ajustar el diseño y contenido según sus necesidades.</p>
+        <p>La plataforma permite a los docentes organizar cursos con materiales como archivos, videos, cuestionarios, foros y tareas. Los cursos se estructuran en módulos o unidades y pueden incluir secuencias de actividades. Además, ofrece herramientas de <strong>evaluación y retroalimentación</strong>, como exámenes, tareas y encuestas, y un sistema flexible de calificaciones.</p>
+        <p>Fomenta la <strong>interacción y colaboración</strong> entre estudiantes y docentes mediante foros, chats y actividades grupales. También permite integrar videoconferencias y otras herramientas externas de soporte al aprendizaje. Moodle facilita el <strong>seguimiento del progreso</strong> de los estudiantes mediante informes detallados sobre su desempeño.</p>
+        <p>Es accesible desde diversos dispositivos y soporta múltiples idiomas. Además, garantiza la <strong>seguridad y privacidad</strong> de los usuarios con control de acceso y cifrado de datos.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="services" class="container">
+    <h2 id="services-title">Nuestros servicios</h2>
+    <div class="services-content">
+      <div class="services-text" id="services-text">
+        <!-- El contenido se establece mediante JavaScript -->
+      </div>
+    </div>
+  </section>
+
+  <section id="clients" class="container">
+    <h2 id="clients-title">Algunos de nuestros clientes</h2>
+    <!-- Contenedor del carrusel -->
+    <div class="swiper clients-carousel">
+      <div class="swiper-wrapper">
+        <!-- Slide 1 -->
+        <div class="swiper-slide">
+          <img src="pix/udima_compact_logo_404.png" alt="Udima">
+        </div>
+        <!-- Slide 2 -->
+        <div class="swiper-slide">
+          <img src="pix/uned.png" alt="UNED">
+        </div>
+        <!-- Slide 3 -->
+        <div class="swiper-slide">
+          <img src="pix/cef.png" alt="CEF">
+        </div>
+        <!-- Slide 4 -->
+        <div class="swiper-slide">
+          <img src="pix/usj.png" alt="USJ">
+        </div>
+        <!-- Slide 5 -->
+        <div class="swiper-slide">
+          <img src="pix/utn2.png" alt="UTN">
+        </div>
+      </div>
+      <!-- Opcional: paginación y flechas de navegación -->
+      <!-- <div class="swiper-pagination"></div> -->
+      <div class="swiper-button-next"></div>
+      <div class="swiper-button-prev"></div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <section id="contact" class="container">
+        <h2 id="contact-title">Contacta con nosotros</h2>
+        <p id="contact-text">
+          Puedes contactarnos a través del correo:
+          <a href="mailto:contacto@moodle.com.es" id="contact-link">contacto@moodle.com.es</a>
+        </p>
+      </section>
+      <!-- Enlace a la política de cookies en pequeño -->
+      <p class="cookie-policy">
+        <a href="politica-de-cookies.html">Política de cookies</a>
+      </p>
+    </div>
+  </footer>
+  <!-- Aviso de cookies -->
+  <div id="cookie-banner" class="cookie-banner">
+    <p>Este sitio utiliza cookies para mejorar su experiencia. <a href="politica-de-cookies.html">Más información</a></p>
+    <button id="accept-cookies">Aceptar</button>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // ------ Elementos del DOM ------
+      const menuToggle = document.querySelector('.menu-toggle');
+      const nav = document.querySelector('nav ul');
+      const languageBtn = document.getElementById('languageBtn');
+  
+      const navHome = document.getElementById('nav-home');
+      const navServices = document.getElementById('nav-services');
+      const navAbout = document.getElementById('nav-about');
+  
+      const highlightText = document.getElementById('highlight-text').querySelector('p');
+  
+      const aboutTitle = document.getElementById('about-title');
+      const aboutTextContainer = document.getElementById('about-text');
+  
+      const servicesTitle = document.getElementById('services-title');
+      const servicesTextContainer = document.getElementById('services-text');
+  
+      const clientsTitle = document.getElementById('clients-title');
+  
+      const contactTitle = document.getElementById('contact-title');
+      const contactText = document.getElementById('contact-text');
+      const contactLink = document.getElementById('contact-link');
+  
+      // ------ Banner de cookies ------
+      const cookieBanner = document.getElementById('cookie-banner');
+      const acceptCookiesBtn = document.getElementById('accept-cookies');
+  
+      // ------ Funciones de cookies ------
+      function setCookie(name, value, days) {
+          // Solo guardamos la cookie de idioma si el usuario aceptó
+          if (getCookie('cookies_accepted')) {
+              const d = new Date();
+              d.setTime(d.getTime() + (days * 24 * 60 * 60 * 1000));
+              const expires = "expires=" + d.toUTCString();
+              document.cookie = name + "=" + value + ";" + expires + ";path=/";
+          }
+      }
+  
+      function getCookie(name) {
+          const cname = name + "=";
+          const decodedCookie = decodeURIComponent(document.cookie);
+          const carray = decodedCookie.split(';');
+          for (let c of carray) {
+              while (c.charAt(0) === ' ') {
+                  c = c.substring(1);
               }
-            });
-          </script>
+              if (c.indexOf(cname) === 0) {
+                  return c.substring(cname.length, c.length);
+              }
+          }
+          return "";
+      }
+  
+      // --- Mostrar banner si NO existe 'cookies_accepted' ---
+      if (!getCookie('cookies_accepted')) {
+          cookieBanner.style.display = 'block';
+      }
+  
+      // --- Evento al hacer clic en "Aceptar" ---
+      acceptCookiesBtn.addEventListener('click', function() {
+          // Guardamos la cookie de aceptación
+          document.cookie = "cookies_accepted=true; path=/; max-age=" + (60 * 60 * 24 * 30);
+          // Ocultamos el banner
+          cookieBanner.style.display = 'none';
+      });
+  
+      // Contenido en español
+      const esContent = {
+          navHome: "Inicio",
+          navServices: "Nuestros servicios",
+          navAbout: "Sobre nosotros",
+          highlight: "LLEVA LA EXPERIENCIA DEL APRENDIZAJE EN LÍNEA AL SIGUIENTE NIVEL",
+          aboutTitle: "Plataforma de formación on-line",
+          aboutHtml: `
+              <p>Moodle es una plataforma de gestión de aprendizaje (LMS) de código abierto utilizada por instituciones educativas para gestionar cursos y facilitar el aprendizaje en línea. Su interfaz es intuitiva y personalizable, permitiendo a los administradores ajustar el diseño y contenido según sus necesidades.</p>
+              <p>La plataforma permite a los docentes organizar cursos con materiales como archivos, videos, cuestionarios, foros y tareas. Los cursos se estructuran en módulos o unidades y pueden incluir secuencias de actividades. Además, ofrece herramientas de <strong>evaluación y retroalimentación</strong>, como exámenes, tareas y encuestas, y un sistema flexible de calificaciones.</p>
+              <p>Fomenta la <strong>interacción y colaboración</strong> entre estudiantes y docentes mediante foros, chats y actividades grupales. También permite integrar videoconferencias y otras herramientas externas de soporte al aprendizaje. Moodle facilita el <strong>seguimiento del progreso</strong> de los estudiantes mediante informes detallados sobre su desempeño.</p>
+              <p>Es accesible desde diversos dispositivos y soporta múltiples idiomas. Además, garantiza la <strong>seguridad y privacidad</strong> de los usuarios con control de acceso y cifrado de datos.</p>
+          `,
+          servicesTitle: "Nuestros servicios",
+          servicesHtml: `
+              <p>Somos un equipo de profesionales con más de 15 años de experiencia en Moodle y otras herramientas usadas para la formación on-line y teleformación. Ofrecemos todos los servicios requeridos para disponer tu plataforma de formación propia.</p>
+              <p>Desde una solución llave en mano, hasta consultoría en las áreas en las que lo puedas necesitar (integración de productos, gestión y organización en grandes instalaciones, …).</p>
+              <p><a href="servicios.html">Conoce más sobre nuestros servicios</a></p>
+          `,
+          clientsTitle: "Algunos de nuestros clientes",
+          contactTitle: "Contacta con nosotros",
+          contactText: "Puedes contactarnos a través del correo: ",
+          contactLink: "contacto@moodle.com.es",
+          languageBtn: "EN"
+      };
+  
+      // Contenido en inglés
+      const enContent = {
+          navHome: "Home",
+          navServices: "Our Services",
+          navAbout: "About Us",
+          highlight: "TAKE THE ONLINE LEARNING EXPERIENCE TO THE NEXT LEVEL",
+          aboutTitle: "Online Learning Platform",
+          aboutHtml: `
+              <p>Moodle is an open-source Learning Management System (LMS) used by educational institutions to manage courses and facilitate online learning. Its interface is intuitive and customizable, allowing administrators to adjust the design and content to their needs.</p>
+              <p>The platform enables teachers to organize courses with materials such as files, videos, quizzes, forums, and assignments. Courses are structured into modules or units and may include sequences of activities. It also offers <strong>assessment and feedback</strong> tools, including exams, assignments, and surveys, along with a flexible grading system.</p>
+              <p>It fosters <strong>interaction and collaboration</strong> between students and teachers through forums, chats, and group activities. It also enables the integration of videoconferencing and other external learning support tools. Moodle facilitates <strong>student progress tracking</strong> with detailed reports on their performance.</p>
+              <p>It's accessible from multiple devices and supports multiple languages. Additionally, it ensures <strong>user security and privacy</strong> through access control and data encryption.</p>
+          `,
+          servicesTitle: "Our Services",
+          servicesHtml: `
+              <p>We are a team of professionals with over 15 years of experience in Moodle and other tools used for online training. We offer all the services you need to have your own training platform.</p>
+              <p>From a turnkey solution to consultancy in the areas you may need (product integration, management and organization in large installations, ...).</p>
+              <p><a href="servicios.html">Learn more about our services</a></p>
+          `,
+          clientsTitle: "Some of our clients",
+          contactTitle: "Contact us",
+          contactText: "You can reach us by email at: ",
+          contactLink: "contact@moodle.com.es",
+          languageBtn: "ES"
+      };
+  
+      // Variable para el estado actual. Por defecto, español
+      let isSpanish = true;
+  
+      // Función para setear contenido en inglés
+      function setEnglish() {
+          navHome.textContent = enContent.navHome;
+          navServices.textContent = enContent.navServices;
+          navAbout.textContent = enContent.navAbout;
+          highlightText.textContent = enContent.highlight;
+          aboutTitle.textContent = enContent.aboutTitle;
+          aboutTextContainer.innerHTML = enContent.aboutHtml;
+          servicesTitle.textContent = enContent.servicesTitle;
+          servicesTextContainer.innerHTML = enContent.servicesHtml;
+          clientsTitle.textContent = enContent.clientsTitle;
+          contactTitle.textContent = enContent.contactTitle;
+          contactText.innerHTML = enContent.contactText +
+              `<a href="mailto:${enContent.contactLink}" id="contact-link">${enContent.contactLink}</a>`;
+          languageBtn.textContent = enContent.languageBtn;
+  
+          // Guardamos cookie de idioma (solo si aceptó cookies)
+          setCookie('lang', 'en', 30);
+          isSpanish = false;
+      }
+  
+      // Función para setear contenido en español
+      function setSpanish() {
+          navHome.textContent = esContent.navHome;
+          navServices.textContent = esContent.navServices;
+          navAbout.textContent = esContent.navAbout;
+          highlightText.textContent = esContent.highlight;
+          aboutTitle.textContent = esContent.aboutTitle;
+          aboutTextContainer.innerHTML = esContent.aboutHtml;
+          servicesTitle.textContent = esContent.servicesTitle;
+          servicesTextContainer.innerHTML = esContent.servicesHtml;
+          clientsTitle.textContent = esContent.clientsTitle;
+          contactTitle.textContent = esContent.contactTitle;
+          contactText.innerHTML = esContent.contactText +
+              `<a href="mailto:${esContent.contactLink}" id="contact-link">${esContent.contactLink}</a>`;
+          languageBtn.textContent = esContent.languageBtn;
+  
+          // Guardamos cookie de idioma (solo si aceptó cookies)
+          setCookie('lang', 'es', 30);
+          isSpanish = true;
+      }
+  
+      // Al cargar, revisamos si en la cookie 'lang' está 'en' o 'es'
+      const currentLang = getCookie('lang');
+      if (currentLang === 'en') {
+          setEnglish();
+      } else {
+          // Por defecto, español
+          setSpanish();
+      }
+  
+      // Menú hamburguesa
+      menuToggle.addEventListener('click', function() {
+          nav.classList.toggle('showing');
+      });
+  
+      window.addEventListener('resize', function() {
+          if (window.innerWidth > 768) {
+              nav.classList.remove('showing');
+          }
+      });
+  
+      // Botón de cambio de idioma
+      languageBtn.addEventListener('click', function() {
+          if (isSpanish) {
+              setEnglish();
+          } else {
+              setSpanish();
+          }
+      });
+    });
+  </script>
+  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+  <script>
+    var swiper = new Swiper('.clients-carousel', {
+      slidesPerView: 3,
+      spaceBetween: 30,
+      loop: true,  // Permite un bucle continuo de slides
+      autoplay: {
+        delay: 3000, // Tiempo de espera entre cambios (en milisegundos)
+        disableOnInteraction: false, // El autoplay no se detiene al interactuar
+      },
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+      breakpoints: {
+        768: {
+          slidesPerView: 3,
+          spaceBetween: 20,
+        },
+        480: {
+          slidesPerView: 1,
+          spaceBetween: 10,
+        }
+      }
+    });
+  </script>
 </body>
 </html>

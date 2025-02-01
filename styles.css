@@ -545,7 +545,7 @@ img:hover {
     color: #fff; /* Define el color de las flechas */
 }
 
-.about-text p, .about-content p, .services-text p {
+.about-text p, .about-content p, .services-text p, .plugin-jitsi-text p {
     text-align: justify;
 }
 
@@ -644,14 +644,14 @@ footer .cookie-policy a:hover {
     transition: max-height 0.5s ease;
     display: flex;
     flex-direction: row;
-    align-items: center;
+    align-items: flex-start;  /* Cambiado de center a flex-start para alinear al inicio */
     justify-content: space-between;
 }
 
 /* Forzamos que ambos bloques ocupen el 50% sin encogerse */
 .plugin-jitsi-text,
 .plugin-jitsi-image {
-    flex: 0 0 50%;  /* No se encogen y tienen un ancho base del 50% */
+    flex: 0 0 50%;  /* Cada bloque ocupa el 50% del ancho */
 }
 
 .plugin-jitsi-text {
@@ -659,13 +659,14 @@ footer .cookie-policy a:hover {
 }
 
 .plugin-jitsi-image {
-    text-align: right; /* Alinea la imagen a la derecha */
+    text-align: right; /* Alinea el contenido a la derecha */
 }
 
-/* La imagen se ajusta al 100% de su contenedor */
+/* La imagen se ajusta al 100% de su contenedor y sin margen superior */
 .plugin-jitsi-image img {
-    width: 100%;
+    width: 100% !important;
     height: auto;
+    margin-top: 0;
 }
 
 /* Cuando se despliegue la sección (al añadir la clase "open") */
