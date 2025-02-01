@@ -31,11 +31,16 @@
 
     <section id="consultoria" class="container">
         <h2>Consultoría</h2>
-        <p>Nuestra experiencia está a su servicio para poner en marcha, o gestionar, su plataforma de formación Moodle.</p>
-        <p>Como estructurar sus cursos para que sean: sencillos cara al alumno y al profesorado, y coherentes para su máxima reutilización en sucesivas convocatorias.</p>
-        <p>Como organizar grandes cantidades de alumnado y profesorado de acuerdo a los criterios de su organización.</p>
-        <p>Automatización de tareas para facilitar la gestión del entorno y evitar errores comunes.</p>
-        <p>Guiado en la configuración de cuestionarios, establecimiento de métodos de evaluación, técnicas de corrección de tareas, etc.</p>
+        <div class="consultoria-content">
+            <img src="pix/consultoria.png" alt="Consultoría" class="consultoria-image" id="consultoria-image">
+            <div class="consultoria-text" id="consultoria-text">
+                <p>Nuestra experiencia está a su servicio para poner en marcha, o gestionar, su plataforma de formación Moodle.</p>
+                <p>Cómo estructurar sus cursos para que sean: sencillos para el alumno y el profesorado, y coherentes para su máxima reutilización en sucesivas convocatorias.</p>
+                <p>Cómo organizar grandes cantidades de alumnado y profesorado de acuerdo a los criterios de su organización.</p>
+                <p>Automatización de tareas para facilitar la gestión del entorno y evitar errores comunes.</p>
+                <p>Guiado en la configuración de cuestionarios, establecimiento de métodos de evaluación, técnicas de corrección de tareas, etc.</p>
+            </div>
+        </div>
     </section>
 
     <section id="adaptacion" class="container">
@@ -66,176 +71,163 @@
     
     <script>
         // ------ Banner de cookies ------
-        const cookieBanner = document.getElementById('cookie-banner');
-            const acceptCookiesBtn = document.getElementById('accept-cookies');
-        
-            // ------ Funciones de cookies ------
-            function setCookie(name, value, days) {
-                // Solo guardamos la cookie de idioma si el usuario aceptó
-                if (getCookie('cookies_accepted')) {
-                    const d = new Date();
-                    d.setTime(d.getTime() + (days * 24 * 60 * 60 * 1000));
-                    const expires = "expires=" + d.toUTCString();
-                    document.cookie = name + "=" + value + ";" + expires + ";path=/";
-                }
-            }
-        
-        function getCookie(name) {
-            const cname = name + "=";
-            const decodedCookie = decodeURIComponent(document.cookie);
-            const carray = decodedCookie.split(';');
-            for (let c of carray) {
-                while (c.charAt(0) === ' ') {
-                    c = c.substring(1);
-                }
-                if (c.indexOf(cname) === 0) {
-                    return c.substring(cname.length, c.length);
-                }
-            }
-            return "";
-        }
+const cookieBanner = document.getElementById('cookie-banner');
+const acceptCookiesBtn = document.getElementById('accept-cookies');
 
-        // --- Mostrar banner si NO existe 'cookies_accepted' ---
-        if (!getCookie('cookies_accepted')) {
-                cookieBanner.style.display = 'block';
-            }
-        
-            // --- Evento al hacer clic en "Aceptar" ---
-            acceptCookiesBtn.addEventListener('click', function() {
-                // Guardamos la cookie de aceptación
-                document.cookie = "cookies_accepted=true; path=/; max-age=" + (60 * 60 * 24 * 30);
-                // Ocultamos el banner
-                cookieBanner.style.display = 'none';
-            });
-        
-        /* ---- Script principal ---- */
-        document.addEventListener('DOMContentLoaded', function() {
-            // 1) MENÚ HAMBURGUESA
-            const menuToggle = document.querySelector('.menu-toggle');
-            const nav = document.querySelector('nav ul');
-            menuToggle.addEventListener('click', function() {
-                nav.classList.toggle('showing');
-            });
-        
-            // 2) REFERENCIAS PARA TRADUCCIÓN
-            const languageBtn = document.getElementById('languageBtn');
-            const headerTitle = document.querySelector('header h1');
-            const navHome = document.getElementById('nav-home');
-            const navServices = document.getElementById('nav-services');
-            const navAbout = document.getElementById('nav-about');
-            
-            // Secciones principales
-            const consultoriaSection = document.getElementById('consultoria');
-            const adaptacionSection = document.getElementById('adaptacion');
-            const contactSection = document.getElementById('contact');
-        
-            // ------ Textos en español ------
-            const esContent = {
-                languageBtn: "EN",
-                headerTitle: "Soporte, consultoría y desarrollo Moodle",
-                navHome: "Inicio",
-                navServices: "Nuestros servicios",
-                navAbout: "Sobre nosotros",
-                consultoriaHtml: `
-                    <h2>Consultoría</h2>
+// ------ Funciones de cookies ------
+function setCookie(name, value, days) {
+    if (getCookie('cookies_accepted')) {
+        const d = new Date();
+        d.setTime(d.getTime() + (days * 24 * 60 * 60 * 1000));
+        const expires = "expires=" + d.toUTCString();
+        document.cookie = name + "=" + value + ";" + expires + ";path=/";
+    }
+}
+
+function getCookie(name) {
+    const cname = name + "=";
+    const decodedCookie = decodeURIComponent(document.cookie);
+    const carray = decodedCookie.split(';');
+    for (let c of carray) {
+        while (c.charAt(0) === ' ') {
+            c = c.substring(1);
+        }
+        if (c.indexOf(cname) === 0) {
+            return c.substring(cname.length, c.length);
+        }
+    }
+    return "";
+}
+
+if (!getCookie('cookies_accepted')) {
+    cookieBanner.style.display = 'block';
+}
+
+acceptCookiesBtn.addEventListener('click', function() {
+    document.cookie = "cookies_accepted=true; path=/; max-age=" + (60 * 60 * 24 * 30);
+    cookieBanner.style.display = 'none';
+});
+
+/* ---- Script principal ---- */
+document.addEventListener('DOMContentLoaded', function() {
+    const menuToggle = document.querySelector('.menu-toggle');
+    const nav = document.querySelector('nav ul');
+    menuToggle.addEventListener('click', function() {
+        nav.classList.toggle('showing');
+    });
+
+    const languageBtn = document.getElementById('languageBtn');
+    const headerTitle = document.querySelector('header h1');
+    const navHome = document.getElementById('nav-home');
+    const navServices = document.getElementById('nav-services');
+    const navAbout = document.getElementById('nav-about');
+
+    const consultoriaSection = document.getElementById('consultoria');
+    const adaptacionSection = document.getElementById('adaptacion');
+    const contactSection = document.getElementById('contact');
+
+    const esContent = {
+        languageBtn: "EN",
+        headerTitle: "Soporte, consultoría y desarrollo Moodle",
+        navHome: "Inicio",
+        navServices: "Nuestros servicios",
+        navAbout: "Sobre nosotros",
+        consultoriaHtml: `
+            <h2>Consultoría</h2>
+            <div class="consultoria-content">
+                <img src="pix/consultoria.png" alt="Consultoría" class="consultoria-image" id="consultoria-image">
+                <div class="consultoria-text" id="consultoria-text">
                     <p>Nuestra experiencia está a su servicio para poner en marcha, o gestionar, su plataforma de formación Moodle.</p>
-                    <p>Como estructurar sus cursos para que sean: sencillos cara al alumno y al profesorado, y coherentes para su máxima reutilización en sucesivas convocatorias.</p>
-                    <p>Como organizar grandes cantidades de alumnado y profesorado de acuerdo a los criterios de su organización.</p>
+                    <p>Cómo estructurar sus cursos para que sean: sencillos para el alumno y el profesorado, y coherentes para su máxima reutilización en sucesivas convocatorias.</p>
+                    <p>Cómo organizar grandes cantidades de alumnado y profesorado de acuerdo a los criterios de su organización.</p>
                     <p>Automatización de tareas para facilitar la gestión del entorno y evitar errores comunes.</p>
                     <p>Guiado en la configuración de cuestionarios, establecimiento de métodos de evaluación, técnicas de corrección de tareas, etc.</p>
-                `,
-                adaptacionHtml: `
-                    <h2><strong>Nos adaptamos</strong></h2>
-                    <p>El servicio de consultoría siempre tendrá su organización en el centro. Podemos trabajar realizando un seguimiento continuo de su plataforma, establecer unos controles periódicos o responder a sus cuestiones cuando así lo requieran.</p>
-                `,
-                contactHtml: `
-                    <h2>Contacta con nosotros</h2>
-                    <p>Puedes contactarnos a través del correo: <a href="mailto:contacto@moodle.com.es">contacto@moodle.com.es</a></p>
-                `
-            };
-        
-            // ------ Textos en inglés ------
-            const enContent = {
-                languageBtn: "ES",
-                headerTitle: "Moodle Support, Consulting and Development",
-                navHome: "Home",
-                navServices: "Our Services",
-                navAbout: "About Us",
-                consultoriaHtml: `
-                    <h2>Consulting</h2>
+                </div>
+            </div>
+        `,
+        adaptacionHtml: `
+            <h2><strong>Nos adaptamos</strong></h2>
+            <p>El servicio de consultoría siempre tendrá su organización en el centro. Podemos trabajar realizando un seguimiento continuo de su plataforma, establecer unos controles periódicos o responder a sus cuestiones cuando así lo requieran.</p>
+        `,
+        contactHtml: `
+            <h2>Contacta con nosotros</h2>
+            <p>Puedes contactarnos a través del correo: <a href="mailto:contacto@moodle.com.es">contacto@moodle.com.es</a></p>
+        `
+    };
+
+    const enContent = {
+        languageBtn: "ES",
+        headerTitle: "Moodle Support, Consulting and Development",
+        navHome: "Home",
+        navServices: "Our Services",
+        navAbout: "About Us",
+        consultoriaHtml: `
+            <h2>Consulting</h2>
+            <div class="consultoria-content">
+                <img src="pix/consultoria.png" alt="Consulting" class="consultoria-image" id="consultoria-image">
+                <div class="consultoria-text" id="consultoria-text">
                     <p>We put our expertise at your service to launch or manage your Moodle training platform.</p>
                     <p>How to structure your courses so that they are simple for both students and teachers, and consistent for maximum reuse in subsequent sessions.</p>
                     <p>How to organize large numbers of students and teachers according to your organization’s criteria.</p>
                     <p>Automation of tasks to facilitate environment management and avoid common errors.</p>
                     <p>Guidance in configuring quizzes, setting up evaluation methods, grading techniques, etc.</p>
-                `,
-                adaptacionHtml: `
-                    <h2><strong>We Adapt</strong></h2>
-                    <p>Our consulting service always keeps your organization at the center. We can work by continuously monitoring your platform, establishing periodic checks, or answering your questions whenever you need.</p>
-                `,
-                contactHtml: `
-                    <h2>Contact Us</h2>
-                    <p>You can reach us via email at: <a href="mailto:contacto@moodle.com.es">contacto@moodle.com.es</a></p>
-                `
-            };
-        
-            // Bandera para saber si está en español (por defecto)
-            let isSpanish = true;
-        
-            // 2.1) Funciones para cambiar a español o inglés
-            function setSpanish() {
-                // Reemplazamos contenido
-                languageBtn.textContent = esContent.languageBtn;
-                headerTitle.textContent = esContent.headerTitle;
-                navHome.textContent = esContent.navHome;
-                navServices.textContent = esContent.navServices;
-                navAbout.textContent = esContent.navAbout;
-                consultoriaSection.innerHTML = esContent.consultoriaHtml;
-                adaptacionSection.innerHTML = esContent.adaptacionHtml;
-                contactSection.innerHTML = esContent.contactHtml;
-        
-                // Guardamos preferencia en la cookie (p.ej. 30 días)
-                setCookie('lang', 'es', 30);
-        
-                isSpanish = true;
-            }
-        
-            function setEnglish() {
-                // Reemplazamos contenido
-                languageBtn.textContent = enContent.languageBtn;
-                headerTitle.textContent = enContent.headerTitle;
-                navHome.textContent = enContent.navHome;
-                navServices.textContent = enContent.navServices;
-                navAbout.textContent = enContent.navAbout;
-                consultoriaSection.innerHTML = enContent.consultoriaHtml;
-                adaptacionSection.innerHTML = enContent.adaptacionHtml;
-                contactSection.innerHTML = enContent.contactHtml;
-        
-                // Guardamos preferencia en la cookie (p.ej. 30 días)
-                setCookie('lang', 'en', 30);
-        
-                isSpanish = false;
-            }
-        
-            // 2.2) Leemos la cookie 'lang' para ver si estaba en 'es' o 'en'
-            const currentLang = getCookie('lang');
-            if (currentLang === 'en') {
-                // Si estaba en inglés, cargamos inglés
-                setEnglish();
-            } else {
-                // Por defecto, español
-                setSpanish();
-            }
-        
-            // 2.3) Evento del botón para cambiar idioma
-            languageBtn.addEventListener('click', function() {
-                if (isSpanish) {
-                    setEnglish();
-                } else {
-                    setSpanish();
-                }
-            });
-        });
+                </div>
+            </div>
+        `,
+        adaptacionHtml: `
+            <h2><strong>We Adapt</strong></h2>
+            <p>Our consulting service always keeps your organization at the center. We can work by continuously monitoring your platform, establishing periodic checks, or answering your questions whenever you need.</p>
+        `,
+        contactHtml: `
+            <h2>Contact Us</h2>
+            <p>You can reach us via email at: <a href="mailto:contacto@moodle.com.es">contacto@moodle.com.es</a></p>
+        `
+    };
+
+    let isSpanish = true;
+
+    function setSpanish() {
+        languageBtn.textContent = esContent.languageBtn;
+        headerTitle.textContent = esContent.headerTitle;
+        navHome.textContent = esContent.navHome;
+        navServices.textContent = esContent.navServices;
+        navAbout.textContent = esContent.navAbout;
+        consultoriaSection.innerHTML = esContent.consultoriaHtml;
+        adaptacionSection.innerHTML = esContent.adaptacionHtml;
+        contactSection.innerHTML = esContent.contactHtml;
+        setCookie('lang', 'es', 30);
+        isSpanish = true;
+    }
+
+    function setEnglish() {
+        languageBtn.textContent = enContent.languageBtn;
+        headerTitle.textContent = enContent.headerTitle;
+        navHome.textContent = enContent.navHome;
+        navServices.textContent = enContent.navServices;
+        navAbout.textContent = enContent.navAbout;
+        consultoriaSection.innerHTML = enContent.consultoriaHtml;
+        adaptacionSection.innerHTML = enContent.adaptacionHtml;
+        contactSection.innerHTML = enContent.contactHtml;
+        setCookie('lang', 'en', 30);
+        isSpanish = false;
+    }
+
+    const currentLang = getCookie('lang');
+    if (currentLang === 'en') {
+        setEnglish();
+    } else {
+        setSpanish();
+    }
+
+    languageBtn.addEventListener('click', function() {
+        if (isSpanish) {
+            setEnglish();
+        } else {
+            setSpanish();
+        }
+    });
+});
+
         </script>
 </body>
 </html>

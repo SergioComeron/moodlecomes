@@ -390,11 +390,11 @@ footer a:hover {
     transition: max-height 0.5s ease;
 }
 
-#jitsi-container img {
-    width: 100%;
+/* #jitsi-container img {
+    width: 50%;
     display: block;
     margin-top: 20px;
-}
+} */
 
 /* Al hacer clic se añade la clase 'open' para desplegar */
 #jitsi-container.open {
@@ -563,4 +563,132 @@ footer .cookie-policy a {
 
 footer .cookie-policy a:hover {
     text-decoration: underline;
+}
+
+/* Estilos para la sección de Consultoría */
+.consultoria-content {
+    display: flex;
+    align-items: flex-start; /* Alineación vertical superior */
+    gap: 20px;               /* Espacio entre la imagen y el texto */
+    flex-wrap: wrap;         /* Adaptación en pantallas pequeñas */
+}
+
+.consultoria-image {
+    max-width: 50%;        /* Ajusta el tamaño máximo de la imagen */
+    height: auto;            /* Mantiene la proporción de la imagen */
+    object-fit: cover;       /* Ajuste de la imagen */
+    border-radius: 10px;     /* Opcional: bordes redondeados */
+}
+
+.consultoria-text {
+    flex: 1;                 /* El texto ocupa el espacio restante */
+    text-align: justify;     /* Justificación del texto */
+}
+
+/* Responsive para pantallas pequeñas */
+@media (max-width: 768px) {
+    .consultoria-content {
+        flex-direction: column; /* Apila la imagen sobre el texto */
+        align-items: center;    /* Centra la imagen */
+    }
+
+    .consultoria-image {
+        max-width: 90%;         /* Imagen más ancha en móviles */
+    }
+
+    .consultoria-text {
+        text-align: justify;    /* Mantiene la justificación del texto */
+    }
+}
+
+/* Estilos para la sección de Alojamiento */
+.alojamiento-content {
+    display: flex;
+    align-items: flex-start; /* Alineación vertical superior */
+    gap: 20px;               /* Espacio entre la imagen y el texto */
+    flex-wrap: wrap;         /* Adaptación en pantallas pequeñas */
+}
+
+.alojamiento-text {
+    flex: 1;                 /* El texto ocupa el espacio restante */
+    text-align: justify;     /* Justificación del texto */
+}
+
+/* Estilo de la imagen */
+.alojamiento-image {
+    max-width: 50%;          /* La imagen ocupa la mitad de la pantalla */
+    height: auto;            /* Mantiene la proporción de la imagen */
+    object-fit: cover;       /* Ajuste de la imagen para llenar su contenedor */
+    border-radius: 10px;     /* Opcional: bordes redondeados */
+}
+
+/* Estilo responsive */
+@media (max-width: 768px) {
+    .alojamiento-content {
+        flex-direction: column; /* Apila la imagen debajo del texto */
+        align-items: center;    /* Centra la imagen */
+    }
+
+    .alojamiento-image {
+        max-width: 90%;         /* Imagen más ancha en pantallas pequeñas */
+    }
+
+    .alojamiento-text {
+        text-align: justify;    /* Mantiene la justificación del texto */
+    }
+}
+/* Estilos para la sección Jitsi */
+#jitsi-container {
+    max-height: 0; /* Inicialmente colapsado */
+    overflow: hidden;
+    transition: max-height 0.5s ease;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* Forzamos que ambos bloques ocupen el 50% sin encogerse */
+.plugin-jitsi-text,
+.plugin-jitsi-image {
+    flex: 0 0 50%;  /* No se encogen y tienen un ancho base del 50% */
+}
+
+.plugin-jitsi-text {
+    padding-right: 20px; /* Separación opcional para el texto */
+}
+
+.plugin-jitsi-image {
+    text-align: right; /* Alinea la imagen a la derecha */
+}
+
+/* La imagen se ajusta al 100% de su contenedor */
+.plugin-jitsi-image img {
+    width: 100%;
+    height: auto;
+}
+
+/* Cuando se despliegue la sección (al añadir la clase "open") */
+#jitsi-container.open {
+    max-height: 1000px; /* Ajusta este valor según el contenido */
+}
+
+/* Responsive: en pantallas pequeñas se muestran en columna */
+@media (max-width: 768px) {
+    #jitsi-container {
+        flex-direction: column;
+        text-align: center;
+    }
+    .plugin-jitsi-text,
+    .plugin-jitsi-image {
+        flex: none;
+        width: 100%;
+    }
+    .plugin-jitsi-text {
+        padding-right: 0;
+    }
+    .plugin-jitsi-image {
+        text-align: center;
+        margin-top: 20px;
+    }
 }
