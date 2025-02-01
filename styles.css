@@ -1,6 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
 /* Estilos generales */
 body {
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Poppins', sans-serif;
     margin: 0;
     padding: 0;
     background-color: #f4f4f4;
@@ -21,7 +23,7 @@ body {
     overflow-x: hidden; /* Evita desbordamiento horizontal */
 }
 
-/* Encabezado */
+/* Encabezado con sombreado */
 header {
     background-color: #333;
     color: #fff;
@@ -32,6 +34,7 @@ header {
     top: 0;
     left: 0;
     z-index: 1000;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Sombreado agregado */
 }
 
 header .container {
@@ -52,6 +55,7 @@ header h1 {
     color: #fff;
 }
 
+/* Menú de navegación */
 nav ul {
     list-style: none;
     margin: 0;
@@ -63,7 +67,34 @@ nav ul li {
     margin-left: 20px;
 }
 
-/* Ajusta el botón dentro del menú para que visualmente luzca acorde */
+/* Animación moderna para los items del menú */
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 16px; /* Disminuye el tamaño de la fuente de los enlaces */
+    position: relative; /* Para posicionar el pseudo-elemento */
+    overflow: hidden;   /* Oculta el pseudo-elemento cuando no se muestra */
+    transition: color 0.3s ease;
+}
+
+/* Línea animada inferior */
+nav ul li a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #fff;
+    transition: width 0.3s ease;
+}
+
+nav ul li a:hover::after {
+    width: 100%;
+}
+
+/* Botones de cambio de idioma */
 .language-toggle {
     background-color: #fff;
     color: #333;
@@ -78,18 +109,6 @@ nav ul li {
     background-color: #ddd;
 }
 
-nav ul li a {
-    color: #fff;
-    text-decoration: none;
-    font-weight: 700;
-    font-size: 16px; /* Disminuye el tamaño de la fuente de los enlaces */
-}
-
-nav ul li a:hover {
-    text-decoration: underline;
-}
-
-/* Botones de cambio de idioma */
 .language-switch {
     margin-left: auto; /* Mueve el menú de idioma a la derecha */
 }
@@ -108,16 +127,24 @@ nav ul li a:hover {
     background-color: #ddd;
 }
 
-/* Franja destacada */
+/* Sección destacada */
 .highlight {
-    background-color: #ffcc00; /* Color de fondo de la franja */
-    color: #ffffff; /* Color del texto */
+    background: linear-gradient(135deg, #6a11cb, #2575fc);
+    color: #ffffff;
     text-align: center;
-    padding: 20px 0; /* Reduce el espacio de la franja */
-    font-size: 50px; /* Tamaño de la fuente */
+    padding: 50px 20px;
+    font-size: 36px;
     font-weight: bold;
-    text-transform: uppercase; /* Convierte el texto a mayúsculas */
-    line-height: 1.2; /* Ajusta el espaciado entre líneas */
+    text-transform: uppercase;
+    border-radius: 15px;
+    margin: 20px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.highlight:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
 }
 
 /* Secciones */
@@ -401,17 +428,16 @@ footer a:hover {
 .service-box-ori {
     position: relative; /* Necesario para posicionar el pseudo-elemento en relación al contenedor */
     overflow: hidden;   /* Opcional, si no quieres que sobresalga algo del recuadro */
-  }
+}
   
-  /* Pseudo-elemento que mostrará el símbolo "+" */
-  .service-box-ori::after {
+/* Pseudo-elemento que mostrará el símbolo "+" */
+.service-box-ori::after {
     content: "+";
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%) scale(0); /* Inicia oculto (scale(0)) */
     opacity: 0;                                /* Transparente al inicio */
-    
     width: 50px;  
     height: 50px;
     line-height: 50px;       /* Centra verticalmente el símbolo dentro del círculo */
@@ -421,19 +447,17 @@ footer a:hover {
     color: #fff;             /* Color del signo "+" */
     font-size: 24px;         /* Tamaño de la fuente del signo "+" */
     font-weight: bold;       /* Hace el símbolo más grueso */
-    
-    /* Transiciones suaves para mostrar/ocultar */
     transition: transform 0.3s ease, opacity 0.3s ease; 
     pointer-events: none;  /* Evita interferir con el clic del enlace */
-  }
+}
   
-  /* Al hacer hover en .service-box, mostramos el "+" */
-  .service-box-ori:hover::after {
+/* Al hacer hover en .service-box, mostramos el "+" */
+.service-box-ori:hover::after {
     transform: translate(-50%, -50%) scale(1); /* Aumentamos escala */
     opacity: 1;                                /* Hacemos visible */
-  }
+}
 
-  .service-box-ori {
+.service-box-ori {
     background-color: #fff;
     padding: 20px;
     border: 1px solid #ddd;
@@ -458,4 +482,85 @@ footer a:hover {
 
 .service-box-ori h3 {
     margin-top: 0;
+}
+
+/* Efecto hover en imágenes */
+img {
+    border-radius: 15px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+img:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Asegura que el contenedor de texto de la sección "Plataforma de formación on-line" no tenga espacio superior */
+#about-text {
+    padding-top: 0;
+}
+
+/* Elimina el margen superior del primer párrafo dentro del contenedor */
+#about-text p:first-child {
+    margin-top: 0;
+}
+
+/* Evita el redondeado en las imágenes del carrusel */
+/* Evita el redondeado y quita cualquier sombra en las imágenes del carrusel */
+.clients-carousel img {
+    border-radius: 0;
+    box-shadow: none !important; /* Elimina cualquier sombra */
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+
+/* Oculta la paginación (los puntos) del carrusel */
+.swiper-pagination {
+    display: none !important;
+}
+
+/* Estilo para el texto descriptivo debajo de cada imagen */
+.client-caption {
+    font-size: 0.8rem;
+    text-align: center;
+    margin-top: 5px;
+    color: #333;
+}
+
+/* Opcional: Ajustes para que el carrusel se vea bien en la sección */
+.swiper {
+    padding: 20px 0;
+}
+
+.swiper-slide {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+    color: #fff; /* Define el color de las flechas */
+}
+
+.about-text p, .about-content p, .services-text p {
+    text-align: justify;
+}
+
+/* Estilo para el enlace de la política de cookies en el footer */
+footer .cookie-policy {
+    font-size: 0.8rem;  /* Texto pequeño */
+    text-align: center; /* Centrado (opcional) */
+    margin-top: 10px;   /* Espacio superior para separarlo del resto */
+}
+
+footer .cookie-policy a {
+    color: #fff;        /* Aseguramos que el enlace tenga el color deseado (por ejemplo, blanco, como el resto del footer) */
+    text-decoration: none;
+}
+
+footer .cookie-policy a:hover {
+    text-decoration: underline;
 }
