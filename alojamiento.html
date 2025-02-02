@@ -144,7 +144,7 @@
             const navAbout = document.getElementById('nav-about');
         
             // Secciones principales
-            const consultoriaSection = document.getElementById('consultoria');
+            const consultoriaSection = document.getElementById('alojamiento');
             const serviciosSection = document.getElementById('servicios');
             const contactSection = document.getElementById('contact');
         
@@ -155,11 +155,16 @@
                 navHome: "Inicio",
                 navServices: "Nuestros servicios",
                 navAbout: "Sobre nosotros",
-        
+
                 consultoriaHTML: `
                     <h2>Alojamiento</h2>
-                    <p>Entendemos que la gestión de un entorno virtual de aprendizaje como Moodle puede ser un desafío.</p>
-                    <p>Por eso, ofrecemos un servicio integral de alojamiento especializado en Moodle, diseñado para garantizar un rendimiento óptimo, seguridad avanzada y una experiencia de aprendizaje fluida para estudiantes, profesores y administradores.</p>
+                    <div class="alojamiento-content">
+                        <div class="alojamiento-text">
+                            <p>Entendemos que la gestión de un entorno virtual de aprendizaje como Moodle puede ser un desafío.</p>
+                            <p>Por eso, ofrecemos un servicio integral de alojamiento especializado en Moodle, diseñado para garantizar un rendimiento óptimo, seguridad avanzada y una experiencia de aprendizaje fluida para estudiantes, profesores y administradores.</p>
+                        </div>
+                        <img src="pix/alojamiento.png" alt="Alojamiento" class="alojamiento-image" id="alojamiento-image">
+                    </div>
                 `,
                 serviciosHTML: `
                     <h2>Nuestros servicios incluyen:</h2>
@@ -174,11 +179,11 @@
                         </div>
                         <div class="service-box">
                             <h3>Integraciones</h3>
-                            <p>Configuramos sistemas de autenticación como LDAP, SAML y OAuth2 para proporcionar un acceso seguro y simplificado, además de integrar Moodle con sistemas académicos y de gestión administrativa para optimizar los procesos educativos y administrativos..</p>
+                            <p>Configuramos sistemas de autenticación como LDAP, SAML y OAuth2 para proporcionar un acceso seguro y simplificado, además de integrar Moodle con sistemas académicos y de gestión administrativa para optimizar los procesos educativos y administrativos.</p>
                         </div>
                         <div class="service-box">
                             <h3>Mantenimiento y Actualizaciones</h3>
-                            <p>Realizamos actualizaciones regulares de Moodle para mantener la compatibilidad con las últimas tecnologías y características. Ademas realizamos la gestión de plugins y temas para asegurarte que todo funcione sin problemas. Supervisamos de forma constante todo sistema para evitar interrupciones.</p>
+                            <p>Realizamos actualizaciones regulares de Moodle para mantener la compatibilidad con las últimas tecnologías y características. Además, gestionamos plugins y temas para asegurarte que todo funcione sin problemas. Supervisamos de forma constante todo sistema para evitar interrupciones.</p>
                         </div>
                     </div>
                 `,
@@ -189,7 +194,7 @@
                     </p>
                 `
             };
-        
+
             // Textos en inglés
             const enContent = {
                 languageBtn: "ES",
@@ -197,11 +202,16 @@
                 navHome: "Home",
                 navServices: "Our Services",
                 navAbout: "About Us",
-        
+
                 consultoriaHTML: `
                     <h2>Hosting</h2>
-                    <p>We understand that managing a virtual learning environment like Moodle can be challenging.</p>
-                    <p>That's why we offer a comprehensive hosting service specialized in Moodle, designed to ensure optimal performance, advanced security, and a seamless learning experience for students, teachers, and administrators.</p>
+                    <div class="alojamiento-content">
+                        <div class="alojamiento-text">
+                            <p>We understand that managing a virtual learning environment like Moodle can be challenging.</p>
+                            <p>That's why we offer a comprehensive hosting service specialized in Moodle, designed to ensure optimal performance, advanced security, and a seamless learning experience for students, teachers, and administrators.</p>
+                        </div>
+                        <img src="pix/alojamiento.png" alt="Hosting" class="alojamiento-image" id="alojamiento-image">
+                    </div>
                 `,
                 serviciosHTML: `
                     <h2>Our Services Include:</h2>
